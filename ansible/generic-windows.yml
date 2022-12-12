@@ -3,3 +3,6 @@
 
   roles:
     - { role: ansible-role-windows-all-base }
+    - { role: ansible-role-windows-all-chocolatey }
+    - { role: ansible-role-windows-all-updates }
+    - { role: ansible-role-windows-all-cleanup }

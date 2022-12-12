@@ -9,7 +9,7 @@
 10.10.11.12 hostname=CLIENT-01
 
 [windows-dc]
-10.10.11.10 hostname=DC
+10.10.11.10 hostname=DC-01
 
 [windows-rdsh]
 10.10.11.11

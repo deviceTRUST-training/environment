@@ -1,0 +1,5 @@
+---
+- hosts: windows
+
+  roles:
+    - { role: ansible-role-windows-all-base }

@@ -1,0 +1,1 @@
+1. Add a new App in Azure AD + Grant Contributor rights in subscription.

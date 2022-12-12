@@ -1,0 +1,26 @@
+# Ignore terraform files
+terraform.tfvars
+variables.tf_
+*terraform.tfstate*
+*terraform.lock.hcl*
+.terraform/
+
+# Ignore vagrant files
+.vagrant/
+*Vagrantfile
+vagrant/inf-guacamole-01/Vagrantfile
+
+# Ignore env files
+.env
+
+# Ignore ADC license file
+*.lic
+*.ovf
+*.vmdk
+
+# Ignore log files
+*.log
+ansible.log
+
+# Ignore bin files (e.g. IGEL UMS)
+*.bin

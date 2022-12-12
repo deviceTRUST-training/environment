@@ -1,18 +1,18 @@
-ansible-r-win-all-base            
-ansible-r-win-all-chocolatey      
-ansible-r-win-all-cleanup         
-ansible-r-win-all-updates         
-ansible-r-win-client-devicetrust  
-ansible-r-win-domainjoin          
-ansible-r-win-srv-dc              
-ansible-r-win-srv-dc-ad-conf      
-ansible-r-win-srv-dc-ad-conf-ous  
-ansible-r-win-srv-dc-ad-conf-users
-ansible-r-win-srv-dc-ad-inst      
-ansible-r-win-srv-dc-base         
-ansible-r-win-srv-dc-conf-objects 
-ansible-r-win-srv-dc-conf-users   
-ansible-r-win-srv-dc-devicetrust  
-ansible-r-win-srv-dc-gpo-bind     
-ansible-r-win-srv-dc-gpo-import   
-ansible-r-win-srv-rdsh-devicetrust
+ansible-galaxy init  ansible-r-win-all-base            
+ansible-galaxy init ansible-r-win-all-chocolatey      
+ansible-galaxy init ansible-r-win-all-cleanup         
+ansible-galaxy init ansible-r-win-all-updates         
+ansible-galaxy init ansible-r-win-client-devicetrust  
+ansible-galaxy init ansible-r-win-domainjoin          
+ansible-galaxy init ansible-r-win-srv-dc              
+ansible-galaxy init ansible-r-win-srv-dc-ad-conf      
+ansible-galaxy init ansible-r-win-srv-dc-ad-conf-ous  
+ansible-galaxy init ansible-r-win-srv-dc-ad-conf-users
+ansible-galaxy init ansible-r-win-srv-dc-ad-inst      
+ansible-galaxy init ansible-r-win-srv-dc-base         
+ansible-galaxy init ansible-r-win-srv-dc-conf-objects 
+ansible-galaxy init ansible-r-win-srv-dc-conf-users   
+ansible-galaxy init ansible-r-win-srv-dc-devicetrust  
+ansible-galaxy init ansible-r-win-srv-dc-gpo-bind     
+ansible-galaxy init ansible-r-win-srv-dc-gpo-import   
+ansible-galaxy init ansible-r-win-srv-rdsh-devicetrust

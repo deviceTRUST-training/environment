@@ -1,2 +1,4 @@
 ---
 - src: https://github.com/devicetrust-training/ansible-r-win-srv-rdsh-devicetrust
+- src: https://github.com/deviceTRUST/ansible-r-win-srv-dc-conf-users
+- src: https://github.com/deviceTRUST/ansible-r-win-srv-dc-conf-objects

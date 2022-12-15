@@ -1,8 +1,22 @@
 ---
 - hosts: windows
+  roles: 
+    - { role: ansible-r-win-all-updates }
+    - { role: ansible-r-win-all-cleanup }
+    - { role: ansible-r-win-all-chocolatey }
+    - { role: ansible-r-win-all-base }
 
-  roles:
-    - { role: ansible-role-windows-all-base }
-    - { role: ansible-role-windows-all-chocolatey }
-    - { role: ansible-role-windows-all-updates }
-    - { role: ansible-role-windows-all-cleanup }
+#    - { role: ansible-r-win-srv-rdsh-devicetrust
+#    - { role: ansible-r-win-srv-dc-ad-conf-users
+#    - { role: ansible-r-win-srv-dc-ad-conf-objects
+#    - { role: ansible-r-win-srv-dc-gpo-import
+#    - { role: ansible-r-win-srv-dc-gpo-bind
+#    - { role: ansible-r-win-srv-dc-devicetrust
+#    - { role: ansible-r-win-srv-dc-ad-conf-users
+#    - { role: ansible-r-win-srv-dc-ad-conf-ous
+#    - { role: ansible-r-win-srv-dc-base
+#    - { role: ansible-r-win-srv-dc-ad-inst
+#    - { role: ansible-r-win-srv-dc-ad-conf
+#    - { role: ansible-r-win-domainjoin
+#    - { role: ansible-r-win-client-devicetrust
+#    - { role: ansible-r-win-srv-dc

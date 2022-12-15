@@ -59,7 +59,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
   provisioner "remote-exec" {
     inline = [
       "chmod -R +x /tmp/scripts",
-      "/tmp/scripts/prepare_controller.sh",
+      "/tmp/scripts/ansible_apt.sh",
     ]
   }
 

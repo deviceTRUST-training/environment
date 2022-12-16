@@ -1,0 +1,3 @@
+- hosts: windows-client
+  roles:
+    - { role: ansible-r-win-client-devicetrust }

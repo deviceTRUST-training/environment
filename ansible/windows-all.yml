@@ -1,0 +1,7 @@
+---
+- hosts: windows
+  roles: 
+    # - { role: ansible-r-win-all-updates }
+    - { role: ansible-r-win-all-cleanup }
+    - { role: ansible-r-win-all-chocolatey }
+    - { role: ansible-r-win-all-base }

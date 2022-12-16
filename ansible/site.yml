@@ -1,2 +1,2 @@
 ---
-- import_playbook: generic-windows.yml
+- import_playbook: windows-all.yml

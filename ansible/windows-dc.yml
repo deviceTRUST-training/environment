@@ -1,4 +1,8 @@
 - hosts: windows-dc
+
+  vars_files:
+    - vars/windows-dc.yml
+
   roles:
     - { role: ansible-r-win-srv-dc-base }
     - { role: ansible-r-win-srv-dc-ad-inst }

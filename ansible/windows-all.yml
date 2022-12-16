@@ -1,5 +1,9 @@
 ---
 - hosts: windows
+
+  vars_files:
+    - vars/windows.yml
+
   roles: 
     # - { role: ansible-r-win-all-updates }
     - { role: ansible-r-win-all-cleanup }

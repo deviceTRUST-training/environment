@@ -1,3 +1,4 @@
+---
 - hosts: windows-member
 
   vars_files:

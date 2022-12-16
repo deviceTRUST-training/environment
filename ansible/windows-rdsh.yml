@@ -1,3 +1,4 @@
+---
 - hosts: windows-rdsh
   roles:
     - { role: ansible-r-win-srv-rdsh-devicetrust }

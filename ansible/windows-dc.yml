@@ -1,3 +1,4 @@
+---
 - hosts: windows-dc
 
   vars_files:

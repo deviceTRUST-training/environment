@@ -1,0 +1,24 @@
+---
+# Network
+dc_network_address: 10.10.11.10
+dc_network_netmask_cidr: 24
+dc_network_gateway: 10.10.11.1
+
+# Domain configuration variables
+dc_domain_name: 'dt.training'
+dc_local_admin: '.\administrator'
+dc_upstream_dns_1: 10.10.11.1
+dc_reverse_dns_zone: '10.10.11.0/24'
+dc_ntp_servers: '0.us.pool.ntp.org,1.us.pool.ntp.org'
+
+# Passwords
+dc_password_user: 'ThisIsASecurePassword!2022'
+dc_password_service: 'ThisIsASecurePassword!2022'
+dc_password_admin: 'ThisIsASecurePassword!2022'
+dc_password: 'ThisIsASecurePassword!2022'
+dc_password_recovery: 'ThisIsASecurePassword!2022'
+
+# OUs
+dc_ou_user: 'OU=User,OU=Accounts,OU=Objects,DT=dt,DC=training'
+dc_ou_admins: 'OU=Admins,OU=Accounts,OU=Objects,DT=dt,DC=training'
+dc_ou_services: 'OU=Services,OU=Accounts,OU=Objects,DT=dt,DC=training'

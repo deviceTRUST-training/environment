@@ -1,2 +1,6 @@
 ---
+- import_playbook: windows-dc.yml
+- import_playbook: windows-member.yml
+- import_playbook: windows-rdsh.yml
+- import_playbook: windows-client.yml
 - import_playbook: windows-all.yml

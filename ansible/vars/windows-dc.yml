@@ -19,6 +19,7 @@ dc_password_service: 'ThisIsASecurePassword!2022'
 dc_password_admin: 'ThisIsASecurePassword!2022'
 dc_password: 'ThisIsASecurePassword!2022'
 dc_password_recovery: 'ThisIsASecurePassword!2022'
+dc_safe_mode_password: 'ThisIsASecurePassword!2022'
 
 # OUs
 dc_ou_user: 'OU=User,OU=Accounts,OU=Objects,DT=dt,DC=training'
@@ -28,3 +29,7 @@ dc_ou_services: 'OU=Services,OU=Accounts,OU=Objects,DT=dt,DC=training'
 # Domain Admin
 domain_admin_user: administrator@dt.training
 domain_admin_password: vagrant
+
+dc_create_dns_delegation: no
+dc_database_path: C:\Windows\NTDS 
+dc_sysvol_path: C:\Windows\SYSVOL

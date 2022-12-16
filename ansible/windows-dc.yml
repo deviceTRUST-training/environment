@@ -2,6 +2,7 @@
 - hosts: windows-dc
 
   vars_files:
+    - vars/all.yml
     - vars/windows-dc.yml
 
   roles:

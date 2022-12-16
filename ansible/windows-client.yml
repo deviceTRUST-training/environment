@@ -1,4 +1,8 @@
 ---
 - hosts: windows-client
+
+  vars_files:
+    - vars/all.yml
+
   roles:
     - { role: ansible-r-win-client-devicetrust }

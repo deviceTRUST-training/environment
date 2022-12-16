@@ -2,7 +2,7 @@
 - hosts: windows
 
   vars_files:
-    - vars/windows.yml
+    - vars/all.yml
 
   roles: 
     # - { role: ansible-r-win-all-updates }

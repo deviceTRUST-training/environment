@@ -3,6 +3,7 @@
 
   vars_files:
     - vars/all.yml
+    - vars/windows-member.yml
 
   roles:
     - { role: ansible-r-win-domainjoin }

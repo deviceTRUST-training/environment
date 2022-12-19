@@ -14,5 +14,5 @@
     # - { role: ansible-r-win-srv-dc-gpo-import }
     # - { role: ansible-r-win-srv-dc-gpo-bind }
     # - { role: ansible-r-win-srv-dc-ad-conf-objects }
-    - { role: ansible-r-win-srv-dc-devicetrust }
+    # - { role: ansible-r-win-srv-dc-devicetrust }
     # - { role: ansible-r-win-srv-dc }

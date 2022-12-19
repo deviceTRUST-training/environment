@@ -57,6 +57,20 @@ resource "azurerm_virtual_machine" "vm_byod" {
       setting_name = "FirstLogonCommands"
       content      = "${file("./files/FirstLogonCommands.xml")}"
     }
+
+    customize {
+      windows_options {
+        computer_name = "${local.computer_name_byod}"
+      }
+      network_interface {
+        ipv4_address = "${element(var.inf-dc["ip"],count.index)}"
+        ipv4_netmask = 24
+      }
+
+      ipv4_gateway = var.vm-all.ipv4_gateway
+      dns_server_list = [var.vm-all.dns_server_list]
+    }
+
   }
 
   # provisioner "remote-exec" {

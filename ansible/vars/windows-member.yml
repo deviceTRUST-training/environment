@@ -1,5 +1,5 @@
 # Domainjoin variables
 domainjoin_user_pw: 'ThisIsASecurePassword!2022'
-domainjoin_user_name: 'domainjoin@democloud.local'
-domainjoin_domain_name: 'democloud.local'
-domainjoin_ou: 'OU=Computer,OU=Objects,DC=democloud,DC=local'
+domainjoin_user_name: 'domainjoin@dt.training'
+domainjoin_domain_name: 'dt.training'
+domainjoin_ou: 'OU=Computer,OU=Objects,DC=dt,DC=training'

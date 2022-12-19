@@ -13,6 +13,7 @@ resource "azurerm_network_interface" "vm_rdsh" {
   name                = "${var.azure-environment.prefix}_vm_rdsh_nic"
   location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  dns_servers         = ["10.10.11.10"]
   tags                = "${var.tags}"
 
   ip_configuration {

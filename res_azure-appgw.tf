@@ -10,19 +10,20 @@ locals {
   #request_routing_rule_name      = "${azurerm_virtual_network.main.name}-rqrt"
   #redirect_configuration_name    = "${azurerm_virtual_network.main.name}-rdrcfg"
 
-  backend_address_pool_name      = ${element(azurerm_resource_group.main.*.name, count.index)}-beap
-  frontend_port_name             = ${element(azurerm_resource_group.main.*.name, count.index)}-feport
-  frontend_ip_configuration_name = ${element(azurerm_resource_group.main.*.name, count.index)}-feip
-  http_setting_name              = ${element(azurerm_resource_group.main.*.name, count.index)}-be-htst
-  listener_name                  = ${element(azurerm_resource_group.main.*.name, count.index)}-httplstn
-  request_routing_rule_name      = ${element(azurerm_resource_group.main.*.name, count.index)}-rqrt
-  redirect_configuration_name    = ${element(azurerm_resource_group.main.*.name, count.index)}-rdrcfg
+  backend_address_pool_name      = "${element(azurerm_resource_group.main.*.name, count.index)}-beap"
+  frontend_port_name             = "${element(azurerm_resource_group.main.*.name, count.index)}-feport"
+  frontend_ip_configuration_name = "${element(azurerm_resource_group.main.*.name, count.index)}-feip"
+  http_setting_name              = "${element(azurerm_resource_group.main.*.name, count.index)}-be-htst"
+  listener_name                  = "${element(azurerm_resource_group.main.*.name, count.index)}-httplstn"
+  request_routing_rule_name      = "${element(azurerm_resource_group.main.*.name, count.index)}-rqrt"
+  redirect_configuration_name    = "${element(azurerm_resource_group.main.*.name, count.index)}-rdrcfg"
 }
 
 resource "azurerm_application_gateway" "network" {
-  name                = "appgateway"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
+  count               = "${var.azure-environment.instance_count}"
+  name                = "${var.azure-environment.prefix}_appgateway"
+  location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
+  resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
 
   sku {
     name     = "Standard_Small"
@@ -32,7 +33,7 @@ resource "azurerm_application_gateway" "network" {
 
   gateway_ip_configuration {
     name      = "my-gateway-ip-configuration"
-    subnet_id = azurerm_subnet.internal.id
+    subnet_id = "${element(azurerm_subnet.internal.*.id, count.index)}"
   }
 
   frontend_port {

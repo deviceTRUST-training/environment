@@ -67,8 +67,8 @@ resource "azurerm_virtual_machine" "vm_byod" {
         ipv4_netmask = 24
       }
 
-      ipv4_gateway = var.vm-all.ipv4_gateway
-      dns_server_list = [var.vm-all.dns_server_list]
+      # ipv4_gateway = var.vm-all.ipv4_gateway
+      # dns_server_list = [var.vm-all.dns_server_list]
     }
 
   }

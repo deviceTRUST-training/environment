@@ -29,7 +29,3 @@ dc_ou_services: 'OU=Services,OU=Accounts,OU=Objects,DT=dt,DC=training'
 # Domain Admin
 domain_admin_user: administrator@dt.training
 domain_admin_password: vagrant
-
-dc_create_dns_delegation: no
-dc_database_path: C:\Windows\NTDS 
-dc_sysvol_path: C:\Windows\SYSVOL

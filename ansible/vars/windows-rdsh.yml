@@ -1,0 +1,7 @@
+---
+install_rds_licensing: true
+rds_licensing_mode: 4
+rds_licening_server_name: localhost
+remotedesktopuser_group_name: Remote Desktop Users
+members_of_remotedesktopuser:
+  - '{{ domain_netbios_name }}\Domain Users'

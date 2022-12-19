@@ -10,7 +10,7 @@
     - { role: ansible-r-win-srv-dc-ad-inst }
     - { role: ansible-r-win-srv-dc-ad-conf }
     - { role: ansible-r-win-srv-dc-ad-conf-ous }
-    - { role: ansible-r-win-srv-dc-ad-conf-users }
+    # - { role: ansible-r-win-srv-dc-ad-conf-users }
     # - { role: ansible-r-win-srv-dc-gpo-import }
     # - { role: ansible-r-win-srv-dc-gpo-bind }
     # - { role: ansible-r-win-srv-dc-ad-conf-objects }

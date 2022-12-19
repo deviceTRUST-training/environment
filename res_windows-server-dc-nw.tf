@@ -14,7 +14,6 @@ resource "azurerm_network_interface" "vm_dc" {
   location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
   tags                = "${var.tags}"
-  dns_servers         = ["10.10.11.10"]
 
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_configuration"

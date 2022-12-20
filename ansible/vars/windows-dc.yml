@@ -9,7 +9,7 @@ dc_domain_name: 'dt.training'
 dc_domain_dns_name: 'dt.training'
 dc_domain_netbios_name: DT
 dc_local_admin: '.\administrator'
-dc_upstream_dns_1: 10.10.11.1
+dc_upstream_dns_1: 8.8.8.8
 dc_reverse_dns_zone: '10.10.11.0/24'
 dc_ntp_servers: '0.us.pool.ntp.org,1.us.pool.ntp.org'
 

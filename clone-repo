@@ -1,3 +1,0 @@
-gh repo list devicetrust-training --limit 100 | while read -r repo _; do
-  gh repo clone "$repo" "$repo"
-done

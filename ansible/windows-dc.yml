@@ -6,16 +6,16 @@
     - vars/windows-dc.yml
 
   roles:
-    - { role: ansible-r-win-srv-dc-base }
-    - { role: ansible-r-win-srv-dc-ad-inst }
-    - { role: ansible-r-win-srv-dc-ad-conf }
-    - { role: ansible-r-win-srv-dc-ad-conf-ous }
-    # - { role: ansible-r-win-srv-dc-ad-conf-users }
-    # - { role: ansible-r-win-srv-dc-gpo-import }
-    # - { role: ansible-r-win-srv-dc-gpo-bind }
-    # - { role: ansible-r-win-srv-dc-ad-conf-objects }
-    # - { role: ansible-r-win-srv-dc-devicetrust }
-    # - { role: ansible-r-win-srv-dc }
+    - { role: ansible-role-win-srv-dc-base }
+    - { role: ansible-role-win-srv-dc-ad-inst }
+    - { role: ansible-role-win-srv-dc-ad-conf }
+    - { role: ansible-role-win-srv-dc-ad-conf-ous }
+    # - { role: ansible-role-win-srv-dc-ad-conf-users }
+    # - { role: ansible-role-win-srv-dc-gpo-import }
+    # - { role: ansible-role-win-srv-dc-gpo-bind }
+    # - { role: ansible-role-win-srv-dc-ad-conf-objects }
+    # - { role: ansible-role-win-srv-dc-devicetrust }
+    # - { role: ansible-role-win-srv-dc }
 
   tasks:
     - name: DC - DNS Service ListenAddresses

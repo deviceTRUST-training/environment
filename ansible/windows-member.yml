@@ -6,4 +6,4 @@
     - vars/windows-member.yml
 
   roles:
-    - { role: ansible-r-win-domainjoin }
+    - { role: ansible-role-win-domainjoin }

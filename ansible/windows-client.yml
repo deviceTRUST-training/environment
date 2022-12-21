@@ -5,4 +5,4 @@
     - vars/all.yml
 
   roles:
-    # - { role: ansible-r-win-client-devicetrust }
+    # - { role: ansible-role-win-client-devicetrust }

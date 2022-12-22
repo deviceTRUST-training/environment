@@ -1,0 +1,21 @@
+---
+- name: Create local Folder
+  win_file:
+    path: C:\Install
+    state: directory
+
+- name: Copy the Citrix Policy input file
+  win_copy:
+    src: CitrixPolicy.txt
+    dest: C:\Install\
+
+- name: Hydrate Site
+  script: hydrate.ps1
+  args:
+    creates: C:\Logs\done-hydrate.txt
+  environment:
+    citrix_siteconfig_vdahostname: "{{ citrix_siteconfig_vdahostname }}"
+    citrix_siteconfig_machinecatalog: "{{ citrix_siteconfig_machinecatalog }}"
+    citrix_siteconfig_deliverygroup: "{{ citrix_siteconfig_deliverygroup }}"
+    citrix_siteconfig_desktop: "{{ citrix_siteconfig_desktop }}"
+    citrix_siteconfig_usergroup: "{{ citrix_siteconfig_usergroup }}"

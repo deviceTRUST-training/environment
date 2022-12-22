@@ -1,0 +1,5 @@
+---
+  - name: Delete Script directory
+    ansible.windows.win_file:
+      path: c:\Script
+      state: absent

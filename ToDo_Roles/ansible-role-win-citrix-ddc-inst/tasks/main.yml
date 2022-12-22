@@ -1,0 +1,57 @@
+---
+- name: Install DDC Pre-Reqs
+  win_feature:
+    name:
+    - NET-Framework-45-Core
+    - GPMC
+    - RSAT-ADDS-Tools
+    - RDS-Licensing-UI
+    - WAS
+    - Telnet-Client
+    state: present
+  register: win_feature
+
+- name: Reboot
+  ansible.windows.win_reboot:
+  when: win_feature.changed
+
+- name: Map SMB share
+  win_shell: |
+    net use \\10.10.1.18 "deviceTRUST$" /user:share
+
+- name: Create Log Folder
+  win_file:
+    path: C:\Logs
+    state: directory
+
+- name: Install DDC Components
+  win_package:
+    path: "{{ citrix_sources_path }}\\x64\\XenDesktop Setup\\XenDesktopServerSetup.exe"
+    arguments: /components controller,desktopstudio,licenseserver,desktopdirector /configure_firewall /noreboot /quiet /logpath C:\Logs /IGNORE_HW_CHECK_FAILURE /nosql
+    state: present
+    expected_return_code: [0, 3, 3010]
+    creates_path: C:\Program Files\Citrix\Desktop Studio
+  register: ddc_install
+
+- name: Reboot
+  ansible.windows.win_reboot:
+  when: ddc_install.changed
+
+- name: Remove DDC RunOnce Key
+  win_regedit:
+    path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce
+    name: "!XenDesktopSetup"
+    state: absent
+  register: ddc_resume
+
+- name: Resume DDC Install
+  win_package:
+    path: C:\ProgramData\Citrix\XenDesktopSetup\XenDesktopServerSetup.exe
+    state: present
+    expected_return_code: [0, 3, 3010]
+    creates_path: C:\Program Files\Citrix\Desktop Studio
+  when: ddc_resume.changed
+
+- name: Reboot
+  ansible.windows.win_reboot:
+  when: ddc_resume.changed

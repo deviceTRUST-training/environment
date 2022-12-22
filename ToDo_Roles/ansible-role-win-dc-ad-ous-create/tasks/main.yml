@@ -1,0 +1,166 @@
+---
+#####################################
+### Create OUs
+#####################################
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Objects
+    path: "DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Accounts
+    path: "OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Computer
+    path: "OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Groups
+    path: "OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: 02_Administration
+    path: "OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: 03_Environment
+    path: "OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: 04_Endpoints 
+    path: "OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Citrix
+    path: "OU=03_Environment,OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: VMware
+    path: "OU=03_Environment,OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Parallels
+    path: "OU=03_Environment,OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: FatClient
+    path: "OU=03_Environment,OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: RDSH
+    path: "OU=Citrix,OU=03_Environment,OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: RDSH
+    path: "OU=VMware,OU=03_Environment,OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Windows 10
+    path: "OU=04_Endpoints,OU=Computer,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: User
+    path: "OU=Accounts,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Services
+    path: "OU=Accounts,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Admins
+    path: "OU=Accounts,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: demo
+    path: "OU=Groups,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Testing
+    path: "OU=Groups,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Security
+    path: "OU=Groups,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Software
+    path: "OU=Groups,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Webinar
+    path: "OU=User,OU=Accounts,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Testing
+    path: "OU=User,OU=Accounts,OU=Objects,DC=democloud,DC=local"
+    state: present
+    protected: true
+    

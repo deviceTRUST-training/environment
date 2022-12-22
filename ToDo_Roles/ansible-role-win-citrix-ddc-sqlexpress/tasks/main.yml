@@ -1,0 +1,41 @@
+---
+- name: Create task to Install SQL Express with chocolatey on boot
+  community.windows.win_scheduled_task:
+    name: Install SQL Express
+    description: Install SQL Express with chocolatey on boot
+    actions:
+    - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+      arguments: -ExecutionPolicy Unrestricted -NonInteractive "choco install sql-server-express sql-server-management-studio --y"
+    triggers:
+    - type: boot
+    username: vagrant
+    password: vagrant
+    run_level: highest
+    state: present
+    logon_type: password
+  register: win_schtask
+
+- name: Reboot
+  ansible.windows.win_reboot:
+  when: win_schtask.changed
+
+- name: Check if service mssql$sqlexpress exists
+  ansible.windows.win_service_info:
+    name: mssql$sqlexpress
+  register: svc_mssql_exists
+
+- name: Loop until service mssql$sqlexpress exists
+  ansible.windows.win_service_info:
+    name: mssql$sqlexpress
+  register: svc_mssql_loop
+  until: svc_mssql_loop.exists == true
+  when: svc_mssql_exists.exists == false
+  retries: 20
+  delay: 30
+
+- name: Delete SQL Scheduled Task
+  win_scheduled_task:
+    name: Install SQL Express
+    state: absent
+
+# Needs to be this way. Citrix van't be installed if simply using chocolatey from Ansible to install SQL. Some rights problem. 

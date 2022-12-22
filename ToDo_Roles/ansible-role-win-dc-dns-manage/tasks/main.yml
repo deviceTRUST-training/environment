@@ -1,0 +1,10 @@
+---
+- name: Create DNS records for Citrix
+  community.windows.win_dns_record:
+    name: '{{ item }}'
+    type: A
+    value: 10.10.1.101
+    zone: democloud.local
+  loop:
+    - sf
+    - director

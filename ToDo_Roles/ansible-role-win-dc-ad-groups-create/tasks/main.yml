@@ -1,0 +1,10 @@
+---
+#####################################
+### Create Groups
+#####################################
+
+- name: Ensure group is present
+  community.windows.win_domain_group:
+    name: g_g_sec_citrix_users
+    scope: global
+    path: OU=Security,OU=Groups,OU=Objects,DC=democloud,DC=local

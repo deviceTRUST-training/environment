@@ -1,0 +1,20 @@
+---
+  - name: Create GPO directory
+    ansible.windows.win_file:
+      path: c:\GPO
+      state: directory
+
+  - name: Copy Script
+    ansible.builtin.copy:
+      src: files/gpo-bind.ps1
+      dest: c:\GPO\gpo-bind.ps1
+
+  - name: Bind GPO
+    script: files/gpo-bind.ps1
+    args:
+      creates: C:\Logs\gpo-bind.txt
+
+  - name: Delete GPO directory
+    ansible.windows.win_file:
+      path: c:\GPO
+      state: absent

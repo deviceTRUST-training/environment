@@ -1,0 +1,21 @@
+---
+  - name: Create Site
+    script: files/createsite.ps1
+    args:
+      creates: C:\Logs\sitedone.txt
+    environment:
+      SiteName: "{{ citrix_site_SiteName }}"
+      DatabaseServer: "{{ citrix_site_DatabaseServer }}"
+      DatabaseServerPort: "{{ citrix_site_DatabaseServerPort }}"
+      DatabaseName_Site: "{{ citrix_site_DatabaseName_Site }}"
+      DatabaseName_Logging: "{{ citrix_site_DatabaseName_Logging }}"
+      DatabaseName_Monitoring: "{{ citrix_site_DatabaseName_Monitoring }}"
+      LicenseServer: "{{ citrix_site_LicenseServer }}"
+      LicenseServerPort: "{{ citrix_site_LicenseServerPort }}"
+      LicensingModel: "{{ citrix_site_LicensingModel }}"                  
+      ProductCode: "{{ citrix_site_ProductCode }}"                                   
+      ProductEdition: "{{ citrix_site_ProductEdition }}"
+      AdminGroup: "{{ citrix_site_AdminGroup }}"
+      Role:  "{{ citrix_site_Role }}"
+      Scope: "{{ citrix_site_Scope }}"                                 
+      GroomingDays: "{{ citrix_site_GroomingDays }}"

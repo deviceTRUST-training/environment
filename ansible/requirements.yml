@@ -1,3 +1,4 @@
+---
 - src: https://github.com/jansvensen/ansible-role-win-all-base
 - src: https://github.com/jansvensen/ansible-role-win-dc-base
 - src: https://github.com/jansvensen/ansible-role-win-dc-ad-inst

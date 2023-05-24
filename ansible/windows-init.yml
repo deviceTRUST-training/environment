@@ -1,0 +1,11 @@
+---
+- hosts: windows
+
+  vars_files:
+    - vars/generic.yml
+    - vars/windows.yml
+
+  roles:
+    - { role: ansible-role-win-all-base }
+    - { role: ansible-role-win-all-language }
+    - { role: ansible-role-win-sw-chocolatey }

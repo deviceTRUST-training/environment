@@ -1,4 +1,0 @@
----
-# Ansible variables
-ansible_user: dt\vagrant
-ansible_password: vagrant

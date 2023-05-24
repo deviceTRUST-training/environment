@@ -1,0 +1,10 @@
+---
+- hosts: windows-dc
+
+  vars_files:
+    - vars/generic.yml
+    - vars/windows.yml
+    - vars/windows-dc-domain.yml
+
+  roles: 
+     # ToDo: script - { role: ansible-role-win-dc-computerobjects-conf }

@@ -1,0 +1,12 @@
+---
+- hosts: windows
+
+  vars_files:
+    - vars/generic.yml
+    - vars/windows.yml
+
+  roles:
+    # Done
+    - { role: ansible-role-win-all-cleanup }
+    # ToDo
+    - { role: ansible-role-win-all-updates}

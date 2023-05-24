@@ -1,0 +1,11 @@
+---
+- hosts: windows-rdsh
+
+  vars_files:
+    - vars/generic.yml
+    - vars/windows.yml
+    - vars/windows-rdsh.yml
+    
+  roles:
+    - { role: ansible-role-win-sw-dt-agent }
+    - { role: ansible-role-win-sw-dt-clientextension }

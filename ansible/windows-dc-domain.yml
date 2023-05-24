@@ -1,0 +1,11 @@
+---
+- hosts: windows-dc
+
+  vars_files:
+    - vars/generic.yml
+    - vars/windows.yml
+    - vars/windows-dc-domain.yml
+
+  roles:
+     # - { role: ansible-role-win-dc-gpo-import }
+     # ToDo: script - { role: ansible-role-win-dc-gpo-bind }

@@ -1,0 +1,9 @@
+---
+- hosts: windows-domain-members
+
+  vars_files:
+    - vars/generic.yml
+    - vars/windows.yml
+
+  roles:
+    - { role: ansible-role-win-domainjoin }

@@ -1,0 +1,17 @@
+---
+- hosts: windows-dc
+
+  vars_files:
+    - vars/generic.yml
+    - vars/windows.yml
+    - vars/windows-dc-local.yml
+
+  roles:
+     - { role: ansible-role-win-dc-base }
+     - { role: ansible-role-win-dc-ad-inst }
+     - { role: ansible-role-win-dc-ad-conf }
+     - { role: ansible-role-win-dc-dns-conf }
+     - { role: ansible-role-win-dc-ous-conf }
+     - { role: ansible-role-win-dc-groups-conf }
+     - { role: ansible-role-win-dc-users-create }
+     - { role: ansible-role-win-dc-users-conf }

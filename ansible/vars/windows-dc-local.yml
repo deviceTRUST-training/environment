@@ -4,7 +4,7 @@ ansible_user: vagrant
 ansible_password: vagrant
 
 # DNS Configuration
-dc_dns_upstream: 10.10.1.1
+dc_dns_upstream: 10.10.11.1
 dc_dns_zone_name: dt.training
 
 # NTP Configuration

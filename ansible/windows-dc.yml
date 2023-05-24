@@ -6,10 +6,10 @@
     - vars/windows-dc.yml
 
   roles:
-    - { role: ansible-role-win-srv-dc-base }
-    - { role: ansible-role-win-srv-dc-ad-inst }
-    - { role: ansible-role-win-srv-dc-ad-conf }
-    - { role: ansible-role-win-srv-dc-ad-conf-ous }
+    # - { role: ansible-role-win-srv-dc-base }
+    # - { role: ansible-role-win-srv-dc-ad-inst }
+    # - { role: ansible-role-win-srv-dc-ad-conf }
+    # - { role: ansible-role-win-srv-dc-ad-conf-ous }
     # - { role: ansible-role-win-srv-dc-ad-conf-users }
     # - { role: ansible-role-win-srv-dc-gpo-import }
     # - { role: ansible-role-win-srv-dc-gpo-bind }

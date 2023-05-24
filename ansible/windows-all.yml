@@ -6,6 +6,6 @@
 
   roles: 
     # - { role: ansible-role-win-all-updates }
-    - { role: ansible-role-win-all-cleanup }
-    - { role: ansible-role-win-all-chocolatey }
-    - { role: ansible-role-win-all-base }
+    # - { role: ansible-role-win-all-cleanup }
+    # - { role: ansible-role-win-all-chocolatey }
+    # - { role: ansible-role-win-all-base }

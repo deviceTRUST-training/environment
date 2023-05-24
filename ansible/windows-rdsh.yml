@@ -1,8 +1,0 @@
----
-- hosts: windows-rdsh
-
-  vars_files:
-    - vars/all.yml
-
-  roles:
-    # - { role: ansible-role-win-srv-rdsh-devicetrust }

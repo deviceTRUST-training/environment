@@ -1,22 +1,21 @@
+[all]
+10.10.11.10 hostname=t-inf-dc-01
+10.10.11.101 hostname=t-citrix-ctrl-01
+10.10.11.102 hostname=t-citrix-rdsh-01
+10.10.11.151 hostname=t-inf-logging-01
+10.10.11.161 hostname=t-inf-guacamole-01
+
 [windows]
 10.10.11.10
-10.10.11.11
-10.10.11.12
-10.10.11.13
-
-[windows-member]
-10.10.11.11 hostname=RDSH-01
-10.10.11.12 hostname=CLIENT-01
-
-[windows-dc]
-10.10.11.10 hostname=DC-01
-
-[windows-rdsh]
-10.10.11.11
+10.10.11.101
+10.10.11.102
 
 [windows-client]
-10.10.11.12
-10.10.11.13
+10.10.11.101
+10.10.11.102
 
-[windows-byod]
-10.10.11.13 hostname=BYOD
+[windows-dc-local]
+10.10.11.10
+
+[windows-dc-domain]
+10.10.11.10

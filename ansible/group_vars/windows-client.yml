@@ -1,0 +1,15 @@
+---
+# Ansible variables
+ansible_user: vagrant
+ansible_password: vagrant
+
+# Domainjoin variables
+domainjoin_domain_name: dt.democloud
+domainjoin_user_pw: ThisIsASecurePassword!2022
+domainjoin_user_name: svc_domainjoin@dt.democloud
+domainjoin_ou: 'OU=Computer,OU=Objects,DC=dt,DC=democloud'
+
+# DNS client configuration variables
+#dns_client_configure: False
+#dns_client_adapter: Ethernet
+#dns_client_dns_server_ip: 10.10.1.10

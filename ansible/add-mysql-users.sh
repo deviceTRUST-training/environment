@@ -1,0 +1,7 @@
+export TOKEN=$(curl -d 'username=guacadmin&password=guacadmin' http://10.10.1.161:8080/guacamole/api/tokens | jq -r .authToken)
+curl -s -k -X POST -H 'guacamole-token: '$TOKEN -H 'Content-Type: application/json' http://10.10.1.161/api/session/data/mysql/users --data-binary '{"password":"testpassword","username":"demo","attributes":{}}'
+curl -s -k -X POST -H 'guacamole-token: '$TOKEN -H 'Content-Type: application/json' http://10.10.1.161/api/session/data/mysql/users --data-binary '{"password":"testpassword","username":"demo01","attributes":{}}'
+curl -s -k -X POST -H 'guacamole-token: '$TOKEN -H 'Content-Type: application/json' http://10.10.1.161/api/session/data/mysql/users --data-binary '{"password":"testpassword","username":"demo02","attributes":{}}'
+curl -s -k -X POST -H 'guacamole-token: '$TOKEN -H 'Content-Type: application/json' http://10.10.1.161/api/session/data/mysql/users --data-binary '{"password":"testpassword","username":"demo03","attributes":{}}'
+curl -s -k -X POST -H 'guacamole-token: '$TOKEN -H 'Content-Type: application/json' http://10.10.1.161/api/session/data/mysql/users --data-binary '{"password":"testpassword","username":"demo04","attributes":{}}'
+curl -s -k -X POST -H 'guacamole-token: '$TOKEN -H 'Content-Type: application/json' http://10.10.1.161/api/session/data/mysql/users --data-binary '{"password":"testpassword","username":"demo05","attributes":{}}'

@@ -1,0 +1,37 @@
+---
+- hosts: windows-pre-domain
+  roles:
+    - { role: ansible-role-win-all-base }
+
+- hosts: windows-dc-local
+  roles:
+     - { role: ansible-role-win-dc-base }
+     - { role: ansible-role-win-dc-ad-inst }
+     - { role: ansible-role-win-dc-ad-conf }
+     - { role: ansible-role-win-dc-dns-conf }
+     - { role: ansible-role-win-dc-ous-conf }
+     - { role: ansible-role-win-dc-groups-conf }
+     - { role: ansible-role-win-dc-users-create }
+     - { role: ansible-role-win-dc-users-conf }
+
+- hosts: windows-dc-domain
+  roles:
+     # - { role: ansible-role-win-dc-gpo-import }
+     # ToDo: script - { role: ansible-role-win-dc-gpo-bind }
+
+- hosts: windows-client
+  roles:
+     - { role: ansible-role-win-domainjoin }
+
+- hosts: windows-dc
+  roles: 
+     # ToDo: script - { role: ansible-role-win-dc-computerobjects-conf }
+
+- hosts: windows
+  roles:
+     - { role: ansible-role-win-sw-chocolatey }
+
+- hosts: windows
+  roles:
+    - { role: ansible-role-win-all-updates }
+    - { role: ansible-role-win-all-cleanup }

@@ -6,7 +6,7 @@ ansible_pipelining: true
 ansible_path_temp: c:\AnsibleTemp
 
 # Domain configuration variables
-domain_dnsname: dt.democloud
+domain_dnsname: dt.training
 
 # Language configuration variables
 win_user_language: de-DE

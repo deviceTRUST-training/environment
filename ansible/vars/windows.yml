@@ -7,3 +7,5 @@ ansible_connection: winrm
 ansible_winrm_server_cert_validation: ignore
 
 sw_dt_version: '21.1.310'
+
+win_software_chocolatey: ['7zip','firefox','Notepadplusplus','Adobereader']

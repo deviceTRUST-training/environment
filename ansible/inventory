@@ -4,12 +4,12 @@
 10.10.11.12
 10.10.11.13
 
+[windows-dc]
+10.10.11.10 hostname=dc
+
 [windows-domain-members]
 10.10.11.11 hostname=rdsh
 10.10.11.12 hostname=client
-
-[windows-dc]
-10.10.11.10 hostname=dc
 
 [windows-rdsh]
 10.10.11.11

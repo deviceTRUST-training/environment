@@ -1,7 +1,7 @@
 ---
 # Ansible variables
 ansible_user: vagrant
-ansible_password: vagrant
+ansible_password: ThisIsASecurePassword!2022
 
 # DNS Configuration
 dc_dns_upstream: 10.10.11.1

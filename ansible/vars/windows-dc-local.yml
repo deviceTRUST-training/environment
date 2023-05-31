@@ -40,9 +40,9 @@ dc_ou:
     path: OU=Computer,OU=Objects,DC=dt,DC=training
   - name: 04_Endpoints 
     path: OU=Computer,OU=Objects,DC=dt,DC=training
-  - name: Citrix
-    path: OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training
   - name: FatClient
+    path: OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training
+  - name: RDSH
     path: OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training
   - name: User
     path: OU=Accounts,OU=Objects,DC=dt,DC=training
@@ -50,18 +50,6 @@ dc_ou:
     path: OU=Accounts,OU=Objects,DC=dt,DC=training
   - name: Admins
     path: OU=Accounts,OU=Objects,DC=dt,DC=training
-  - name: demo
-    path: OU=Groups,OU=Objects,DC=dt,DC=training
-  - name: Testing
-    path: OU=Groups,OU=Objects,DC=dt,DC=training
-  - name: Security
-    path: OU=Groups,OU=Objects,DC=dt,DC=training
-  - name: Software
-    path: OU=Groups,OU=Objects,DC=dt,DC=training
-  - name: Webinar
-    path: OU=User,OU=Accounts,OU=Objects,DC=dt,DC=training
-  - name: Testing
-    path: OU=User,OU=Accounts,OU=Objects,DC=dt,DC=training
 
 # Groups
 dc_groups:
@@ -70,29 +58,9 @@ dc_groups:
     path: 'OU=Security,OU=Groups,OU=Objects,DC=dt,DC=training'
 
 # Users
-dc_user_standard: [demo,demo01,demo02,demo03,demo04,demo05,demo06,demo07,demo08,demo09,demo10]
+dc_user_standard: [training]
 dc_user_service: [svc_domainjoin,svc_ldap]
 
 dc_groupmember:
-  - name: demo
-    group: g_g_sec_citrix_users
-  - name: demo01
-    group: g_g_sec_citrix_users
-  - name: demo02
-    group: g_g_sec_citrix_users
-  - name: demo03
-    group: g_g_sec_citrix_users
-  - name: demo04
-    group: g_g_sec_citrix_users
-  - name: demo05
-    group: g_g_sec_citrix_users
-  - name: demo06
-    group: g_g_sec_citrix_users
-  - name: demo07
-    group: g_g_sec_citrix_users
-  - name: demo08
-    group: g_g_sec_citrix_users
-  - name: demo09
-    group: g_g_sec_citrix_users
-  - name: demo10
+  - name: training
     group: g_g_sec_citrix_users

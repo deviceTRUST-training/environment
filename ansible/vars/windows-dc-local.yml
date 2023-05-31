@@ -55,7 +55,7 @@ dc_ou:
 dc_groups:
   - name: g_g_sec_citrix_users
     scope: global
-    path: 'OU=Security,OU=Groups,OU=Objects,DC=dt,DC=training'
+    path: 'OU=Groups,OU=Objects,DC=dt,DC=training'
 
 # Users
 dc_user_standard: [training]

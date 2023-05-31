@@ -16,6 +16,9 @@
 - src: https://github.com/jansvensen/ansible-role-win-domainjoin
 - src: https://github.com/jansvensen/ansible-role-win-dc-computerobjects-conf
 - src: https://github.com/jansvensen/ansible-role-win-sw-chocolatey
+- src: https://github.com/jansvensen/ansible-role-win-sw-dt-agent
+- src: https://github.com/jansvensen/ansible-role-win-sw-dt-console
+- src: https://github.com/jansvensen/ansible-role-win-sw-dt-clientextension
 - src: https://github.com/jansvensen/ansible-role-win-all-updates
 - src: https://github.com/jansvensen/ansible-role-win-all-cleanup
 - src: https://github.com/jansvensen/ansible-role-win-domainjoin

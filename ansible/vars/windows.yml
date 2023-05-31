@@ -13,3 +13,9 @@ win_software_chocolatey: ['7zip','firefox','Notepadplusplus','Adobereader']
 
 # Domain configuration variables
 domain_dnsname: dt.training
+
+# Domainjoin variables
+domainjoin_domain_name: dt.training
+domainjoin_user_pw: ThisIsASecurePassword!2022
+domainjoin_user_name: svc_domainjoin@dt.democloud
+domainjoin_ou: 'OU=Computer,OU=Objects,DC=dt,DC=democloud'

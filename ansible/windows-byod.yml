@@ -7,5 +7,5 @@
     # - vars/windows-byod.yml
 
   roles:
-    - { role: ansible-role-win-member-dns }
+    # - { role: ansible-role-win-member-dns }
     - { role: ansible-role-win-sw-dt-clientextension }

@@ -19,7 +19,8 @@ resource "azurerm_network_interface" "vm_client" {
     name                          = "${var.azure-environment.prefix}_configuration"
     subnet_id                     = "${element(azurerm_subnet.internal.*.id, count.index)}"
     private_ip_address_allocation = "Static"
-    private_ip_address            = "${cidrhost("10.10.11.0/24", 12)}"
+    # private_ip_address            = "${cidrhost("10.10.11.0/24", 12)}"
+    private_ip_address            = "${var.vm.ip_client}"
     public_ip_address_id          = "${element(azurerm_public_ip.vm_client.*.id, count.index)}"
   }
 }

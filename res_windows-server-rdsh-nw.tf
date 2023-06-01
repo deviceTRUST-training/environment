@@ -20,7 +20,8 @@ resource "azurerm_network_interface" "vm_rdsh" {
     name                          = "${var.azure-environment.prefix}_configuration"
     subnet_id                     = "${element(azurerm_subnet.internal.*.id, count.index)}"
     private_ip_address_allocation = "Static"
-    private_ip_address            = "${cidrhost("10.10.11.0/24", 11)}"
+    # private_ip_address            = "${cidrhost("10.10.11.0/24", 11)}"
+    private_ip_address            = "${var.vm.ip_rdsh}"
     public_ip_address_id          = "${element(azurerm_public_ip.vm_rdsh.*.id, count.index)}"
   }
 }

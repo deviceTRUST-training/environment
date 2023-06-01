@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "vm_dc" {
     subnet_id                     = "${element(azurerm_subnet.internal.*.id, count.index)}"
     private_ip_address_allocation = "Static"
     # private_ip_address            = "${cidrhost("10.10.11.0/24", 10)}"
-    private_ip_address            = ["${var.vm.ip_dc}"]
+    private_ip_address            = "${var.vm.ip_dc}"
     public_ip_address_id          = "${element(azurerm_public_ip.vm_dc.*.id, count.index)}"
   }
 }

@@ -14,7 +14,8 @@ resource "azurerm_network_interface" "vm_client" {
   location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
   tags                = "${var.tags}"
-  dns_servers         = "${element(azurerm_network_interface.vm_dc.*.ip_configuration.private_ip_address, count.index)}"
+  # dns_servers         = "${element(azurerm_network_interface.vm_dc.*.ip_configuration.private_ip_address, count.index)}"
+  dns_servers         = "${var.vm.ip_dc}"
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_configuration"
     subnet_id                     = "${element(azurerm_subnet.internal.*.id, count.index)}"

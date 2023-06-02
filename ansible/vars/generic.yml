@@ -6,11 +6,6 @@ domain_netbios_name: DT
 
 policy_definitions_dir: C:\Windows\SYSVOL\domain\Policies\PolicyDefinitions
 
-# Domainjoin DNS Variables
-dns_client_configure: True
-dns_client_adapter: Ethernet
-dns_client_dns_server_ip: 10.10.11.10
-
 # Domainjoin Variables
 domainjoin_ou_path: "OU=Computer,DC=dt,DC=training"
 domain_admin_user: administrator@dt.training

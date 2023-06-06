@@ -2,6 +2,7 @@
 resource "local_file" "hosts_cfg" {
   content           = templatefile("${path.module}/ansible/templates/hosts.tpl",
     {
+      count                = "${var.azure-environment.instance_count}"
       # controller = azurerm_network_interface.vm_controller.*.ip_configuration.private_ip_address
       controller    = "${element(azurerm_network_interface.vm_controller.*.ip_configuration.private_ip_address, count.index)}"
       dc            = "${element(azurerm_network_interface.vm_dc.*.ip_configuration.private_ip_address, count.index)}"

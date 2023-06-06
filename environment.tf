@@ -1,15 +1,9 @@
 # generate inventory file for Ansible
 resource "local_file" "hosts_cfg" {
-  content           = templatefile("${path.module}/ansible/templates/hosts.tpl",
-    {
-      count                = "${var.azure-environment.instance_count}"
-      # controller = azurerm_network_interface.vm_controller.*.ip_configuration.private_ip_address
-      controller    = "${element(azurerm_network_interface.vm_controller.*.ip_configuration.private_ip_address, count.index)}"
-      dc            = "${element(azurerm_network_interface.vm_dc.*.ip_configuration.private_ip_address, count.index)}"
-      rdsh          = "${element(azurerm_network_interface.vm_rdsh.*.ip_configuration.private_ip_address, count.index)}"
-      client        = "${element(azurerm_network_interface.vm_client.*.ip_configuration.private_ip_address, count.index)}"
-      byod          = "${element(azurerm_network_interface.vm_byod.*.ip_configuration.private_ip_address, count.index)}"
-    }
-  )
+  content = <<-EOT
+    %{ for ip in azurerm_network_interface.vm_controller.*.ip_configuration.private_ip ~}
+    ${ip} ansible_ssh_user=ec2-user
+    %{ endfor ~}
+  EOT
   filename          = "../ansible/inventory_test"
 }

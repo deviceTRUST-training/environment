@@ -6,7 +6,7 @@ locals {
 resource "azurerm_virtual_machine" "vm_controller" {
   count                 = "${var.azure-environment.instance_count}"
   # name                  = "${var.azure-environment.prefix}_vm_controller"
-  name                  = "${var.azure-environment.prefix}_${var.azure-environment.instance_count}_vm_controller"
+  name                  = "${var.azure-environment.prefix}_${count.index}_vm_controller"
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
   network_interface_ids = ["${element(azurerm_network_interface.vm_controller.*.id, count.index)}"]
@@ -24,7 +24,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
   # aaz vm image list --offer "Ubuntu" --sku "22_10" --publisher "canonical" --all
 
   storage_os_disk {
-    name              = "${var.azure-environment.prefix}_vm_controller_osdisk"
+    name              = "${var.azure-environment.prefix}_${count.index}_vm_controller_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"

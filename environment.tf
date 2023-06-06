@@ -2,6 +2,6 @@
 resource "local_file" "templatefile" {
   count                = "${var.azure-environment.instance_count}"
 
-  content = "${element(azurerm_resource_group.main.*.location, count.index)}"
+  content = "${var.azure-environment.prefix}_resources_${count.index}"
   filename          = "/ansible/inventory_test"
 }

@@ -1,5 +1,6 @@
 resource "azurerm_resource_group" "main" {
   count    = "${var.azure-environment.instance_count}"
+  # name     = "${var.azure-environment.prefix}_resources_${count.index}"
   name     = "${var.azure-environment.prefix}_resources_${count.index}"
   location = "${var.azure-environment.location}"
   tags     = "${var.tags}"
@@ -7,7 +8,8 @@ resource "azurerm_resource_group" "main" {
 
 resource "azurerm_virtual_network" "main" {
   count               = "${var.azure-environment.instance_count}"
-  name                = "${var.azure-environment.prefix}_network"
+  # name                = "${var.azure-environment.prefix}_network"
+  name                = "${var.azure-environment.prefix}_network_${var.azure-environment.instance_count}"
   # address_space       = ["10.10.11.0/24"]
   address_space       = ["${var.azure-environment.ip_prefix}${var.azure-environment.instance_count}.0/24"]
   location            = "${element(azurerm_resource_group.main.*.location, count.index)}"

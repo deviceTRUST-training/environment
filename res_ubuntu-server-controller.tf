@@ -5,7 +5,8 @@ locals {
 
 resource "azurerm_virtual_machine" "vm_controller" {
   count                 = "${var.azure-environment.instance_count}"
-  name                  = "${var.azure-environment.prefix}_vm_controller"
+  # name                  = "${var.azure-environment.prefix}_vm_controller"
+  name                  = "${var.azure-environment.prefix}_${var.azure-environment.instance_count}_vm_controller"
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
   network_interface_ids = ["${element(azurerm_network_interface.vm_controller.*.id, count.index)}"]

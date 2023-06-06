@@ -1,6 +1,7 @@
 # generate inventory file for Ansible
-resource "local_file" "hosts_cfg" {
+resource "local_file" "templatefile" {
   count                = "${var.azure-environment.instance_count}"
-  content = azurerm_network_interface.vm_dc.*.ip_configuration.private_ip_address[count.index]
+
+  content = "${element(azurerm_resource_group.main.*.location, count.index)}"
   filename          = "../ansible/inventory_test"
 }

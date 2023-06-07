@@ -9,5 +9,5 @@ resource "local_file" "hosts_cfg" {
       byod          = "${azurerm_network_interface.vm_byod.*.private_ip_address}"
     }
   )
-  filename          = "/ansible/inventory"
+  filename          = "${path.module}/ansible/inventory"
 }

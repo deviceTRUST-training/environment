@@ -22,4 +22,4 @@ domainjoin_ou: 'OU=Computer,OU=Objects,DC=dt,DC=training'
 
 # DNS client variables
 dns_client_adapter: Ethernet
-dns_client_dns_server_ip: 10.10.11.10
+dns_client_dns_server_ip: 10

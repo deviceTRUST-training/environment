@@ -1,5 +1,6 @@
 ---
 - hosts: windows-rdsh
+  ignore_unreachable: true
 
   vars_files:
     - vars/generic.yml

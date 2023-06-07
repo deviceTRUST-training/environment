@@ -6,7 +6,7 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
   name                  = "${var.azure-environment.prefix}_vm_guacamole"
   location              = azurerm_resource_group.infrastructure.location
   resource_group_name   = azurerm_resource_group.infrastructure.name
-  network_interface_ids = ["${element(azurerm_network_interface.vm_guacamole.*.id, count.index)}"] # ToDo
+  network_interface_ids = [azurerm_network_interface.vm_guacamole.*.id] # ToDo
   vm_size               = "Standard_B1ms"
 
   delete_os_disk_on_termination = true

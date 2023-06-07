@@ -11,5 +11,6 @@ variable vm {
     ip_byod = "102"
     ip_rdsh = "111"
     ip_controller = "201"
+    ip_guacamole = "211"
   }
 }

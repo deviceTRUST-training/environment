@@ -8,8 +8,8 @@ resource "azurerm_public_ip" "vm_guacamole" {
 }
 
 resource "azurerm_network_interface" "vm_guacamole" {
-  count               = "${var.azure-environment.instance_count}" # ToDO
-  name                = "${var.azure-environment.prefix}_${count.index}_vm_guacamole_nic" # ToDO
+  count               = "${var.azure-environment.instance_count}"
+  name                = "${var.azure-environment.prefix}_${count.index}_vm_guacamole_nic"
   location            = azurerm_resource_group.infrastructure.location
   resource_group_name = azurerm_resource_group.infrastructure.name
   tags                = "${var.tags}"

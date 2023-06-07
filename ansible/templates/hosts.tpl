@@ -1,7 +1,4 @@
 [windows]
-%{ for ip in controller ~}
-${ip}
-%{ endfor ~}
 %{ for ip in dc ~}
 ${ip}
 %{ endfor ~}

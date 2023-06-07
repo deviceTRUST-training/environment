@@ -6,12 +6,10 @@ locals {
 
 resource "azurerm_virtual_machine" "vm_client" {
   count                 = "${var.azure-environment.instance_count}"
-  # name                  = "${var.azure-environment.prefix}_vm_client"
   name                  = "${var.azure-environment.prefix}_${count.index}_vm_client"
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
   network_interface_ids = ["${element(azurerm_network_interface.vm_client.*.id, count.index)}"]
-  # vm_size               = "Standard_B1ms"   # 1x CPU, 2GB RAM
   vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 
   # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.

@@ -1,3 +1,9 @@
+resource "azurerm_resource_group" "infrastructure" {
+  name     = "${var.azure-environment.prefix}_infrastructure"
+  location = "${var.azure-environment.location}"
+  tags     = "${var.tags}"
+}
+
 resource "azurerm_resource_group" "main" {
   count    = "${var.azure-environment.instance_count}"
   # name     = "${var.azure-environment.prefix}_resources_${count.index}"

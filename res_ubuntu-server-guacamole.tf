@@ -1,5 +1,5 @@
 locals {
-  computer_name_ctrl = "guacamole"  
+  computer_name_guacamole = "guacamole"  
 }
 
 resource "azurerm_virtual_machine" "vm_guacamole" {
@@ -28,7 +28,7 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
   }
 
   os_profile {
-    computer_name  = "${local.computer_name_ctrl}"
+    computer_name  = "${local.computer_name_guacamole}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
   }

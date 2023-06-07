@@ -4,8 +4,8 @@ locals {
 
 resource "azurerm_virtual_machine" "vm_guacamole" {
   name                  = "${var.azure-environment.prefix}_vm_guacamole"
-  location              = "${element(azurerm_resource_group.main.*.location, count.index)}" # ToDo
-  resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}" # ToDo
+  location              = azurerm_resource_group.infrastructure.location
+  resource_group_name   = azurerm_resource_group.infrastructure.name
   network_interface_ids = ["${element(azurerm_network_interface.vm_guacamole.*.id, count.index)}"] # ToDo
   vm_size               = "Standard_B1ms"
 

@@ -20,7 +20,7 @@ resource "azurerm_virtual_machine" "vm_client" {
     offer = "Windows-10"
     publisher = "MicrosoftWindowsDesktop"
     sku = "win10-22h2-entn"
-    version = "19045.2132.221015"
+    version = "latest"
   }
   # az vm image list --location "west europe" --all --publisher "MicrosoftWindowsDesktop" --sku "win10-22h2" --all
 

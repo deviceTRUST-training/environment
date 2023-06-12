@@ -19,7 +19,7 @@ resource "azurerm_virtual_machine" "vm_byod" {
     offer= "Windows-10"
     publisher= "MicrosoftWindowsDesktop"
     sku= "win10-22h2-pro"
-    version= "19045.2132.221015"
+    version= "latest"
   }
   # az vm image list --location "west europe" --all --publisher "MicrosoftWindowsDesktop" --sku "win10-22h2" --all
   

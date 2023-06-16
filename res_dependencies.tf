@@ -15,7 +15,6 @@ resource "azurerm_virtual_network" "infrastructure" {
 }
 
 resource "azurerm_subnet" "infrastructure" {
-  count                = "${var.azure-environment.instance_count}"
   name                 = "internal"
   resource_group_name  = azurerm_resource_group.infrastructure.name
   virtual_network_name = azurerm_virtual_network.infrastructure.name

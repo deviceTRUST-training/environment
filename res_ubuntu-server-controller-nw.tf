@@ -33,7 +33,7 @@ resource "azurerm_network_interface" "vm_controller_infrastructure" {
 
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_${count.index}_configuration"
-    subnet_id                     = azurerm_subnet.infrastructure.*.id
+    subnet_id                     = azurerm_subnet.infrastructure.id
     private_ip_address_allocation = "Static"
     # private_ip_address            = "${var.azure-environment.ip_prefix}100.${var.vm.ip_controller}"
     private_ip_address            = "${var.azure-environment.ip_prefix}100.1${count.index}"

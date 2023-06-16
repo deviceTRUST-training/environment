@@ -1,6 +1,6 @@
 locals {
   private_ip_address_internal = "${var.azure-environment.ip_prefix}${count.index}.${var.vm.ip_controller}"
-  private_ip_address_external = "${var.azure-environment.ip_prefix}${count.index}.${${var.vm.ip_controller}+1}"
+  private_ip_address_external = "${var.azure-environment.ip_prefix}${count.index}.${var.vm.ip_controller+1}"
 }
 
 resource "azurerm_public_ip" "vm_controller" {

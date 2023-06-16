@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "vm_controller_1" {
 
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_${count.index}_configuration"
-    subnet_id                     = "${element(azurerm_subnet.internal.*.id, count.index)}"
+    subnet_id                     = "${element(azurerm_subnet.main.*.id, count.index)}"
     private_ip_address_allocation = "Static"
     private_ip_address            = "${var.azure-environment.ip_prefix}${count.index}.${var.vm.ip_controller}"
     public_ip_address_id          = "${element(azurerm_public_ip.vm_controller.*.id, count.index)}"
@@ -33,7 +33,7 @@ resource "azurerm_network_interface" "vm_controller_2" {
 
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_${count.index}_configuration"
-    subnet_id                     = "${element(azurerm_subnet.internal.*.id, count.index)}"
+    subnet_id                     = "${element(azurerm_subnet.main.*.id, count.index)}"
     private_ip_address_allocation = "Static"
     private_ip_address            = "${var.azure-environment.ip_prefix}${count.index}.${var.vm.ip_controller}"
     public_ip_address_id          = "${element(azurerm_public_ip.vm_controller.*.id, count.index)}"

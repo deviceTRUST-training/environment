@@ -14,7 +14,7 @@ resource "azurerm_virtual_network" "infrastructure" {
   tags                = "${var.tags}"
 }
 
-resource "azurerm_subnet" "internal" {
+resource "azurerm_subnet" "infrastructure" {
   count                = "${var.azure-environment.instance_count}"
   name                 = "internal"
   resource_group_name  = "azurerm_resource_group.infrastructure.name"
@@ -40,7 +40,7 @@ resource "azurerm_virtual_network" "main" {
   dns_servers         = [ "${var.azure-environment.ip_prefix}${count.index}.${var.vm.ip_dc}" ]
 }
 
-resource "azurerm_subnet" "internal" {
+resource "azurerm_subnet" "main" {
   count                = "${var.azure-environment.instance_count}"
   name                 = "internal"
   resource_group_name  = "${element(azurerm_resource_group.main.*.name, count.index)}"

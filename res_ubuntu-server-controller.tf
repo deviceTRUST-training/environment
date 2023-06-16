@@ -4,18 +4,19 @@ locals {
 }
 
 resource "azurerm_virtual_machine" "vm_controller" {
-  count                 = "${var.azure-environment.instance_count}"
-  name                  = "${var.azure-environment.prefix}_${count.index}_vm_controller"
-  location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
-  resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
-  network_interface_ids = [
+  count                               = "${var.azure-environment.instance_count}"
+  name                                = "${var.azure-environment.prefix}_${count.index}_vm_controller"
+  location                            = "${element(azurerm_resource_group.main.*.location, count.index)}"
+  resource_group_name                 = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  primary_network_interface_id        = "${element(azurerm_network_interface.vm_controller_infrastructure.*.id, count.index)}"
+  network_interface_ids               = [
     "${element(azurerm_network_interface.vm_controller_main.*.id, count.index)}", 
     "${element(azurerm_network_interface.vm_controller_infrastructure.*.id, count.index)}"
   ]
-  vm_size               = "Standard_B1ms"
+  vm_size                             = "Standard_B1ms"
 
-  delete_os_disk_on_termination = true
-  delete_data_disks_on_termination = true
+  delete_os_disk_on_termination       = true
+  delete_data_disks_on_termination    = true
 
   storage_image_reference {
     offer = "0001-com-ubuntu-server-kinetic"

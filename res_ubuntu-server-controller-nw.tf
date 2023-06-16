@@ -14,7 +14,6 @@ resource "azurerm_network_interface" "vm_controller_main" {
   location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
   tags                = "${var.tags}"
-  primary             = true
 
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_${count.index}_configuration"

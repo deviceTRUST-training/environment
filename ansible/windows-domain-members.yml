@@ -8,4 +8,4 @@
 
   roles:
     - { role: ansible-role-win-member-dns }
-    - { role: ansible-role-win-domainjoin }
+    # - { role: ansible-role-win-domainjoin }

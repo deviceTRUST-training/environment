@@ -20,7 +20,7 @@ resource "azurerm_subnet" "internal" {
   name                 = "internal"
   resource_group_name  = "${element(azurerm_resource_group.main.*.name, count.index)}"
   virtual_network_name = "${element(azurerm_virtual_network.internal.*.name, count.index)}"
-  address_prefixes     = ["${var.azure-environment.ip_prefix}${count.index}.0/24"]
+  address_prefixes     = ["${var.azure-environment.ip_prefix_internal}${count.index}.0/24"]
 }
 
 resource "azurerm_virtual_network" "external" {

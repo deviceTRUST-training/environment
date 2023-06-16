@@ -10,7 +10,7 @@ resource "azurerm_public_ip" "vm_controller_main" {
 
 resource "azurerm_network_interface" "vm_controller_main" {
   count               = "${var.azure-environment.instance_count}"
-  name                = "${var.azure-environment.prefix}_${count.index}_vm_controller_nic_1"
+  name                = "${var.azure-environment.prefix}_${count.index}_vm_controller_nic_main"
   location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
   tags                = "${var.tags}"
@@ -26,7 +26,7 @@ resource "azurerm_network_interface" "vm_controller_main" {
 
 resource "azurerm_network_interface" "vm_controller_infrastructure" {
   count               = "${var.azure-environment.instance_count}"
-  name                = "${var.azure-environment.prefix}_${count.index}_vm_controller_nic_2"
+  name                = "${var.azure-environment.prefix}_${count.index}_vm_controller_nic_infrastructure"
   location            = azurerm_resource_group.infrastructure.location
   resource_group_name = azurerm_resource_group.infrastructure.name
   tags                = "${var.tags}"

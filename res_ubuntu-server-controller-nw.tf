@@ -11,8 +11,8 @@ resource "azurerm_public_ip" "vm_controller" {
 resource "azurerm_network_interface" "vm_controller_internal" {
   count               = "${var.azure-environment.instance_count}"
   name                = "${var.azure-environment.prefix}_${count.index}_vm_controller_nic_internal"
-  location            = "${element(azurerm_resource_group.internal.*.location, count.index)}"
-  resource_group_name = "${element(azurerm_resource_group.internal.*.name, count.index)}"
+  location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
+  resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
   tags                = "${var.tags}"
 
   ip_configuration {
@@ -26,10 +26,9 @@ resource "azurerm_network_interface" "vm_controller_internal" {
 resource "azurerm_network_interface" "vm_controller_external" {
   count               = "${var.azure-environment.instance_count}"
   name                = "${var.azure-environment.prefix}_${count.index}_vm_controller_nic_external"
-  location            = azurerm_resource_group.external.location
-  resource_group_name = azurerm_resource_group.external.name
+  location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
+  resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
   tags                = "${var.tags}"
-
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_${count.index}_configuration"
     subnet_id                     = azurerm_subnet.external.id

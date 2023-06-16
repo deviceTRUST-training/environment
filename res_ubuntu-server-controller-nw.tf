@@ -31,7 +31,7 @@ resource "azurerm_network_interface" "vm_controller_external" {
   tags                = "${var.tags}"
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_${count.index}_configuration"
-    subnet_id                     = azurerm_subnet.external.id
+    subnet_id                     = "${element(azurerm_subnet.external.*.id, count.index)}"
     private_ip_address_allocation = "Static"
     private_ip_address            = "${var.azure-environment.ip_prefix}100.1${count.index}"
     public_ip_address_id          = "${element(azurerm_public_ip.vm_controller.*.id, count.index)}"

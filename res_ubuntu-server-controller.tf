@@ -63,6 +63,12 @@ resource "azurerm_virtual_machine" "vm_controller" {
     ]
   }
 
+  provisioner "file" {
+    source = "ansible"
+    destination = "/tmp/ansible"
+  }
+
+
   provisioner "remote-exec" {
     inline = [
       "cd /tmp",

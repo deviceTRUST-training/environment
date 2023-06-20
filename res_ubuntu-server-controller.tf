@@ -18,9 +18,9 @@ resource "azurerm_virtual_machine" "vm_controller" {
     offer = "0001-com-ubuntu-server-kinetic"
     publisher = "Canonical"
     sku = "minimal-23_10"
-    version = "23.10.202306180"
+    version = "latest"
   }
-  # aaz vm image list --offer "Ubuntu" --sku "22_10" --publisher "canonical" --all
+  # az vm image list --offer "Ubuntu" --sku "22_10" --publisher "canonical" --all
 
   storage_os_disk {
     name              = "${var.azure-environment.prefix}_${count.index}_vm_controller_osdisk"

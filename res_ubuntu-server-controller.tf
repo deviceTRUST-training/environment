@@ -58,9 +58,12 @@ resource "azurerm_virtual_machine" "vm_controller" {
     ]
   }
 
-  provisioner "file" {
-    source = "ansible"
-    destination = "/tmp"
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt -y update",
+      "sudo apt -y upgrade",
+      "sudo apt install -y unzip git ansible"
+    ]
   }
 
 #  provisioner "remote-exec" {

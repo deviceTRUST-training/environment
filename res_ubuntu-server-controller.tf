@@ -18,7 +18,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
     offer = "0001-com-ubuntu-minimal-mantic-daily"
     publisher = "Canonical"
     sku = "minimal-23_10"
-    version = "latest"
+    version = "23.10.202306180"
   }
   # az vm image list --offer "Ubuntu" --sku "22_10" --publisher "canonical" --all
 

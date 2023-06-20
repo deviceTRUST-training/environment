@@ -17,7 +17,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
   storage_image_reference {
     offer = "0001-com-ubuntu-server-kinetic"
     publisher = "Canonical"
-    sku = "23_04"
+    sku = "23_10"
     version = "latest"
   }
   # aaz vm image list --offer "Ubuntu" --sku "22_10" --publisher "canonical" --all

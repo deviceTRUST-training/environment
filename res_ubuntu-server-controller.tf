@@ -15,12 +15,12 @@ resource "azurerm_virtual_machine" "vm_controller" {
   delete_data_disks_on_termination    = true
 
   storage_image_reference {
-    architecture= x64
-    offer= 0001-com-ubuntu-minimal-mantic-daily
-    publisher= Canonical
-    sku= minimal-23_10-daily-gen2
-    urn= Canonical=0001-com-ubuntu-minimal-mantic-daily:minimal-23_10-daily-gen2:23.10.202306180
-    version= 23.10.202306180
+    architecture = x64
+    offer = 0001-com-ubuntu-minimal-mantic-daily
+    publisher = Canonical
+    sku = minimal-23_10-daily-gen2
+    urn = Canonical = 0001-com-ubuntu-minimal-mantic-daily:minimal-23_10-daily-gen2:23.10.202306180
+    version = 23.10.202306180
   }
   # az vm image list --offer "Ubuntu" --sku "22_10" --publisher "canonical" --all
 

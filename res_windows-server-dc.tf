@@ -11,7 +11,7 @@ resource "azurerm_virtual_machine" "vm_dc" {
   name                  = "${var.azure-environment.prefix}_${count.index}_vm_dc"
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
   resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
-  network_interface_ids = ["${element(azurerm_network_interface.vm_dc.*.id, count.index)}"]
+  network_interface_ids = ["${element(azurerm_network_interface.vm_dc_internal.*.id, count.index)}"]
   vm_size               = "Standard_B1ms"  # 1x CPU, 2GB RAM
 
   delete_os_disk_on_termination = true

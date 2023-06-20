@@ -9,7 +9,6 @@ variable azure-environment {
     prefix               = "training"
     location             = "West Europe"
     instance_count       = "2"
-    ip_prefix            = "10.10."
   }
 }
 

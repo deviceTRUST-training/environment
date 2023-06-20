@@ -20,7 +20,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
     sku = "minimal-23_10-daily-gen2"
     version = "23.10.202306180"
   }
-  # az vm image list --offer "Ubuntu" --sku "22_10" --publisher "canonical" --all
+  # az vm image list --offer "Ubuntu" --sku "23_10" --publisher "canonical" --all
 
   storage_os_disk {
     name              = "${var.azure-environment.prefix}_${count.index}_vm_controller_osdisk"

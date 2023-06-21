@@ -3,3 +3,8 @@
 - import_playbook: windows-dc-local.yml
 - import_playbook: windows-dc-domain.yml
 - import_playbook: windows-domain-members.yml
+- import_playbook: windows-dc.yml
+- import_playbook: windows-client.yml
+- import_playbook: windows-rdsh.yml
+- import_playbook: windows-byod.yml
+- import_playbook: windows-cleanup.yml

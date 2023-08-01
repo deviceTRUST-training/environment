@@ -54,7 +54,8 @@ resource "azurerm_virtual_machine" "vm_controller" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt -y update"
+      "sudo apt -y update",
+      "sudo apt -y upgrade"
     ]
   }
 

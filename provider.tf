@@ -14,7 +14,5 @@ provider "azurerm" {
   client_id       = var.azure-environment.client_id
   client_secret   = var.azure-environment.client_secret
 
-  on_failure = continue
-  
   features {}
 }

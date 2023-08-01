@@ -58,6 +58,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
   }
 
   provisioner "remote-exec" {
+    on_failure = continue
     inline = [
       "sudo apt-get install -y unzip git ansible"
     ]

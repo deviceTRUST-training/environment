@@ -3,7 +3,6 @@ terraform {
     azurerm = {
       source = "hashicorp/azurerm"
       version = "~>2.0"
-      on_failure = continue
     }
     
   }

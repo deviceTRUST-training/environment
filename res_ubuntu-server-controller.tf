@@ -69,6 +69,12 @@ resource "azurerm_virtual_machine" "vm_controller" {
     destination = "/tmp/ansible"
   }
 
+  provisioner "remote-exec" {
+    inline = [
+      "ansible-galaxy collection windows.win_powershell",
+    ]
+  }
+
 
   provisioner "remote-exec" {
     inline = [

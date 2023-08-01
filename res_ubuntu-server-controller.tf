@@ -71,7 +71,8 @@ resource "azurerm_virtual_machine" "vm_controller" {
 
   provisioner "remote-exec" {
     inline = [
-      "ansible-galaxy collection install ansible.windows"
+      "ansible-galaxy collection install ansible.windows",
+      "ansible-galaxy collection install community.windows"
     ]
   }
 

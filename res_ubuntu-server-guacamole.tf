@@ -6,8 +6,7 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
   name                                = "${var.azure-environment.prefix}_vm_guacamole"
   location                            = azurerm_resource_group.main.location
   resource_group_name                 = azurerm_resource_group.main.name
-  primary_network_interface_id        = azurerm_network_interface.vm_guacamole.id
-  network_interface_ids               = azurerm_network_interface.vm_guacamole.id
+  network_interface_ids               = [azurerm_network_interface.vm_guacamole.id]
   vm_size                             = "Standard_B1ms"
 
   delete_os_disk_on_termination       = true

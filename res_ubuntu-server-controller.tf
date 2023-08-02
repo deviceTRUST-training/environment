@@ -63,11 +63,11 @@ resource "azurerm_virtual_machine" "vm_controller" {
     destination = "/tmp/ansible"
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "ansible-galaxy collection install microsoft.ad"
-    ]
-  }
+#  provisioner "remote-exec" {
+#    inline = [
+#      "ansible-galaxy collection install microsoft.ad"
+#    ]
+#  }
 
 #  provisioner "remote-exec" {
 #    inline = [

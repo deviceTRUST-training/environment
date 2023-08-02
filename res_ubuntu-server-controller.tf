@@ -80,7 +80,8 @@ resource "azurerm_virtual_machine" "vm_controller" {
 #    ]
 #  }
 
-  depends_on = [azurerm_virtual_machine.vm_dc, azurerm_virtual_machine.vm_rdsh, azurerm_virtual_machine.vm_client, azurerm_virtual_machine.vm_byod]
+  # depends_on = [azurerm_virtual_machine.vm_dc, azurerm_virtual_machine.vm_rdsh, azurerm_virtual_machine.vm_client, azurerm_virtual_machine.vm_byod]
+  depends_on = [azurerm_virtual_machine.vm_dc]
 
   tags = "${var.tags}"
 }

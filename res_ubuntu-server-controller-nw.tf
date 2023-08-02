@@ -37,23 +37,15 @@ resource "azurerm_network_interface" "vm_controller_internal" {
   }
 }
 
-module "network-security-group" {
+resource "azurerm_network_security_group" "vm_controller_external" {
   count                 = "${var.azure-environment.instance_count}"
-  source                = "Azure/network-security-group/azurerm"
+
   resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
-  security_group_name   = "${var.azure-environment.prefix}_${count.index}_nsg_ssh"
-  source_address_prefix = ["92.50.117.117/32"]
-  predefined_rules = [
-    {
-      name     = "SSH"
-      priority = "500"
-    }
-  ]
+  name   = "${var.azure-environment.prefix}_${count.index}_nsg_ssh"
 
-  custom_rules = [
-    {
-      name                   = "myssh"
+  security_rule {
+      name                   = "in_ssh"
       priority               = 201
       direction              = "Inbound"
       access                 = "Allow"
@@ -61,11 +53,8 @@ module "network-security-group" {
       source_port_range      = "*"
       destination_port_range = "22"
       source_address_prefix  = "92.50.117.117/32"
-      description            = "description-myssh"
-    }
-  ]
+  }
 
-  depends_on = [azurerm_network_interface.vm_controller_internal]
 }
 
 
@@ -73,5 +62,5 @@ resource "azurerm_network_interface_security_group_association" "vm_controller_e
   count                 = "${var.azure-environment.instance_count}"
 
   network_interface_id      = "${element(azurerm_network_interface.vm_controller_external.*.id, count.index)}"
-  network_security_group_id = ("${var.azure-environment.prefix}_${count.index}_nsg_ssh").id
+  network_security_group_id = "${element(azurerm_network_security_group.vm_controller_external.*.id, count.index)}"
 }

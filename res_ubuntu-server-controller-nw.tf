@@ -67,7 +67,6 @@ resource "azurerm_network_security_group" "vm_controller_external" {
         source_address_prefix  = "157.90.213.49/32"
         destination_address_prefix = "*"
     }
-  ]
 
 }
 

@@ -53,10 +53,10 @@ resource "azurerm_network_security_group" "vm_controller_external" {
       source_port_range      = "*"
       destination_port_range = "22"
       source_address_prefix  = "92.50.117.117/32"
+      destination_address_prefix = "*"
   }
 
 }
-
 
 resource "azurerm_network_interface_security_group_association" "vm_controller_external" {
   count                 = "${var.azure-environment.instance_count}"

@@ -74,17 +74,17 @@ resource "azurerm_network_security_group" "vm_guacamole" {
       source_address_prefix  = "92.50.117.117/32"
       destination_address_prefix = "*"
     }
-   security_rule {
-      name                   = "in_guacamole_sven"
-      priority               = 213
+  security_rule {
+      name                   = "in_all_sven"
+      priority               = 666
       direction              = "Inbound"
       access                 = "Allow"
       protocol               = "Tcp"
       source_port_range      = "*"
-      destination_port_range = "8080"
+      destination_port_range = "*"
       source_address_prefix  = "92.50.117.117/32"
       destination_address_prefix = "*"
-    }   
+    }
 }
 
 resource "azurerm_network_interface_security_group_association" "vm_guacamole_external" {

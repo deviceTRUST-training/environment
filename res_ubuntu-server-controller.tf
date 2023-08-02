@@ -54,7 +54,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
 
  # provisioner "remote-exec" {
  #   inline = [
- #     "sudo apt-get install -y unzip git ansible"
+ #     "sudo apt install -y unzip git ansible"
  #   ]
  # }
 
@@ -65,7 +65,9 @@ resource "azurerm_virtual_machine" "vm_controller" {
 
 #  provisioner "remote-exec" {
 #    inline = [
-#      "ansible-galaxy collection install microsoft.ad"
+#      "ansible-galaxy collection install microsoft.ad",
+#      "ansible-galaxy collection install ansible.windows",  # up to be deprecated
+#      "ansible-galaxy collection install community.windows" # up to be deprecated
 #    ]
 #  }
 

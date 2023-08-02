@@ -63,4 +63,5 @@ resource "azurerm_network_interface_security_group_association" "vm_controller_e
 
   network_interface_id      = "${element(azurerm_network_interface.vm_controller_external.*.id, count.index)}"
   network_security_group_id = "${element(azurerm_network_security_group.vm_controller_external.*.id, count.index)}"
+  
 }

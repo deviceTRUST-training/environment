@@ -9,4 +9,4 @@
   roles:
     - { role: ansible-role-win-all-base }
     # - { role: ansible-role-win-all-language }
-    - { role: ansible-role-win-sw-chocolatey }
+    # - { role: ansible-role-win-sw-chocolatey }

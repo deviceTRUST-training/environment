@@ -7,7 +7,7 @@ ansible_connection: winrm
 # The following is necessary for Python 2.7.9+ when using default WinRM self-signed certificates:
 ansible_winrm_server_cert_validation: ignore
 
-sw_dt_version: '21.1.310'
+sw_dt_version: '23.1.100'
 
 win_software_chocolatey: ['7zip','firefox','Notepadplusplus']
 

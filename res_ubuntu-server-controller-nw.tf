@@ -57,7 +57,7 @@ module "network-security-group" {
       priority               = 201
       direction              = "Inbound"
       access                 = "Allow"
-      protocol               = "tcp"
+      protocol               = "Tcp"
       source_port_range      = "*"
       destination_port_range = "22"
       source_address_prefix  = "92.50.117.117/324"

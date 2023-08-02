@@ -47,11 +47,6 @@ resource "azurerm_virtual_machine" "vm_controller" {
       password = "${var.vm.password}"
   }
 
-  provisioner "file" {
-    source = "scripts"
-    destination = "/tmp"
-  }
-
   provisioner "remote-exec" {
     inline = [
       "sudo apt -y update"
@@ -71,8 +66,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
 
   provisioner "remote-exec" {
     inline = [
-      "ansible-galaxy collection install ansible.windows",
-      "ansible-galaxy collection install community.windows"
+      "ansible-galaxy collection install microsoft.ad"
     ]
   }
 

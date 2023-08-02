@@ -6,20 +6,19 @@ resource "azurerm_resource_group" "main" {
 }
 
 resource "azurerm_virtual_network" "main" {
-  count               = "${var.azure-environment.instance_count}"
-  name                = "${var.azure-environment.prefix}_network_main${count.index}"
-  address_space       = ["10.${count.index}.0.0/16"]
-  location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
-  resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  name                = "vnet_main"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
   tags                = "${var.tags}"
   # dns_servers         = [ "10.${count.index}.${var.vm.ip_dc}" ]
 }
 
 resource "azurerm_subnet" "external" {
   count                = "${var.azure-environment.instance_count}"
-  name                 = "external"
+  name                 = "external_${count.index}"
   resource_group_name  = "${element(azurerm_resource_group.main.*.name, count.index)}"
-  virtual_network_name = "${element(azurerm_virtual_network.main.*.name, count.index)}"
+  virtual_network_name = azurerm_virtual_network.main
   address_prefixes     = ["10.${count.index}.1.0/24"]
 }
 

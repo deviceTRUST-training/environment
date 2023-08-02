@@ -49,7 +49,18 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
     inline = [
       "sleep 5s",
       "sudo apt -y update",
-      "sleep 5s"
+      "sleep 5s",
+      "sudo apt -y install docker docker-compose git"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "cd /home",
+      "mkdir git",
+      "cd git",
+      "git clone https://github.com/jansvensen/guacamole.git",
+      "sudo docker-compose up -d"
     ]
   }
 

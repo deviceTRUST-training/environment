@@ -44,7 +44,7 @@ resource "azurerm_network_security_group" "vm_controller_external" {
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
   name   = "${var.azure-environment.prefix}_${count.index}_nsg_ssh"
 
-  security_rule [
+  security_rule = [
     {
       name                   = "in_ssh_sven"
       priority               = 201

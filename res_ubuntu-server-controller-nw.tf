@@ -36,3 +36,33 @@ resource "azurerm_network_interface" "vm_controller_internal" {
     private_ip_address            = "10.${count.index}.2.${var.vm.ip_controller}"
   }
 }
+
+module "network-security-group" {
+  source                = "Azure/network-security-group/azurerm"
+  resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
+  security_group_name   = "nsg_ssh"
+  source_address_prefix = ["92.50.117.117/32"]
+  predefined_rules = [
+    {
+      name     = "SSH"
+      priority = "500"
+    }
+  ]
+
+  custom_rules = [
+    {
+      name                   = "myssh"
+      priority               = 201
+      direction              = "Inbound"
+      access                 = "Allow"
+      protocol               = "tcp"
+      source_port_range      = "*"
+      destination_port_range = "22"
+      source_address_prefix  = "92.50.117.117/324"
+      description            = "description-myssh"
+    }
+  ]
+
+  depends_on = [azurerm_network_interface.vm_controller_internal]
+}

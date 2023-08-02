@@ -76,7 +76,7 @@ resource "azurerm_network_security_group" "vm_guacamole" {
     }
    security_rule {
       name                   = "in_guacamole_sven"
-      priority               = 212
+      priority               = 213
       direction              = "Inbound"
       access                 = "Allow"
       protocol               = "Tcp"

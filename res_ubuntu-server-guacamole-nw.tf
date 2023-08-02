@@ -7,8 +7,8 @@ resource "azurerm_public_ip" "vm_guacamole" {
   domain_name_label    = "${var.azure-environment.prefix}-guac"
 }
 
-resource "azurerm_network_interface" "vm_guacamole_external" {
-  name                = "${var.azure-environment.prefix}_vm_guacamole_nic_external"
+resource "azurerm_network_interface" "vm_guacamole" {
+  name                = "${var.azure-environment.prefix}_vm_guacamole_nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   tags                = "${var.tags}"
@@ -19,20 +19,6 @@ resource "azurerm_network_interface" "vm_guacamole_external" {
     private_ip_address_allocation = "Static"
     private_ip_address            = "10.10.252.${var.vm.ip_guacamole}"
     public_ip_address_id          = azurerm_public_ip.vm_guacamole.id
-  }
-}
-
-resource "azurerm_network_interface" "vm_guacamole_internal" {
-  name                = "${var.azure-environment.prefix}_vm_guacamole_nic_internal"
-  location            = azurerm_resource_group.main.location
-  resource_group_name = azurerm_resource_group.main.name
-  tags                = "${var.tags}"
-
-  ip_configuration {
-    name                          = "${var.azure-environment.prefix}_configuration"
-    subnet_id                     = azurerm_subnet.internal_guac.id
-    private_ip_address_allocation = "Static"
-    private_ip_address            = "10.10.251.${var.vm.ip_guacamole}"
   }
 }
 

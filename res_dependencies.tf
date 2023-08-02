@@ -29,16 +29,9 @@ resource "azurerm_subnet" "internal" {
   address_prefixes     = ["10.10.${count.index}.0/24"]
 }
 
-resource "azurerm_subnet" "external_guac" {
-  name                 = "external"
+resource "azurerm_subnet" "guac" {
+  name                 = "guac"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.10.252.0/24"]
-}
-
-resource "azurerm_subnet" "internal_guac" {
-  name                 = "internal_guac"
-  resource_group_name  = azurerm_resource_group.main.name
-  virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.10.251.0/24"]
+  address_prefixes     = ["10.10.254.0/24"]
 }

@@ -44,8 +44,8 @@ resource "azurerm_network_security_group" "vm_controller_external" {
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
   name   = "${var.azure-environment.prefix}_${count.index}_nsg_ssh"
 
-  security_rule {
-      name                   = "in_ssh"
+  security_rule [{
+      name                   = "in_ssh_sven"
       priority               = 201
       direction              = "Inbound"
       access                 = "Allow"
@@ -54,7 +54,18 @@ resource "azurerm_network_security_group" "vm_controller_external" {
       destination_port_range = "22"
       source_address_prefix  = "92.50.117.117/32"
       destination_address_prefix = "*"
-  }
+  },
+  {
+      name                   = "in_ssh_hetzner"
+      priority               = 202
+      direction              = "Inbound"
+      access                 = "Allow"
+      protocol               = "Tcp"
+      source_port_range      = "*"
+      destination_port_range = "22"
+      source_address_prefix  = "157.90.213.49/32"
+      destination_address_prefix = "*"
+  }]
 
 }
 

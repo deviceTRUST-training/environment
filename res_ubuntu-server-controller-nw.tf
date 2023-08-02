@@ -55,6 +55,7 @@ resource "azurerm_network_security_group" "vm_controller_external" {
       destination_port_range = "22"
       source_address_prefix  = "92.50.117.117/32"
       destination_address_prefix = "*"
+      description                   = "in_ssh_sven"
   },
   {
       name                   = "in_ssh_hetzner"
@@ -66,6 +67,7 @@ resource "azurerm_network_security_group" "vm_controller_external" {
       destination_port_range = "22"
       source_address_prefix  = "157.90.213.49/32"
       destination_address_prefix = "*"
+      description                   = "in_ssh_hetzner"
   }]
 
 }

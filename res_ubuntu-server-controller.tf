@@ -1,5 +1,5 @@
 locals {
-  computer_name_ctrl = "ctrl"  
+  computer_name = "ctrl"  
 }
 
 resource "azurerm_virtual_machine" "vm_controller" {
@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
   }
 
   os_profile {
-    computer_name  = "${local.computer_name_ctrl}"
+    computer_name  = "${local.computer_name}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
   }

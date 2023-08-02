@@ -17,7 +17,7 @@ resource "azurerm_subnet" "external" {
   count                = "${var.azure-environment.instance_count}"
   name                 = "external_${count.index}"
   resource_group_name  = azurerm_resource_group.main.name
-  virtual_network_name = azurerm_virtual_network.main
+  virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.${count.index}.1.0/24"]
 }
 
@@ -25,6 +25,6 @@ resource "azurerm_subnet" "internal" {
   count                = "${var.azure-environment.instance_count}"
   name                 = "internal"
   resource_group_name  = azurerm_resource_group.main.name
-  virtual_network_name = "${element(azurerm_virtual_network.main.*.name, count.index)}"
+  virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.${count.index}.2.0/24"]
 }

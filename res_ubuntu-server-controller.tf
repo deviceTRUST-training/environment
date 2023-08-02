@@ -48,28 +48,32 @@ resource "azurerm_virtual_machine" "vm_controller" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo apt -y update"
+      "sleep 5s",
+      "sudo apt -y update",
+      "sleep 5s"
     ]
   }
 
- # provisioner "remote-exec" {
- #   inline = [
- #     "sudo apt install -y unzip git ansible"
- #   ]
- # }
+  provisioner "remote-exec" {
+    inline = [
+      "sleep 5s",
+      "sudo apt install -y unzip git ansible",
+      "sleep 5s"
+    ]
+  }
 
   provisioner "file" {
     source = "ansible"
     destination = "/tmp/ansible"
   }
 
-#  provisioner "remote-exec" {
-#    inline = [
-#      "ansible-galaxy collection install microsoft.ad",
-#      "ansible-galaxy collection install ansible.windows",  # up to be deprecated
-#      "ansible-galaxy collection install community.windows" # up to be deprecated
-#    ]
-#  }
+  provisioner "remote-exec" {
+    inline = [
+      "ansible-galaxy collection install microsoft.ad",
+      "ansible-galaxy collection install ansible.windows",  # up to be deprecated
+      "ansible-galaxy collection install community.windows" # up to be deprecated
+    ]
+  }
 
 #  provisioner "remote-exec" {
 #    inline = [

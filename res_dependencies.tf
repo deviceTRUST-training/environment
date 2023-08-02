@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "main" {
 
 resource "azurerm_virtual_network" "main" {
   name                = "vnet_main"
-  address_space       = ["10.0.0.0/16"]
+  address_space       = ["10.0.0.0/8"]
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   tags                = "${var.tags}"
@@ -23,7 +23,7 @@ resource "azurerm_subnet" "external" {
 
 resource "azurerm_subnet" "internal" {
   count                = "${var.azure-environment.instance_count}"
-  name                 = "internal"
+  name                 = "internal_${count.index}"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.${count.index}.2.0/24"]

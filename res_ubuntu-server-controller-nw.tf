@@ -38,7 +38,7 @@ resource "azurerm_network_interface" "vm_controller_internal" {
 }
 
 module "network-security-group" {
-  count               = "${var.azure-environment.instance_count}"
+  count                 = "${var.azure-environment.instance_count}"
   source                = "Azure/network-security-group/azurerm"
   resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"

@@ -2,7 +2,7 @@ resource "azurerm_public_ip" "vm_controller" {
   count                = "${var.azure-environment.instance_count}"
   name                 = "${var.azure-environment.prefix}_${count.index}_vm_controller_pip"
   location             = "${element(azurerm_resource_group.main.*.location, count.index)}"
-  resource_group_name  = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  resource_group_name  = azurerm_resource_group.main.*.name
   allocation_method    = "Static"
   tags                 = "${var.tags}"
   domain_name_label    = "${var.azure-environment.prefix}-ctrl-${count.index}"
@@ -12,7 +12,7 @@ resource "azurerm_network_interface" "vm_controller_external" {
   count               = "${var.azure-environment.instance_count}"
   name                = "${var.azure-environment.prefix}_${count.index}_vm_controller_nic_external"
   location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
-  resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  resource_group_name = azurerm_resource_group.main.*.name
   tags                = "${var.tags}"
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_${count.index}_configuration"
@@ -27,7 +27,7 @@ resource "azurerm_network_interface" "vm_controller_internal" {
   count               = "${var.azure-environment.instance_count}"
   name                = "${var.azure-environment.prefix}_${count.index}_vm_controller_nic_internal"
   location            = "${element(azurerm_resource_group.main.*.location, count.index)}"
-  resource_group_name = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  resource_group_name = azurerm_resource_group.main.*.name
   tags                = "${var.tags}"
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_${count.index}_configuration"
@@ -40,7 +40,7 @@ resource "azurerm_network_interface" "vm_controller_internal" {
 resource "azurerm_network_security_group" "vm_controller_external" {
   count                 = "${var.azure-environment.instance_count}"
 
-  resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  resource_group_name   = azurerm_resource_group.main.*.name
   location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
   name   = "${var.azure-environment.prefix}_${count.index}_nsg_ssh"
 

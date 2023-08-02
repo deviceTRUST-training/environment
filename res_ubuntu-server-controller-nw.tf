@@ -72,6 +72,6 @@ module "network-security-group" {
 resource "azurerm_network_interface_security_group_association" "vm_controller_external" {
   count                 = "${var.azure-environment.instance_count}"
 
-  network_interface_id      = ("${var.azure-environment.prefix}_${count.index}_nsg_ssh").id
-  network_security_group_id = "${element(network-security-group.*.id, count.index)}"
+  network_interface_id      = "${element(azurerm_network_interface.vm_controller_external.*.id, count.index)}"
+  network_security_group_id = ("${var.azure-environment.prefix}_${count.index}_nsg_ssh").id
 }

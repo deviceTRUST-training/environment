@@ -49,12 +49,6 @@ resource "azurerm_virtual_machine" "vm_controller" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt -y update"
-    ]
-  }
-
-  provisioner "remote-exec" {
-    inline = [
       "sudo apt-get install -y unzip git ansible"
     ]
   }

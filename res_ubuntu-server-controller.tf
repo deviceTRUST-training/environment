@@ -46,6 +46,12 @@ resource "azurerm_virtual_machine" "vm_controller" {
       user = "${var.vm.username}"
       password = "${var.vm.password}"
   }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt -y update",
+      "sudo apt -y upgrade"
+    ]
+  }
 
   provisioner "remote-exec" {
     inline = [

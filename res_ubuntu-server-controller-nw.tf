@@ -60,7 +60,7 @@ module "network-security-group" {
       protocol               = "Tcp"
       source_port_range      = "*"
       destination_port_range = "22"
-      source_address_prefix  = "92.50.117.117/324"
+      source_address_prefix  = "92.50.117.117/32"
       description            = "description-myssh"
     }
   ]

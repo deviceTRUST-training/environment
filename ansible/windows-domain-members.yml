@@ -1,6 +1,5 @@
 ---
 - hosts: windows-domain-members
-  ignore_unreachable: true
 
   vars_files:
     - vars/generic.yml

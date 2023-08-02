@@ -1,6 +1,5 @@
 ---
 - hosts: windows-client
-  ignore_unreachable: true
 
   vars_files:
     - vars/generic.yml

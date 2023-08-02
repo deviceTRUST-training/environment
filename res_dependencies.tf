@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "main" {
 
 resource "azurerm_virtual_network" "main" {
   name                = "vnet_main"
-  address_space       = ["10.0.0.0/8"]
+  address_space       = ["10.10.0.0/16"]
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   tags                = "${var.tags}"
@@ -18,7 +18,7 @@ resource "azurerm_subnet" "external" {
   name                 = "external_${count.index}"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.${count.index}.1.0/24"]
+  address_prefixes     = ["10.10.2${count.index}.0/24"]
 }
 
 resource "azurerm_subnet" "internal" {
@@ -26,5 +26,5 @@ resource "azurerm_subnet" "internal" {
   name                 = "internal_${count.index}"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.${count.index}.2.0/24"]
+  address_prefixes     = ["10.10.${count.index}.0/24"]
 }

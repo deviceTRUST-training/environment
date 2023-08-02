@@ -1,5 +1,5 @@
 locals {
-  computer_name_ctrl = "ctrl"  
+  computer_name_ctrl = "guac"  
 }
 
 resource "azurerm_virtual_machine" "vm_guacamole" {

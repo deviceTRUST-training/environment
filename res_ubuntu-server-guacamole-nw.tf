@@ -22,7 +22,7 @@ resource "azurerm_network_interface" "vm_guacamole" {
   }
 }
 
-resource "azurerm_network_security_group" "vm_guacamole_external" {
+resource "azurerm_network_security_group" "vm_guacamole" {
   name   = "${var.azure-environment.prefix}_nsg_ssh"
 
   resource_group_name   = azurerm_resource_group.main.name
@@ -56,7 +56,7 @@ resource "azurerm_network_security_group" "vm_guacamole_external" {
 
 resource "azurerm_network_interface_security_group_association" "vm_guacamole_external" {
 
-  network_interface_id      = azurerm_network_interface.vm_guacamole_external.id
-  network_security_group_id = azurerm_network_security_group.vm_guacamole_external.id
+  network_interface_id      = azurerm_network_interface.vm_guacamole.id
+  network_security_group_id = azurerm_network_security_group.vm_guacamole.id
   
 }

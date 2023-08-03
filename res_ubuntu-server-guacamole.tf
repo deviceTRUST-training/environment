@@ -49,6 +49,9 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
     inline = [
       "sleep 5s",
       "sudo apt -y update",
+      "sudo DEBIAN_FRONTEND=noninteractive apt -y upgrade",
+      "sudo DEBIAN_FRONTEND=noninteractive apt -y dist-upgrade",
+      "sudo apt -y autoremove",
       "sleep 5s",
       "sudo apt -y install docker docker-compose git"
     ]

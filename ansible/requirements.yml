@@ -22,3 +22,5 @@
 - src: https://github.com/jansvensen/ansible-role-win-all-updates
 - src: https://github.com/jansvensen/ansible-role-win-all-cleanup
 - src: https://github.com/jansvensen/ansible-role-win-domainjoin
+- src: https://github.com/jansvensen/ansible-role-linux-guac
+- src: https://github.com/jansvensen/ansible-role-linux-traeffik

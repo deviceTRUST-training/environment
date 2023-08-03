@@ -1,2 +1,2 @@
 ---
-- import_playbook: linux-docker-guacamole
+- import_playbook: linux-guac

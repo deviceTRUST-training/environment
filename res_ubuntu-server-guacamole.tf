@@ -57,9 +57,9 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
   provisioner "remote-exec" {
     inline = [
       "cd /home",
-      "mkdir git",
+      "sudo mkdir git",
       "cd /home/git",
-      "git clone https://github.com/jansvensen/guacamole.git",
+      "sudo git clone https://github.com/jansvensen/guacamole.git",
       "cd /home/git/guacamole",
       "sudo docker-compose up -d"
     ]

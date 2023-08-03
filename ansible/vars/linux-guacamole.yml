@@ -1,0 +1,26 @@
+# Docker container guac
+docker_container_guac_version: 1.4.0
+docker_container_guac_name: guac
+docker_container_guac_image: "guacamole/guacamole"
+
+docker_container_guac_d_name: guacd
+docker_container_guac_d_image: "guacamole/guacd"
+
+docker_container_guac_db_name: guac-db
+docker_container_guac_db_image: "mysql"
+
+docker_container_guac_volume_dir: "{{ docker_container_volume_base_dir }}/{{ docker_container_guac_name }}"
+docker_container_guac_traefik_rule: "Host(`guac.{{ public_hosting_domain }}`)"
+
+guac_mfa_enabled: '{{ vault_global_guac_mfa_enabled }}'
+
+guac_db_name: '{{ domain_netbios_name }}'
+guac_db_user: '{{ domain_admin_user_short }}'
+guac_db_password: '{{ domain_admin_password }}'
+guac_db_root_password: '{{ domain_admin_password }}'
+
+guac_ldap_admin_user: '{{ domain_admin_user }}'
+guac_ldap_admin_group: '{{ domain_groups[0].name }}'
+guac_root_connection_group: '{{ domain_ous[0].name }}'
+guac_initial_connection_name: '{{ hostvars[groups["windows_rdg"][0]]["ansible_hostname"] }}'
+guac_initial_connection_hostname: '{{ guac_initial_connection_name }}.{{ dns_domain_name }}'

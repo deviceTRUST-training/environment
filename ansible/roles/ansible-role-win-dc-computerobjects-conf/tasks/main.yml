@@ -1,0 +1,8 @@
+---
+#####################################
+### Manage Computer Objects
+#####################################
+
+  - name: Manage Computer Objects
+    script: files/manage-computer-objects.ps1 "{{ item.name }}" "{{ item.ou }}"    
+    with_items: "{{ dc_computer_objects }}"

@@ -1,0 +1,5 @@
+---
+  - name: Configura CA
+    script: files/ca-configure.ps1
+    args:
+      creates: C:\Logs\ca-configure.txt

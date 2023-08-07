@@ -1,0 +1,31 @@
+---
+- name: Set Password
+  win_user:
+    name: administrator
+    password: "{{ dc_password_admin }}"
+    state: present
+  ignore_errors: True  
+
+- name: Set password required for administrator
+  ansible.windows.win_powershell:
+    script: |
+      net user administrator /passwordreq:yes  
+
+- name: Set upstream DNS server 
+  win_dns_client:
+    adapter_names: '*'
+    ipv4_addresses:
+    - '{{ dc_dns_upstream }}'
+
+- name: Stop the time service
+  win_service:
+    name: w32time
+    state: stopped
+
+- name: Set NTP Servers
+  win_shell: 'w32tm /config /syncfromflags:manual /manualpeerlist:"{{ dc_ntp_servers }}"'  
+
+- name: Start the time service
+  win_service:
+    name: w32time
+    state: started 

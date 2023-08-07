@@ -1,5 +1,5 @@
 terraformdestroy(){
-    if terraform destroy
+    if terraform destroy --auto-approve
     then # destroy executed successfully
          echo >&2 "Successfully destroyed!"
          retval=1

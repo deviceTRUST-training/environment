@@ -4,7 +4,7 @@ terraformdestroy(){
          echo >&2 "Successfully destroyed!"
          retval=1
     else
-         echo >&2 "destroy failed!"
+         echo >&2 "Destroy failed!"
          retval=0
     fi
     return "$retval"

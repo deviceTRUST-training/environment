@@ -1,5 +1,5 @@
 ---
-ansible_user: admin
+ansible_user: localadmin
 ansible_password: ThisIsASecurePassword!2022
 ansible_port: 22
 # ansible_ssh_common_args: '{{ vault_global_ansible_ssh_common_args }}'

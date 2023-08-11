@@ -34,8 +34,8 @@
       guac_connection_names: '{{ groups["linux-guacamole"] | difference([inventory_hostname]) }}'
       guac_connection_port: 22
       guac_connection_protocol: ssh
-      guac_connection_username: '{{ vault_global_admin_user }}'
-      guac_connection_password: '{{ vault_global_admin_password }}'
+      guac_connection_username: '{{ admin_user }}'
+      guac_connection_password: '{{ admin_password }}'
       guac_connection_sql_file_prefix: linux_ssh
     tags:
       - linux_ssh
@@ -47,8 +47,8 @@
       guac_connection_names: "['{{ inventory_hostname }}']"
       guac_connection_port: 1122
       guac_connection_protocol: ssh
-      guac_connection_username: '{{ vault_global_admin_user }}'
-      guac_connection_password: '{{ vault_global_admin_password }}'
+      guac_connection_username: '{{ admin_user }}'
+      guac_connection_password: '{{ admin_password }}'
       guac_connection_sql_file_prefix: '{{ inventory_hostname }}_ssh'
     tags:
       - wg0_ssh

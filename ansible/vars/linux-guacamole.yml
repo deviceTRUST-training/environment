@@ -1,0 +1,72 @@
+---
+# used in treafik revers proxy and the automatic ssl certificate generation
+# using letsencrypt
+public_hosting_domain: '{{ vault_global_public_hosting_domain }}'
+
+# generating some AD objects
+domain_user: user1
+domain_user_password: '{{ domain_admin_password }}'
+domain_ous:
+  - { name: 'infra', path: '{{ domain_ou_base }}' }
+  - { name: 'groups', path: 'OU=infra,{{ domain_ou_base }}' }
+  - { name: 'users', path: 'OU=infra,{{ domain_ou_base }}' }
+  - { name: 'it', path: 'OU=users,OU=infra,{{ domain_ou_base }}' }
+  - { name: 'marketing', path: 'OU=users,OU=infra,{{ domain_ou_base }}' }
+  - { name: 'finance', path: 'OU=users,OU=infra,{{ domain_ou_base }}' }
+  - { name: 'sales', path: 'OU=users,OU=infra,{{ domain_ou_base }}' }
+  - { name: 'computers', path: 'OU=infra,{{ domain_ou_base }}' }
+domain_computers_ou_path: 'OU={{ domain_ous[7].name }},{{ domain_ous[7].path }}'
+domain_groups_ou_path: 'OU={{ domain_ous[1].name }},{{ domain_ous[1].path }}'
+domain_groups:
+  - { name: 'IT' }          # IT group will get admin permission in guacamole
+  - { name: 'Marketing' }
+  - { name: 'Finance' }
+  - { name: 'Sales' }
+domain_users_ou_path: 'OU={{ domain_ous[2].name }},{{ domain_ous[2].path }}'
+domain_user_ou_path_it: 'OU={{ domain_ous[3].name }},{{ domain_ous[3].path }}'
+domain_user_ou_path_marketing: 'OU={{ domain_ous[4].name }},{{ domain_ous[4].path }}'
+domain_user_ou_path_finance: 'OU={{ domain_ous[5].name }},{{ domain_ous[5].path }}'
+domain_user_ou_path_sales: 'OU={{ domain_ous[6].name }},{{ domain_ous[6].path }}'
+domain_users:
+  - { name: 'a-root', groups: ['IT'], ou_path: '{{ domain_user_ou_path_it }}' }   # a-root will become a domain admin
+  - { name: 'svc-sccm', groups: [], ou_path: '{{ domain_user_ou_path_it }}' }
+
+# infra_dh
+docker_compose_version: 1.29.2
+docker_users: ['{{ vault_global_admin_user }}']
+docker_daemon_options:
+  bip: "172.29.0.1/16"
+  default-address-pools:
+    - { base: "172.73.0.0/16", size: 24 }
+
+# Docker
+docker_host_subnet_base: 172.73.0.0/16
+docker_host_subnet_size: 24
+docker_host_bridge_ip: 172.29.0.1/16
+docker_container_volume_base_dir: /srv/docker_data
+
+# Docker container guac
+docker_container_guac_version: 1.4.0
+docker_container_guac_name: guac
+docker_container_guac_image: "guacamole/guacamole"
+
+docker_container_guac_d_name: guacd
+docker_container_guac_d_image: "guacamole/guacd"
+
+docker_container_guac_db_name: guac-db
+docker_container_guac_db_image: "mysql"
+
+docker_container_guac_volume_dir: "{{ docker_container_volume_base_dir }}/{{ docker_container_guac_name }}"
+
+guac_mfa_enabled: '{{ vault_global_guac_mfa_enabled }}'
+
+guac_db_name: '{{ domain_netbios_name }}'
+guac_db_user: '{{ domain_admin_user_short }}'
+guac_db_password: '{{ domain_admin_password }}'
+guac_db_root_password: '{{ domain_admin_password }}'
+
+guac_ldap_admin_user: '{{ domain_admin_user }}'
+guac_ldap_admin_group: '{{ domain_groups[0].name }}'
+guac_root_connection_group: '{{ domain_ous[0].name }}'
+guac_initial_connection_name: '{{ hostvars[groups["windows_rdg"][0]]["ansible_hostname"] }}'
+guac_initial_connection_hostname: '{{ guac_initial_connection_name }}.{{ dns_domain_name }}'

@@ -1,0 +1,12 @@
+---
+- import_playbook: linux-guacamole-docker-install.yml
+- import_playbook: linux-guacamole-docker-container.yml
+
+- import_playbook: linux-all-reboot.yml
+
+- import_playbook: linux-guacamole-connection-lists.yml
+  tags:
+    - windows_rdcb_rdp
+    - windows_rdcb_ssh
+    - windows_rdsh_rdp
+    - windows_rdsh_ssh

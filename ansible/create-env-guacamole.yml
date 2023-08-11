@@ -1,5 +1,5 @@
 ---
-- import_playbook: linux-guacamole-docker-install.yml
+# - import_playbook: linux-guacamole-docker-install.yml
 - import_playbook: linux-guacamole-docker-container.yml
 
 - import_playbook: linux-all-reboot.yml

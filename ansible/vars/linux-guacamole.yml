@@ -1,7 +1,8 @@
 ---
 # used in treafik revers proxy and the automatic ssl certificate generation
 # using letsencrypt
-public_hosting_domain: '{{ vault_global_public_hosting_domain }}'
+public_hosting_domain: '{{ public_hosting_domain }}'
+docker_container_guac_volume_dir: guac_gome
 
 # generating some AD objects
 domain_user: user1
@@ -33,7 +34,7 @@ domain_users:
 
 # infra_dh
 docker_compose_version: 1.29.2
-docker_users: ['{{ vault_global_admin_user }}']
+docker_users: ['{{ admin_user }}']
 docker_daemon_options:
   bip: "172.29.0.1/16"
   default-address-pools:
@@ -58,7 +59,7 @@ docker_container_guac_db_image: "mysql"
 
 docker_container_guac_volume_dir: "{{ docker_container_volume_base_dir }}/{{ docker_container_guac_name }}"
 
-guac_mfa_enabled: '{{ vault_global_guac_mfa_enabled }}'
+guac_mfa_enabled: '{{ guac_mfa_enabled }}'
 
 guac_db_name: '{{ domain_netbios_name }}'
 guac_db_user: '{{ domain_admin_user_short }}'

@@ -2,7 +2,8 @@
 - hosts: linux-guacamole
   become: true
   vars_files:
-    - vars/generic.yml
+    - vars/linux.yml
+    - vars/linux-guacamole.yml
 
   roles:
     - { role: ansible-role-docker }

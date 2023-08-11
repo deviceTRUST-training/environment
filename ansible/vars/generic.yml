@@ -14,3 +14,5 @@ domain_dns_name: dt.training
 domain_safe_mode_password: vagrant
 
 public_hosting_domain: democloud.devicetrust.com
+
+

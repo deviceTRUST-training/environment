@@ -6,6 +6,6 @@
     - vars/linux-guacamole.yml
 
   roles:
-    - { role: linux-guacamole-connection-lists }
-    - { role: linux-guacamole-docker-container }
     - { role: ansible-role-linux-software-installation }
+    - { role: linux-guacamole-docker-container }
+    - { role: linux-guacamole-connection-lists }

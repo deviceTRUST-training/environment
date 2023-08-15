@@ -49,3 +49,5 @@ guac_initial_connection_hostname: 'InitialConnectionHost'
 ansible_hostname: controller
 
 linux_software_apt: ["docker","docker-compose"]
+
+domain_admin_password: 'ThisIsASecurePassword!2022'

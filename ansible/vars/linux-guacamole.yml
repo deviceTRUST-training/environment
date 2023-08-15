@@ -41,7 +41,9 @@ guac_db_root_password: 'ThisIsASecurePassword!2022'
 guac_ldap_admin_user: 'svc_ldap'
 guac_ldap_admin_group: 'g_g_sec_guac_admins'
 guac_root_connection_group: 'Training'
-guac_initial_connection_name: '{{ hostvars[groups["windows_rdg"][0]]["ansible_hostname"] }}'
-guac_initial_connection_hostname: '{{ guac_initial_connection_name }}.{{ dns_domain_name }}'
+# guac_initial_connection_name: '{{ hostvars[groups["windows_rdg"][0]]["ansible_hostname"] }}'
+guac_initial_connection_name: 'InitialConnectionName'
+# guac_initial_connection_hostname: '{{ guac_initial_connection_name }}.{{ dns_domain_name }}'
+guac_initial_connection_hostname: 'InitialConnectionHost'
 
 ansible_hostname: controller

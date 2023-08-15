@@ -1,0 +1,11 @@
+---
+- hosts: linux-guacamole
+  become: true
+  vars_files:
+    - vars/linux.yml
+    - vars/linux-guacamole.yml
+
+  roles:
+    - { role: linux-guacamole-connection-lists }
+    - { role: linux-guacamole-docker-container }
+    - { role: ansible-role-linux-software-installation }

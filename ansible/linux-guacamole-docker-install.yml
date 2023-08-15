@@ -6,7 +6,7 @@
     - vars/linux-guacamole.yml
 
   roles:
-    - { role: ansible-role-docker }
+    - { role: ansible-role-linux-software-installation }
 
   tasks:
     - name: Install docker python sdk

@@ -23,8 +23,6 @@ roles:
 - src: https://github.com/jansvensen/ansible-role-win-all-updates
 - src: https://github.com/jansvensen/ansible-role-win-all-cleanup
 - src: https://github.com/jansvensen/ansible-role-win-domainjoin
-- src: https://github.com/geerlingguy/ansible-role-docker
-
-collections:
-  - name: azure.azcollection
-  - name: community.general
+- src: https://github.com/jansvensen/ansible-role-linux-docker-container-guacamole
+- src: https://github.com/jansvensen/ansible-role-linux-docker-container-guacamole-connections
+- src: https://github.com/jansvensen/ansible-role-linux-software-installation

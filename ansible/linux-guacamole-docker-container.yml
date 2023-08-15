@@ -7,13 +7,3 @@
 
   tasks:
     # guac
-    - name: infra-dh-containers guac_remove
-      import_tasks: tasks/remove_docker_container.yml
-      vars:
-        docker_container_names: ["{{ docker_container_guac_name }}", "{{ docker_container_guac_d_name }}", "{{ docker_container_guac_db_name }}"]
-        docker_container_volume_dir: "{{ docker_container_guac_volume_dir }}"
-      tags: [never, docker_container_guac_remove, docker_container_all_remove]
-
-    - name: infra-dh-containers guac
-      import_tasks: tasks/docker_container_guac.yml
-      tags: [docker_container_guac]

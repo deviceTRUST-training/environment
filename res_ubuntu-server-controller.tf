@@ -57,7 +57,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
   provisioner "remote-exec" {
     inline = [
       "sleep 5s",
-      "sudo apt install -y unzip git ansible",
+      "sudo apt install -y unzip git ansible sshpass",
       "sleep 5s"
     ]
   }

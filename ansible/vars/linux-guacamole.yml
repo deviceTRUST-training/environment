@@ -48,4 +48,4 @@ guac_initial_connection_hostname: 'InitialConnectionHost'
 
 ansible_hostname: controller
 
-linux_docker_prerequisites: ["docker","docker-compose"]
+linux_software_apt: ["docker","docker-compose"]

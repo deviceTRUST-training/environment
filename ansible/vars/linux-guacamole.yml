@@ -12,6 +12,8 @@ docker_daemon_options:
   default-address-pools:
     - { base: "172.73.0.0/16", size: 24 }
 
+dc: 10.10.0.10
+
 # Docker
 docker_host_subnet_base: 172.73.0.0/16
 docker_host_subnet_size: 24

@@ -8,11 +8,12 @@ terraformdestroy(){
          retval=0
     fi
     return "$retval"
+     ((retval=retval+1))
 }
 
 retval=0
 
-while [ "$retval" == 0 ]
+while [ "$retval" < 10 ]
 do
   terraformdestroy
 done

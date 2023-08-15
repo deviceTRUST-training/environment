@@ -1,5 +1,5 @@
 [windows]
-%{ for ip in dc ~}
+%{ for ip in windows-dc ~}
 ${ip} hostname=dc
 %{ endfor ~}
 %{ for ip in rdsh ~}

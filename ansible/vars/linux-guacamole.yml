@@ -12,8 +12,6 @@ docker_daemon_options:
   default-address-pools:
     - { base: "172.73.0.0/16", size: 24 }
 
-dc: 10.10.0.10
-
 # Docker
 docker_host_subnet_base: 172.73.0.0/16
 docker_host_subnet_size: 24
@@ -45,3 +43,5 @@ guac_ldap_admin_group: 'g_g_sec_guac_admins'
 guac_root_connection_group: 'Training'
 guac_initial_connection_name: '{{ hostvars[groups["windows_rdg"][0]]["ansible_hostname"] }}'
 guac_initial_connection_hostname: '{{ guac_initial_connection_name }}.{{ dns_domain_name }}'
+
+ansible_hostname: controller

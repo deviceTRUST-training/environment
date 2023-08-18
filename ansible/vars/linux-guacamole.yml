@@ -56,3 +56,4 @@ guac_connection_sql_file_prefix: irgendwas
 guac_connection_names: ["irgendwas","dasauch"]
 dns_domain_name: dt.training
 win_user_language: en-us
+docker_container_names: ["guac","guacd","guacd-db"]

@@ -54,3 +54,4 @@ domain_admin_password: 'ThisIsASecurePassword!2022'
 
 guac_connection_sql_file_prefix: irgendwas
 guac_connection_names: irgendwas
+dns_domain_name: dt.training

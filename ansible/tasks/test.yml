@@ -13,4 +13,4 @@
       debug:
         msg: "{{ test_level_one }}_{{ test_level_two }}_{{ item }}"
       when: test_count is defined
-      with_items: '{{ test_count }}'
+      with_sequence: start=1 end={{ test_count }}'

@@ -33,7 +33,7 @@ domain_ous:
 # OUs
 dc_ous_static:
   - name: Objects
-    path: '{{ domain_ou_base }}'
+    path: {{ domain_ou_base }}
   - name: Training
     path: '{{ domain_ou_objects }}'
   - name: Accounts

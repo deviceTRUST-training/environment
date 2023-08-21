@@ -2,6 +2,7 @@
 - hosts: localhost
   vars_files:
     - ../vars/test.yml
+    - ../vars/windows-dc-local.yml
 
   tasks:
     - name: dingledongel

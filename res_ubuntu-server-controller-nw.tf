@@ -1,16 +1,16 @@
 resource "azurerm_public_ip" "vm_controller" {
   name                 = "${var.azure-environment.prefix}_vm_controller_pip"
-  location             = azurerm_resource_group.main.location
-  resource_group_name  = azurerm_resource_group.main.name
+  location             = azurerm_resource_group.training.location
+  resource_group_name  = azurerm_resource_group.training.name
   allocation_method    = "Static"
   tags                 = "${var.tags}"
-  domain_name_label    = "${var.azure-environment.prefix}-controller"
+  dotraining_name_label    = "${var.azure-environment.prefix}-controller"
 }
 
 resource "azurerm_network_interface" "vm_controller" {
   name                = "${var.azure-environment.prefix}_vm_controller_nic"
-  location            = azurerm_resource_group.main.location
-  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.training.location
+  resource_group_name = azurerm_resource_group.training.name
   tags                = "${var.tags}"
 
   ip_configuration {
@@ -25,8 +25,8 @@ resource "azurerm_network_interface" "vm_controller" {
 resource "azurerm_network_security_group" "vm_controller" {
   name   = "${var.azure-environment.prefix}_nsg_ssh"
 
-  resource_group_name   = azurerm_resource_group.main.name
-  location              = azurerm_resource_group.main.location
+  resource_group_name   = azurerm_resource_group.training.name
+  location              = azurerm_resource_group.training.location
 
   security_rule {
       name                   = "con_in_ssh_sven"

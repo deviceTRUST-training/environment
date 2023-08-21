@@ -4,8 +4,8 @@ locals {
 
 resource "azurerm_virtual_machine" "vm_controller" {
   name                                = "${var.azure-environment.prefix}_vm_controller"
-  location                            = azurerm_resource_group.main.location
-  resource_group_name                 = azurerm_resource_group.main.name
+  location                            = azurerm_resource_group.training.location
+  resource_group_name                 = azurerm_resource_group.training.name
   network_interface_ids               = [azurerm_network_interface.vm_controller.id]
   vm_size                             = "Standard_B1ms"
 
@@ -80,7 +80,7 @@ resource "azurerm_virtual_machine" "vm_controller" {
 #      "cd /tmp",
 #      "cd /tmp/ansible",
 #      "ansible-galaxy install -v -r requirements.yml -p ./roles/",
-#      "ansible-playbook -i inventory site.yml --extra-vars 'ansible_user=${var.vm.username} ansible_password=${var.vm.password} domain_admin_user=${var.vm.username}@${var.vm.domain_dns_name} domain_admin_password=${var.vm.password} safe_mode_password=${var.vm.password}'",
+#      "ansible-playbook -i inventory site.yml --extra-vars 'ansible_user=${var.vm.username} ansible_password=${var.vm.password} dotraining_admin_user=${var.vm.username}@${var.vm.dotraining_dns_name} dotraining_admin_password=${var.vm.password} safe_mode_password=${var.vm.password}'",
 #    ]
 #  }
 

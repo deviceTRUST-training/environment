@@ -7,7 +7,7 @@
   tasks:
     - name: dingledongel
       ansible.builtin.debug:
-        msg: "{{ item.0.name }} - {{ item.0.path }} - {{ item.1 }} | replace('##','Banana') }}"
+        msg: "{{ item.0.name }} - {{ item.0.path | replace('##','Banana') }} - {{ item.1 }} "
       with_nested:
         - "{{ dc_ous_static }}"
         - "{{ range(1, dc_domain_count + 1, 1) | list }}"

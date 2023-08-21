@@ -48,6 +48,15 @@ resource "azurerm_virtual_machine" "vm_controller" {
   provisioner "remote-exec" {
     inline = [
       "sleep 5s",
+      "sudo apt -y update",
+      "sleep 5s",
+      "sudo apt -y install docker docker-compose git"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sleep 5s",
       "sudo apt install -y unzip ansible sshpass",
       "sleep 5s"
     ]

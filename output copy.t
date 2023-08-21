@@ -47,3 +47,7 @@ output "private_ip_address_vm_rdsh" {
 output "public_ip_address_vm_rdsh" {
   value = "${azurerm_public_ip.vm_rdsh.*.ip_address}"
 }
+
+output "env_count" {
+  value = var.azure-environment.instance_count
+}

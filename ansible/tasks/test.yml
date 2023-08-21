@@ -12,13 +12,13 @@
       - "{{ range(1, 10 + 1, 1) | list }}"
 
     # execute single task, no need in list
-    - debug:
-        msg: "{{ ip_template }}"
-      with_sequence: "start=1 count=5"
+  - debug:
+      msg: "{{ ip_template }}"
+    with_sequence: "start=1 count=5"
 
-    # construct list
-    - set_fact:
-        ip_list: "{{ (ip_list | default([])) + [ip_template] }}"
-      with_sequence: "start=1 count=5"
-    - debug:
-        msg: "{{ ip_list }}"
+  # construct list
+  - set_fact:
+      ip_list: "{{ (ip_list | default([])) + [ip_template] }}"
+    with_sequence: "start=1 count=5"
+  - debug:
+      msg: "{{ ip_list }}"

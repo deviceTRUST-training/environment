@@ -4,7 +4,7 @@ resource "azurerm_public_ip" "vm_guacamole" {
   resource_group_name  = azurerm_resource_group.training.name
   allocation_method    = "Static"
   tags                 = "${var.tags}"
-  dotraining_name_label    = "${var.azure-environment.prefix}-guac"
+  domain_name_label    = "${var.azure-environment.prefix}-guac"
 }
 
 resource "azurerm_network_interface" "vm_guacamole" {

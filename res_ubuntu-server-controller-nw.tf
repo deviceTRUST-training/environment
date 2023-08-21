@@ -4,7 +4,7 @@ resource "azurerm_public_ip" "vm_controller" {
   resource_group_name  = azurerm_resource_group.training.name
   allocation_method    = "Static"
   tags                 = "${var.tags}"
-  dotraining_name_label    = "${var.azure-environment.prefix}-controller"
+  domain_name_label    = "${var.azure-environment.prefix}-controller"
 }
 
 resource "azurerm_network_interface" "vm_controller" {

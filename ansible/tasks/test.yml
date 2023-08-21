@@ -2,19 +2,19 @@
 - hosts: localhost
   gather_facts: no
   vars:
-    ou_pattern:
+    ou_path:
       path: "Training{{ item }},{{ domain_ou_objects }}"
     domain_ou_base: DC=dt,DC=training
     domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
-
+    
   tasks:
 
     # construct list
     - set_fact:
-        ou_path: "{{ (ou_pattern | default([])) + [ou_path] }}"
+        ou_pattern: "{{ (ou_pattern | default([])) + [ou_path] }}"
       with_sequence: "start=1 count=5"
     - debug:
-        msg: "{{ ou_path }}"
+        msg: "{{ ou_pattern }}"
 
     # execute single task, no need in list
     - debug:

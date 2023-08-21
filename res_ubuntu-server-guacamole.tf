@@ -50,7 +50,7 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
       "sleep 5s",
       "sudo apt -y update",
       "sleep 5s",
-      "sudo apt -y install docker docker-compose git sshpass"
+      "sudo apt -y install docker docker-compose git"
     ]
   }
 

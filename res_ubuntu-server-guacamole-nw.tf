@@ -52,29 +52,6 @@ resource "azurerm_network_security_group" "vm_guacamole" {
         destination_address_prefix = "*"
     }
   security_rule {
-      name                   = "in_https_sven"
-      priority               = 211
-      direction              = "Inbound"
-      access                 = "Allow"
-      protocol               = "Tcp"
-      source_port_range      = "*"
-      destination_port_range = "443"
-      source_address_prefix  = "92.50.117.117/32"
-      destination_address_prefix = "*"
-    }
-    
-  security_rule {
-      name                   = "in_http_sven"
-      priority               = 212
-      direction              = "Inbound"
-      access                 = "Allow"
-      protocol               = "Tcp"
-      source_port_range      = "*"
-      destination_port_range = "80"
-      source_address_prefix  = "92.50.117.117/32"
-      destination_address_prefix = "*"
-    }
-  security_rule {
       name                   = "in_guacamole_sven"
       priority               = 666
       direction              = "Inbound"
@@ -83,6 +60,17 @@ resource "azurerm_network_security_group" "vm_guacamole" {
       source_port_range      = "*"
       destination_port_range = "8081"
       source_address_prefix  = "92.50.117.117/32"
+      destination_address_prefix = "*"
+    }
+      security_rule {
+      name                   = "in_guacamole_sepago"
+      priority               = 666
+      direction              = "Inbound"
+      access                 = "Allow"
+      protocol               = "Tcp"
+      source_port_range      = "*"
+      destination_port_range = "8081"
+      source_address_prefix  = "87.190.225.226/32"
       destination_address_prefix = "*"
     }
 }

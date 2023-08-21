@@ -11,9 +11,9 @@ dc_dns_zone_name: dt.training
 dc_ntp_servers: 0.us.pool.ntp.org,1.us.pool.ntp.org
 
 # OUs
-dc_ou_user_standard: OU=User,OU=Accounts,OU=Objects,DC=dt,DC=training
-dc_ou_user_admin: OU=Admins,OU=Accounts,OU=Objects,DC=dt,DC=training
-dc_ou_user_service: OU=Services,OU=Accounts,OU=Objects,DC=dt,DC=training
+dc_ou_user_standard: OU=User,OU=Accounts,'{{ domain_ou_objects }}'
+dc_ou_user_admin: OU=Admins,OU=Accounts,'{{ domain_ou_objects }}'
+dc_ou_user_service: OU=Services,OU=Accounts,'{{ domain_ou_objects }}'
 
 # Passwords
 dc_password_admin: ThisIsASecurePassword!2022
@@ -63,10 +63,10 @@ dc_ou:
 dc_groups:
   - name: g_g_sec_citrix_users
     scope: global
-    path: 'OU=Groups,OU=Objects,DC=dt,DC=training'
+    path: OU=Groups,'{{ domain_ou_objects }}'
   - name: g_g_sec_guac_admins
     scope: global
-    path: 'OU=Groups,OU=Objects,DC=dt,DC=training'
+    path: OU=Groups,'{{ domain_ou_objects }}'
 
 # Users
 dc_user_standard: [training]
@@ -75,3 +75,7 @@ dc_user_service: [svc_domainjoin,svc_ldap]
 dc_groupmember:
   - name: training
     group: g_g_sec_citrix_users
+
+
+
+dc_domain_count: 2

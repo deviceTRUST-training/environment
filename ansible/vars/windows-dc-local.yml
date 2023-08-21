@@ -25,7 +25,7 @@ dc_password_safemode: ThisIsASecurePassword!2022
 dc_user_admin: administrator@dt.training
 domain_ou_base: DC=dt,DC=training
 domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
-domain_ou_training: 'OU=Training,{{ domain_ou_objects }}'
+domain_ou_training: 'OU=Training{{ item[1] }},{{ domain_ou_objects }}'
 
 domain_ous:
   - { name: 'Objects', path: '{{ domain_ou_base }}' }

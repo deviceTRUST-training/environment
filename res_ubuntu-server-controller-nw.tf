@@ -4,7 +4,7 @@ resource "azurerm_public_ip" "vm_controller" {
   resource_group_name  = azurerm_resource_group.main.name
   allocation_method    = "Static"
   tags                 = "${var.tags}"
-  domain_name_label    = "${var.azure-environment.prefix}-guac"
+  domain_name_label    = "${var.azure-environment.prefix}-controller"
 }
 
 resource "azurerm_network_interface" "vm_controller" {
@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "vm_controller" {
 
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_configuration"
-    subnet_id                     = azurerm_subnet.guac.id
+    subnet_id                     = azurerm_subnet.controller.id
     private_ip_address_allocation = "Static"
     private_ip_address            = "10.10.254.${var.vm.ip_controller}"
     public_ip_address_id          = azurerm_public_ip.vm_controller.id

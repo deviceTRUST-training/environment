@@ -25,7 +25,7 @@ dc_password_safemode: ThisIsASecurePassword!2022
 dc_user_admin: administrator@dt.training
 domain_ou_base: DC=dt,DC=training
 domain_ou_objects: OU=Objects,DC=dt,DC=training
-domian_ou_training: ['OU=Training01']
+domain_ou_training: ['OU=Training01']
 
 domain_ous:
   - { name: 'Objects', path: '{{ domain_ou_base }}' }
@@ -37,27 +37,27 @@ dc_ou:
   - name: Training01
     path: '{{ domain_ou_objects }}'
   - name: Accounts
-    path: '{{ domian_ou_training }}'
+    path: '{{ domain_ou_training }}'
   - name: Computer
-    path: '{{ domian_ou_training }}'
+    path: '{{ domain_ou_training }}'
   - name: Groups
-    path: '{{ domian_ou_training }}'
+    path: '{{ domain_ou_training }}'
   - name: 02_Administration
-    path: OU=Computer,'{{ domian_ou_training }}'
+    path: OU=Computer,'{{ domain_ou_training }}'
   - name: 03_Environment
-    path: OU=Computer,'{{ domian_ou_training }}'
+    path: OU=Computer,'{{ domain_ou_training }}'
   - name: 04_Endpoints 
-    path: OU=Computer,'{{ domian_ou_training }}'
+    path: OU=Computer,'{{ domain_ou_training }}'
   - name: FatClient
-    path: OU=03_Environment,OU=Computer,'{{ domian_ou_training }}'
+    path: OU=03_Environment,OU=Computer,'{{ domain_ou_training }}'
   - name: RDSH
-    path: OU=03_Environment,OU=Computer,'{{ domian_ou_training }}'
+    path: OU=03_Environment,OU=Computer,'{{ domain_ou_training }}'
   - name: User
-    path: OU=Accounts,'{{ domian_ou_training }}'
+    path: OU=Accounts,'{{ domain_ou_training }}'
   - name: Services
-    path: OU=Accounts,'{{ domian_ou_training }}'
+    path: OU=Accounts,'{{ domain_ou_training }}'
   - name: Admins
-    path: OU=Accounts,'{{ domian_ou_training }}'
+    path: OU=Accounts,'{{ domain_ou_training }}'
 
 # Groups
 dc_groups:

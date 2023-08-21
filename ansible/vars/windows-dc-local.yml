@@ -36,6 +36,8 @@ dc_ous_static:
     path: '{{ domain_ou_base }}'
   - name: Training
     path: '{{ domain_ou_objects }}'
+  - name: Accounts
+    path: '{{ domain_ou_training }}'
 
 
 dc_ous_s:

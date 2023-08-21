@@ -11,6 +11,6 @@
 
     - name: "Print nested variables if test_count is defined"
       debug:
-        msg: "{{ test_level_one }}_{{ test_level_two }}_{{ item.value }}"
+        msg: "{{ test_level_one }}_{{ test_level_two }}_{{ item }}"
       when: test_count is defined
       with_items: '{{ test_count }}'

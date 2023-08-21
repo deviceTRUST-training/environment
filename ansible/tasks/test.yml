@@ -4,13 +4,7 @@
     - ../vars/test.yml
 
   tasks:
-    - name: "Print a variable if defined"
-      debug:
-        msg: "The 'test_level_one' variable value is {{ test_level_one }}"
-      when: test_level_one is defined
-
-    - name: "Print nested variables if test_count is defined"
-      debug:
-        msg: "{{ test_level_one }}_{{ test_level_two }}_{{ item }}"
-      when: test_count is defined
-      with_sequence: 'start=1 end={{ test_count }}'
+  - name: with_sequence -> loop
+    ansible.builtin.debug:
+      msg: "{{ 'testuser%02x' | format(item) }}"
+    loop: "{{ range(0, 4 + 1, 2) | list }}"

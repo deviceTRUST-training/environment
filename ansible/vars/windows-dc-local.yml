@@ -24,17 +24,19 @@ dc_password_safemode: ThisIsASecurePassword!2022
 # Users
 dc_user_admin: administrator@dt.training
 domain_ou_base: DC=dt,DC=training
-domain_ou_objects: OU=Objects,DC=dt,DC=training
-domain_ou_training: ['OU=Training']
+domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
+domain_ou_training: 'OU=Training,{{ domain_ou_objects }}'
 
 domain_ous:
   - { name: 'Objects', path: '{{ domain_ou_base }}' }
 
 # OUs
-dc_ou:
+dc_ous_static:
   - name: Objects
     path: '{{ domain_ou_base }}'
-  - name: Training01
+
+dc_ous_dynamic:
+  - name: Training
     path: '{{ domain_ou_objects }}'
   - name: Accounts
     path: '{{ domain_ou_training }}{{ dc_domain_count }},{{ domain_ou_objects }}'

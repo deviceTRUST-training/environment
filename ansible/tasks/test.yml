@@ -4,9 +4,7 @@
   vars:
     ip_template:
       primary_ip: "192.168.100.{{ item }}"
-      primary_gw: "192.168.100.254"
       extra_ip: "10.0.1.{{ item }}"
-      extra_gw: "10.0.1.254"
   tasks:
     # execute single task, no need in list
     - debug:

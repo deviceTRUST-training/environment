@@ -67,6 +67,16 @@ resource "azurerm_network_security_group" "vm_controller_external" {
         source_address_prefix  = "157.90.213.49/32"
         destination_address_prefix = "*"
     }
+          name                   = "in_ssh_sepago"
+      priority               = 666
+      direction              = "Inbound"
+      access                 = "Allow"
+      protocol               = "Tcp"
+      source_port_range      = "*"
+      destination_port_range = "22"
+      source_address_prefix  = "87.190.225.226/32"
+      destination_address_prefix = "*"
+    }
 
 }
 

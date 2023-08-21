@@ -23,33 +23,41 @@ dc_password_safemode: ThisIsASecurePassword!2022
 
 # Users
 dc_user_admin: administrator@dt.training
+domain_ou_base: DC=dt,DC=training
+domain_ou_objects: OU=Objects,DC=dt,DC=training
+domian_ou_training: ['OU=Training01']
+
+domain_ous:
+  - { name: 'Objects', path: '{{ domain_ou_base }}' }
 
 # OUs
 dc_ou:
   - name: Objects
-    path: DC=dt,DC=training
+    path: '{{ domain_ou_base }}'
+  - name: Training01
+    path: '{{ domain_ou_objects }}'
   - name: Accounts
-    path: OU=Objects,DC=dt,DC=training
+    path: '{{ domian_ou_training }}'
   - name: Computer
-    path: OU=Objects,DC=dt,DC=training
+    path: '{{ domian_ou_training }}'
   - name: Groups
-    path: OU=Objects,DC=dt,DC=training
+    path: '{{ domian_ou_training }}'
   - name: 02_Administration
-    path: OU=Computer,OU=Objects,DC=dt,DC=training
+    path: OU=Computer,'{{ domian_ou_training }}'
   - name: 03_Environment
-    path: OU=Computer,OU=Objects,DC=dt,DC=training
+    path: OU=Computer,'{{ domian_ou_training }}'
   - name: 04_Endpoints 
-    path: OU=Computer,OU=Objects,DC=dt,DC=training
+    path: OU=Computer,'{{ domian_ou_training }}'
   - name: FatClient
-    path: OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training
+    path: OU=03_Environment,OU=Computer,'{{ domian_ou_training }}'
   - name: RDSH
-    path: OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training
+    path: OU=03_Environment,OU=Computer,'{{ domian_ou_training }}'
   - name: User
-    path: OU=Accounts,OU=Objects,DC=dt,DC=training
+    path: OU=Accounts,'{{ domian_ou_training }}'
   - name: Services
-    path: OU=Accounts,OU=Objects,DC=dt,DC=training
+    path: OU=Accounts,'{{ domian_ou_training }}'
   - name: Admins
-    path: OU=Accounts,OU=Objects,DC=dt,DC=training
+    path: OU=Accounts,'{{ domian_ou_training }}'
 
 # Groups
 dc_groups:

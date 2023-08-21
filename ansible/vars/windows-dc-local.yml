@@ -37,12 +37,11 @@ dc_ous_static:
   - name: Training
     path: '{{ domain_ou_objects }}'
   - name: Accounts
-    path: '{{ domain_ou_training }}'
+    path: '{{ domain_ou_training }}##'
   - name: Computer
-    path: '{{ domain_ou_training }}'
+    path: '{{ domain_ou_training }}##'
   - name: Groups
-    path: '{{ domain_ou_training }}'
-
+    path: '{{ domain_ou_training }}##'
 
 dc_ous_s:
   - name: 02_Administration

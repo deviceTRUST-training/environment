@@ -1,16 +1,16 @@
 resource "azurerm_public_ip" "vm_guacamole" {
   name                 = "${var.azure-environment.prefix}_vm_guacamole_pip"
-  location             = azurerm_resource_group.main.location
-  resource_group_name  = azurerm_resource_group.main.name
+  location             = azurerm_resource_group.training.location
+  resource_group_name  = azurerm_resource_group.training.name
   allocation_method    = "Static"
   tags                 = "${var.tags}"
-  domain_name_label    = "${var.azure-environment.prefix}-guac"
+  dotraining_name_label    = "${var.azure-environment.prefix}-guac"
 }
 
 resource "azurerm_network_interface" "vm_guacamole" {
   name                = "${var.azure-environment.prefix}_vm_guacamole_nic"
-  location            = azurerm_resource_group.main.location
-  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.training.location
+  resource_group_name = azurerm_resource_group.training.name
   tags                = "${var.tags}"
 
   ip_configuration {
@@ -25,8 +25,8 @@ resource "azurerm_network_interface" "vm_guacamole" {
 resource "azurerm_network_security_group" "vm_guacamole" {
   name   = "${var.azure-environment.prefix}_nsg_ssh"
 
-  resource_group_name   = azurerm_resource_group.main.name
-  location              = azurerm_resource_group.main.location
+  resource_group_name   = azurerm_resource_group.training.name
+  location              = azurerm_resource_group.training.location
 
   security_rule {
       name                   = "guac_in_ssh_sven"

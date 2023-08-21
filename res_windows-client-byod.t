@@ -7,8 +7,8 @@ locals {
 resource "azurerm_virtual_machine" "vm_byod" {
   count                = "${var.azure-environment.instance_count}"
   name                  = "${var.azure-environment.prefix}_${count.index}_vm_byod"
-  location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
-  resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
+  location              = "${element(azurerm_resource_group.training.*.location, count.index)}"
+  resource_group_name   = "${element(azurerm_resource_group.training.*.name, count.index)}"
   network_interface_ids = ["${element(azurerm_network_interface.vm_byod_internal.*.id, count.index)}"]
   vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 

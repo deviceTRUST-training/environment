@@ -1,17 +1,15 @@
 locals {
 
-  computer_name_dc = "dc01"
+  computer_name_dc = "dc"
   custom_data_content_dc = "${file("./files/ConfigureRemotingForAnsible.bat")}"
     
 }
 
 resource "azurerm_virtual_machine" "vm_dc" {
-  count                 = "${var.azure-environment.instance_count}"
-  
-  name                  = "${var.azure-environment.prefix}_${count.index}_vm_dc"
+  name                  = "${var.azure-environment.prefix}_vm_dc"
   location              = azurerm_resource_group.main.location
   resource_group_name   = azurerm_resource_group.main.name
-  network_interface_ids = ["${element(azurerm_network_interface.vm_dc_internal.*.id, count.index)}"]
+  network_interface_ids = [azurerm_network_interface.vm_dc_internal.id]
   vm_size               = "Standard_B1ms"  # 1x CPU, 2GB RAM
 
   delete_os_disk_on_termination = true
@@ -25,7 +23,7 @@ resource "azurerm_virtual_machine" "vm_dc" {
   }
 
   storage_os_disk {
-    name              = "${var.azure-environment.prefix}_${count.index}_vm_dc_osdisk"
+    name              = "${var.azure-environment.prefix}_vm_dc_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "StandardSSD_LRS"

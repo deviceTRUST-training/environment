@@ -39,11 +39,11 @@ dc_ous_dynamic:
   - name: Training
     path: '{{ domain_ou_objects }}'
   - name: Accounts
-    path: '{{ domain_ou_training }}{{ dc_domain_count }},{{ domain_ou_objects }}'
+    path: '{{ domain_ou_training }}{{ item[1] }},{{ domain_ou_objects }}'
   - name: Computer
-    path: '{{ domain_ou_training }}{{ dc_domain_count }},{{ domain_ou_objects }}'
+    path: '{{ domain_ou_training }}{{ item[1] }},{{ domain_ou_objects }}'
   - name: Groups
-    path: '{{ domain_ou_training }}{{ dc_domain_count }},{{ domain_ou_objects }}'
+    path: '{{ domain_ou_training }}{{ item[1] }},{{ domain_ou_objects }}'
   - name: 02_Administration
     path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 03_Environment

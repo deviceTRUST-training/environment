@@ -6,10 +6,6 @@
       primary_ip: "192.168.100.{{ item }}"
       extra_ip: "10.0.1.{{ item }}"
   tasks:
-    # execute single task, no need in list
-    - debug:
-        msg: "{{ ip_template }}"
-      with_sequence: "start=1 count=5"
 
     # construct list
     - set_fact:
@@ -17,3 +13,8 @@
       with_sequence: "start=1 count=5"
     - debug:
         msg: "{{ ip_list }}"
+        
+    # execute single task, no need in list
+    - debug:
+        msg: "{{ ip_template }}"
+      with_sequence: "start=1 count=5"

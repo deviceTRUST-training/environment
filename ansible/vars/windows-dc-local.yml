@@ -43,21 +43,21 @@ dc_ou:
   - name: Groups
     path: '{{ domain_ou_training }}'
   - name: 02_Administration
-    path: OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 03_Environment
-    path: OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 04_Endpoints 
-    path: OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: FatClient
-    path: OU=03_Environment,OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=03_Environment,OU=Computer,{{ domain_ou_training }}'
   - name: RDSH
-    path: OU=03_Environment,OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=03_Environment,OU=Computer,{{ domain_ou_training }}'
   - name: User
-    path: OU=Accounts,'{{ domain_ou_training }}'
+    path: OU=Accounts,{{ domain_ou_training }}'
   - name: Services
-    path: OU=Accounts,'{{ domain_ou_training }}'
+    path: 'OU=Accounts,{{ domain_ou_training }}'
   - name: Admins
-    path: OU=Accounts,'{{ domain_ou_training }}'
+    path: 'OU=Accounts,{{ domain_ou_training }}'
 
 # Groups
 dc_groups:

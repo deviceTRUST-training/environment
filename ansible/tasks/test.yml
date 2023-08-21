@@ -4,7 +4,14 @@
     - ../vars/test.yml
 
   tasks:
-  - name: with_sequence -> loop
+  - name: with_nested
     ansible.builtin.debug:
-      msg: "{{ 'testuser%02x' | format(item) }}"
-    loop: "{{ range(1, '{{ test_count }} + 1, 1) | list }}"
+      msg: "{{ item.0 }} - {{ item.1 }}"
+    with_nested:
+      - "{{ list_one }}"
+      - "{{ list_two }}"
+
+  - name: with_nested -> loop
+    ansible.builtin.debug:
+      msg: "{{ item.0 }} - {{ item.1 }}"
+    loop: "{{ list_one|product(list_two)|list }}"

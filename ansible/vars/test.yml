@@ -5,3 +5,7 @@ test_level_two: "-LevelTwo"
 test_level_functional_one: "-FOne"
 test_level_functional_two: "-FTwo"
 test_level_functional_three: "-FThree"
+
+
+list_one: [1,2,3]
+list_two: [a,b,c]

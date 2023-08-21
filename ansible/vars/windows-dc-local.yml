@@ -42,6 +42,8 @@ dc_ous_static:
     path: '{{ domain_ou_training }}'
   - name: Groups
     path: '{{ domain_ou_training }}'
+
+dc_ous_s:
   - name: 02_Administration
     path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 03_Environment

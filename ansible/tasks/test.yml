@@ -1,31 +1,21 @@
 ---
 - hosts: localhost
-  vars_files:
-    - ../vars/test.yml
-
+  gather_facts: no
   vars:
-  ip_template:
-    primary_ip: "192.168.100.{{ item }}"
-    primary_gw: "192.168.100.254"
-    extra_ip: "10.0.1.{{ item }}"
-    extra_gw: "10.0.1.254"
-
+    ip_template:
+      primary_ip: "192.168.100.{{ item }}"
+      primary_gw: "192.168.100.254"
+      extra_ip: "10.0.1.{{ item }}"
+      extra_gw: "10.0.1.254"
   tasks:
-  - name: dingledongel
-    ansible.builtin.debug:
-      msg: "{{ item.0 }} - {{ item.1 }}"
-    with_nested:
-      - "{{ list_one }}"
-      - "{{ range(1, 10 + 1, 1) | list }}"
-
     # execute single task, no need in list
-  - debug:
-      msg: "{{ ip_template }}"
-    with_sequence: "start=1 count=5"
+    - debug:
+        msg: "{{ ip_template }}"
+      with_sequence: "start=1 count=5"
 
-  # construct list
-  - set_fact:
-      ip_list: "{{ (ip_list | default([])) + [ip_template] }}"
-    with_sequence: "start=1 count=5"
-  - debug:
-      msg: "{{ ip_list }}"
+    # construct list
+    - set_fact:
+        ip_list: "{{ (ip_list | default([])) + [ip_template] }}"
+      with_sequence: "start=1 count=5"
+    - debug:
+        msg: "{{ ip_list }}"

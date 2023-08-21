@@ -25,7 +25,7 @@ dc_password_safemode: ThisIsASecurePassword!2022
 dc_user_admin: administrator@dt.training
 domain_ou_base: DC=dt,DC=training
 domain_ou_objects: OU=Objects,DC=dt,DC=training
-domain_ou_training: OU=Training01
+domain_ou_training: ['OU=Training']
 
 domain_ous:
   - { name: 'Objects', path: '{{ domain_ou_base }}' }
@@ -37,11 +37,11 @@ dc_ou:
   - name: Training01
     path: '{{ domain_ou_objects }}'
   - name: Accounts
-    path: '{{ domain_ou_training }},{{ domain_ou_objects }}'
+    path: '{{ domain_ou_training }}{{ dc_domain_count }},{{ domain_ou_objects }}'
   - name: Computer
-    path: '{{ domain_ou_training }},{{ domain_ou_objects }}'
+    path: '{{ domain_ou_training }}{{ dc_domain_count }},{{ domain_ou_objects }}'
   - name: Groups
-    path: '{{ domain_ou_training }},{{ domain_ou_objects }}'
+    path: '{{ domain_ou_training }}{{ dc_domain_count }},{{ domain_ou_objects }}'
   - name: 02_Administration
     path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 03_Environment

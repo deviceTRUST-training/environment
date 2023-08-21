@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  vars_files:
+    - vars/test.yml
+
+  tasks:
+    - name: "Print a variable if defined"
+      debug:
+        msg: "The 'test_level_one' variable value is {{ test_level_one }}"
+      when: test_level_one is defined
+
+        - name: "Print nested variables if test_count is defined"
+      debug:
+        msg: "{{ test_level_one }}_{{ test_level_two }}_{{ item.value }}"
+      when: test_count is defined
+      with_items: {{ test_count }}

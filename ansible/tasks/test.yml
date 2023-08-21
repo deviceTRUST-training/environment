@@ -11,12 +11,14 @@
       - "{{ list_one }}"
       - "{{ range(1, 10 + 1, 1) | list }}"
 
-  - name: repeat
-    ansible.builtin.debug:
-      msg: "{{ item.0 }} - {{ item.1 }}"
-    repeat_original: "{{ [1,2] | product(repeat={{ test_count }}) }}"
+    # execute single task, no need in list
+    - debug:
+        msg: "{{ ip_template }}"
+      with_sequence: "start=1 count=5"
 
-
-
-
-      
+    # construct list
+    - set_fact:
+        ip_list: "{{ (ip_list | default([])) + [ip_template] }}"
+      with_sequence: "start=1 count=5"
+    - debug:
+        msg: "{{ ip_list }}"

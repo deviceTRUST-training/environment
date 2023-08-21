@@ -3,12 +3,10 @@ locals {
 }
 
 resource "azurerm_virtual_machine" "vm_controller" {
-  count                               = "${var.azure-environment.instance_count}"
-  name                                = "${var.azure-environment.prefix}_${count.index}_vm_controller"
-  location                            = "${element(azurerm_resource_group.main.*.location, count.index)}"
+  name                                = "${var.azure-environment.prefix}_vm_controller"
+  location                            = azurerm_resource_group.main.location
   resource_group_name                 = azurerm_resource_group.main.name
-  primary_network_interface_id        = "${element(azurerm_network_interface.vm_controller_external.*.id, count.index)}"
-  network_interface_ids               = ["${element(azurerm_network_interface.vm_controller_external.*.id, count.index)}","${element(azurerm_network_interface.vm_controller_internal.*.id, count.index)}"]
+  network_interface_ids               = [azurerm_network_interface.vm_controller.id]
   vm_size                             = "Standard_B1ms"
 
   delete_os_disk_on_termination       = true
@@ -24,14 +22,14 @@ resource "azurerm_virtual_machine" "vm_controller" {
   # az vm image list --offer "Ubuntu" --sku "23_10" --publisher "canonical" --all
 
   storage_os_disk {
-    name              = "${var.azure-environment.prefix}_${count.index}_vm_controller_osdisk"
+    name              = "${var.azure-environment.prefix}_vm_controller_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
 
   os_profile {
-    computer_name  = "${local.computer_name_ctrl}"
+    computer_name  = "${local.computer_name_guac}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
   }
@@ -41,23 +39,16 @@ resource "azurerm_virtual_machine" "vm_controller" {
   }
 
   connection {
-      host = "${element(azurerm_public_ip.vm_controller.*.ip_address, count.index)}"
+      host = azurerm_public_ip.vm_controller.ip_address
       type = "ssh"
       user = "${var.vm.username}"
       password = "${var.vm.password}"
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "sleep 5s",
-      "sudo apt -y update",
-      "sleep 5s"
-    ]
   }
 
   provisioner "remote-exec" {
     inline = [
       "sleep 5s",
-      "sudo apt install -y unzip git ansible sshpass",
+      "sudo apt install -y unzip ansible sshpass",
       "sleep 5s"
     ]
   }
@@ -89,3 +80,4 @@ resource "azurerm_virtual_machine" "vm_controller" {
 
   tags = "${var.tags}"
 }
+  

@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: no
   vars:
-    ou_path:
+    ou_pattern:
       path: "Training{{ item }},{{ domain_ou_objects }}"
     domain_ou_base: DC=dt,DC=training
     domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
@@ -11,7 +11,7 @@
 
     # construct list
     - set_fact:
-        ou_path: "{{ (ou_path | default([])) + [ou_path] }}"
+        ou_path: "{{ (ou_pattern | default([])) + [ou_path] }}"
       with_sequence: "start=1 count=5"
     - debug:
         msg: "{{ ou_path }}"

@@ -29,7 +29,7 @@ resource "azurerm_network_security_group" "vm_guacamole" {
   location              = azurerm_resource_group.main.location
 
   security_rule {
-      name                   = "in_ssh_sven"
+      name                   = "guac_in_ssh_sven"
       priority               = 201
       direction              = "Inbound"
       access                 = "Allow"
@@ -41,7 +41,7 @@ resource "azurerm_network_security_group" "vm_guacamole" {
     }
     
     security_rule {
-        name                   = "in_ssh_hetzner"
+        name                   = "guac_in_ssh_hetzner"
         priority               = 202
         direction              = "Inbound"
         access                 = "Allow"
@@ -52,7 +52,7 @@ resource "azurerm_network_security_group" "vm_guacamole" {
         destination_address_prefix = "*"
     }
   security_rule {
-      name                   = "in_guacamole_sven"
+      name                   = "guac_in_guacamole_sven"
       priority               = 666
       direction              = "Inbound"
       access                 = "Allow"
@@ -63,7 +63,7 @@ resource "azurerm_network_security_group" "vm_guacamole" {
       destination_address_prefix = "*"
     }
       security_rule {
-      name                   = "in_guacamole_sepago"
+      name                   = "guac_in_guacamole_sepago"
       priority               = 666
       direction              = "Inbound"
       access                 = "Allow"

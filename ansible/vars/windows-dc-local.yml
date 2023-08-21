@@ -34,12 +34,12 @@ domain_ous:
 dc_ous_static:
   - name: Objects
     path: '{{ domain_ou_base }}'
-
-dc_ous_s:
   - name: Training
     path: '{{ domain_ou_objects }}'
   - name: Accounts
     path: '{{ domain_ou_training }}'
+
+dc_ous_s:
   - name: Computer
     path: '{{ domain_ou_training }}'
   - name: Groups

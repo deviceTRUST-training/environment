@@ -6,6 +6,7 @@
       path: "Training{{ item }},{{ domain_ou_objects }}"
     domain_ou_base: DC=dt,DC=training
     domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
+    test_count: 5
     
   tasks:
 

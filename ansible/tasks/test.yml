@@ -9,5 +9,5 @@
       ansible.builtin.debug:
         msg: "{{ item.0.name }} - {{ item.0.path | replace('##','Banana') }} - {{ item.1 }} "
       with_nested:
-        - "{{ dc_ous_static }}"
+        - "{{ dc_ous_dynamic }}"
         - "{{ range(1, dc_domain_count + 1, 1) | list }}"

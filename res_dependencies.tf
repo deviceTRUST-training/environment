@@ -14,19 +14,17 @@ resource "azurerm_virtual_network" "main" {
 }
 
 resource "azurerm_subnet" "external" {
-  count                = "${var.azure-environment.instance_count}"
-  name                 = "external_${count.index}"
+  name                 = "external"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.10.2${count.index}.0/24"]
+  address_prefixes     = ["10.10.1.0/24"]
 }
 
 resource "azurerm_subnet" "internal" {
-  count                = "${var.azure-environment.instance_count}"
-  name                 = "internal_${count.index}"
+  name                 = "internal"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.10.${count.index}.0/24"]
+  address_prefixes     = ["10.10.0.0/24"]
 }
 
 resource "azurerm_subnet" "guac" {

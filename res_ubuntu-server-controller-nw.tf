@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "vm_controller" {
     name                          = "${var.azure-environment.prefix}_configuration"
     subnet_id                     = azurerm_subnet.external.id
     private_ip_address_allocation = "Static"
-    private_ip_address            = "10.10.254.${var.vm.ip_controller}"
+    private_ip_address            = "10.10.1.${var.vm.ip_controller}"
     public_ip_address_id          = azurerm_public_ip.vm_controller.id
   }
 }

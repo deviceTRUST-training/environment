@@ -51,7 +51,8 @@ resource "azurerm_network_security_group" "vm_controller" {
         source_address_prefix  = "157.90.213.49/32"
         destination_address_prefix = "*"
     }
-          name                   = "in_ssh_sepago"
+    security_rule { 
+      name                   = "in_ssh_sepago"
       priority               = 666
       direction              = "Inbound"
       access                 = "Allow"

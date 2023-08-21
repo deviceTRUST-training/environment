@@ -11,9 +11,9 @@ dc_dns_zone_name: dt.training
 dc_ntp_servers: 0.us.pool.ntp.org,1.us.pool.ntp.org
 
 # OUs
-dc_ou_user_standard: OU=User,OU=Accounts,OU=Objects,DC=dt,DC=training
-dc_ou_user_admin: OU=Admins,OU=Accounts,OU=Objects,DC=dt,DC=training
-dc_ou_user_service: OU=Services,OU=Accounts,OU=Objects,DC=dt,DC=training
+dc_ou_user_standard: OU=User,OU=Accounts,'{{ domain_ou_objects }}'
+dc_ou_user_admin: OU=Admins,OU=Accounts,'{{ domain_ou_objects }}'
+dc_ou_user_service: OU=Services,OU=Accounts,'{{ domain_ou_objects }}'
 
 # Passwords
 dc_password_admin: ThisIsASecurePassword!2022
@@ -24,17 +24,20 @@ dc_password_safemode: ThisIsASecurePassword!2022
 # Users
 dc_user_admin: administrator@dt.training
 domain_ou_base: DC=dt,DC=training
-domain_ou_objects: OU=Objects,DC=dt,DC=training
-domain_ou_training: ['OU=Training01']
+domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
+domain_ou_training: 'OU=Training,{{ domain_ou_objects }}'
 
 domain_ous:
   - { name: 'Objects', path: '{{ domain_ou_base }}' }
 
 # OUs
-dc_ou:
+dc_ous_static:
   - name: Objects
     path: '{{ domain_ou_base }}'
-  - name: Training01
+
+
+dc_ous_dynamic:
+  - name: Training##
     path: '{{ domain_ou_objects }}'
   - name: Accounts
     path: '{{ domain_ou_training }}'
@@ -43,30 +46,30 @@ dc_ou:
   - name: Groups
     path: '{{ domain_ou_training }}'
   - name: 02_Administration
-    path: OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 03_Environment
-    path: OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 04_Endpoints 
-    path: OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: FatClient
-    path: OU=03_Environment,OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=03_Environment,OU=Computer,{{ domain_ou_training }}'
   - name: RDSH
-    path: OU=03_Environment,OU=Computer,'{{ domain_ou_training }}'
+    path: 'OU=03_Environment,OU=Computer,{{ domain_ou_training }}'
   - name: User
-    path: OU=Accounts,'{{ domain_ou_training }}'
+    path: OU=Accounts,{{ domain_ou_training }}'
   - name: Services
-    path: OU=Accounts,'{{ domain_ou_training }}'
+    path: 'OU=Accounts,{{ domain_ou_training }}'
   - name: Admins
-    path: OU=Accounts,'{{ domain_ou_training }}'
+    path: 'OU=Accounts,{{ domain_ou_training }}'
 
 # Groups
 dc_groups:
   - name: g_g_sec_citrix_users
     scope: global
-    path: 'OU=Groups,OU=Objects,DC=dt,DC=training'
+    path: OU=Groups,'{{ domain_ou_objects }}'
   - name: g_g_sec_guac_admins
     scope: global
-    path: 'OU=Groups,OU=Objects,DC=dt,DC=training'
+    path: OU=Groups,'{{ domain_ou_objects }}'
 
 # Users
 dc_user_standard: [training]
@@ -75,3 +78,7 @@ dc_user_service: [svc_domainjoin,svc_ldap]
 dc_groupmember:
   - name: training
     group: g_g_sec_citrix_users
+
+
+
+dc_domain_count: 2

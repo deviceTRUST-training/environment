@@ -1,9 +1,7 @@
 [windows]
-10.10.0.10 hostname=dc
 10.10.1.10 hostname=dc
 
 [windows-dc]
-10.10.0.10
 10.10.1.10
 
 [linux]

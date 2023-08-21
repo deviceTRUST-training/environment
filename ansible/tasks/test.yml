@@ -19,4 +19,4 @@
     # execute single task, no need in list
     - debug:
         msg: "{{ ou_path }}"
-      with_sequence: "start=1 count=5"
+      with_sequence: "start=1 count={{ test_count }}"

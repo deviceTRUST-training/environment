@@ -37,11 +37,11 @@ dc_ou:
   - name: Training01
     path: '{{ domain_ou_objects }}'
   - name: Accounts
-    path: '{{ domain_ou_training }}'
+    path: '{{ domain_ou_training }},{{ domain_ou_objects }}'
   - name: Computer
-    path: '{{ domain_ou_training }}'
+    path: '{{ domain_ou_training }},{{ domain_ou_objects }}'
   - name: Groups
-    path: '{{ domain_ou_training }}'
+    path: '{{ domain_ou_training }},{{ domain_ou_objects }}'
   - name: 02_Administration
     path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 03_Environment

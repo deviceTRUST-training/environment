@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   vars_files:
-    - vars/test.yml
+    - ../vars/test.yml
 
   tasks:
     - name: "Print a variable if defined"

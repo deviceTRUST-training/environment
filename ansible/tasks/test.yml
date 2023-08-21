@@ -2,19 +2,20 @@
 - hosts: localhost
   gather_facts: no
   vars:
-    ip_template:
-      primary_ip: "192.168.100.{{ item }}"
-      extra_ip: "10.0.1.{{ item }}"
+    ou_path:
+      path: "Training{{ item }}{{ domain_ou_objects }}"
+    domain_ou_base: DC=dt,DC=training
+    domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
   tasks:
 
     # construct list
     - set_fact:
-        ip_list: "{{ (ip_list | default([])) + [ip_template] }}"
+        ip_list: "{{ (ip_list | default([])) + [ou_path] }}"
       with_sequence: "start=1 count=5"
     - debug:
         msg: "{{ ip_list }}"
-        
+
     # execute single task, no need in list
     - debug:
-        msg: "{{ ip_template }}"
+        msg: "{{ ou_path }}"
       with_sequence: "start=1 count=5"

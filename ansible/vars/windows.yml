@@ -1,5 +1,5 @@
 ---
-ansible_user: admin
+ansible_user: localadmin
 ansible_password: ThisIsASecurePassword!2022
 ansible_port: 5985
 ansible_connection: winrm

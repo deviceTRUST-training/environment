@@ -52,7 +52,7 @@ dc_ous_dynamic:
   - name: RDSH
     path: 'OU=03_Environment,OU=Computer,{{ domain_ou_training }}'
   - name: User
-    path: OU=Accounts,{{ domain_ou_training }}'
+    path: 'OU=Accounts,{{ domain_ou_training }}'
   - name: Services
     path: 'OU=Accounts,{{ domain_ou_training }}'
   - name: Admins

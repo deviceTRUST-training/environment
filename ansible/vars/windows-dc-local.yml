@@ -26,12 +26,15 @@ dc_ou_user_service: OU=Services,OU=Accounts,'{{ domain_ou_objects }}'
 
 domain_ou_base: DC=dt,DC=training
 domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
+domain_ou_administrative: 'OU=Administrative,{{ domain_ou_objects }}'
 domain_ou_training: 'OU=Training##,{{ domain_ou_objects }}'
 domain_ou_user: 'OU=USer,OU=Training##,{{ domain_ou_objects }}'
 
 dc_ous_static:
   - name: Objects
     path: '{{ domain_ou_base }}'
+  - name: Administrative
+    path: '{{ domain_ou_objects }}'
 
 dc_ous_dynamic:
   - name: Training##
@@ -63,10 +66,10 @@ dc_ous_dynamic:
 dc_groups_dynamic:
   - name: g_g_sec_citrix_users##
     scope: global
-    path: OU=Groups,'{{ domain_ou_training }}'
-  - name: g_g_sec_guac_admins##
+    path: 'OU=Groups,{{ domain_ou_training }}'
+  - name: g_g_sec_guac_admins
     scope: global
-    path: OU=Groups,'{{ domain_ou_training }}'
+    path: 'OU=Administrative,{{ domain_ou_training }}'
 
 # Users
 dc_user_standard_dynamic: [training##]

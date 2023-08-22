@@ -75,6 +75,4 @@ dc_groupmember:
   - name: training
     group: g_g_sec_citrix_users
 
-
-
-dc_domain_count: 6
+dc_domain_count: 2

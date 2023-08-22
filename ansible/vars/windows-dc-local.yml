@@ -33,7 +33,7 @@ dc_ous_static:
     path: '{{ domain_ou_base }}'
 
 dc_ous_dynamic:
-  - name: Training##
+  - name: Peter##
     path: '{{ domain_ou_objects }}'
 
 dc_ous_dynamics:  
@@ -79,4 +79,4 @@ dc_groupmember:
 
 
 
-dc_domain_count: 2
+dc_domain_count: 6

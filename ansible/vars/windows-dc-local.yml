@@ -32,13 +32,9 @@ dc_ous_static:
   - name: Objects
     path: '{{ domain_ou_base }}'
 
-
-dc_ous_dynamic: [One,Two,Three]
-
-dc_ous_dynamica:
+dc_ous_dynamic:
   - name: Training##
     path: '{{ domain_ou_objects }}'
-
 
 dc_ous_dynamics:  
   - name: Accounts

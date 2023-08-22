@@ -31,8 +31,11 @@ domain_ou_training: 'OU=Training,{{ domain_ou_objects }}'
 dc_ous_static:
   - name: Objects
     path: '{{ domain_ou_base }}'
-    
-dc_ous_dynamic:
+
+
+dc_ous_dynamic: [One,Two,Three]
+
+dc_ous_dynamica:
   - name: Training##
     path: '{{ domain_ou_objects }}'
 

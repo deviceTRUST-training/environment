@@ -12,8 +12,8 @@ roles:
 - src: https://github.com/jansvensen/ansible-role-win-dc-users-conf
 - src: https://github.com/jansvensen/ansible-role-win-dc-gpo-import
 - src: https://github.com/jansvensen/ansible-role-win-dc-gpo-bind
-- src: https://github.com/jansvensen/ansible-role-win-dc-ca-inst
-- src: https://github.com/jansvensen/ansible-role-win-dc-ca-conf
+#- src: https://github.com/jansvensen/ansible-role-win-dc-ca-inst
+#- src: https://github.com/jansvensen/ansible-role-win-dc-ca-conf
 - src: https://github.com/jansvensen/ansible-role-win-domainjoin
 - src: https://github.com/jansvensen/ansible-role-win-dc-computerobjects-conf
 - src: https://github.com/jansvensen/ansible-role-win-sw-chocolatey

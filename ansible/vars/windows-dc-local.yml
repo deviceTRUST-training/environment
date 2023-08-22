@@ -35,6 +35,9 @@ dc_ous_static:
 dc_ous_dynamic:
   - name: Training##
     path: '{{ domain_ou_objects }}'
+
+
+dc_ous_dynamics:  
   - name: Accounts
     path: '{{ domain_ou_training }}'
   - name: Computer

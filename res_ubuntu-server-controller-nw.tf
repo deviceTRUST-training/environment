@@ -23,7 +23,7 @@ resource "azurerm_network_interface" "vm_controller" {
 }
 
 resource "azurerm_network_security_group" "vm_controller" {
-  name   = "${var.azure-environment.prefix}_nsg_ssh"
+  name   = "${var.azure-environment.prefix}_controller_nsg"
 
   resource_group_name   = azurerm_resource_group.training.name
   location              = azurerm_resource_group.training.location

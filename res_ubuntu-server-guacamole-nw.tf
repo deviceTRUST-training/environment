@@ -23,7 +23,7 @@ resource "azurerm_network_interface" "vm_guacamole" {
 }
 
 resource "azurerm_network_security_group" "vm_guacamole" {
-  name   = "${var.azure-environment.prefix}_nsg_ssh"
+  name   = "${var.azure-environment.prefix}_guacamole_nsg"
 
   resource_group_name   = azurerm_resource_group.training.name
   location              = azurerm_resource_group.training.location

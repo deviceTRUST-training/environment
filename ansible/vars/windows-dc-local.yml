@@ -27,14 +27,11 @@ domain_ou_base: DC=dt,DC=training
 domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
 domain_ou_training: 'OU=Training,{{ domain_ou_objects }}'
 
-domain_ous:
-  - { name: 'Objects', path: '{{ domain_ou_base }}' }
-
 # OUs
 dc_ous_static:
   - name: Objects
     path: '{{ domain_ou_base }}'
-
+    
 dc_ous_dynamic:
   - name: Training##
     path: '{{ domain_ou_objects }}'

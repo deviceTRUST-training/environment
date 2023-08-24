@@ -11,8 +11,8 @@ resource "azurerm_network_interface" "vm_dc" {
   }
 }
 
-resource "azurerm_network_security_group" "vm_controller" {
-  name   = "${var.azure-environment.prefix}_controller_nsg"
+resource "azurerm_network_security_group" "vm_dc" {
+  name   = "${var.azure-environment.prefix}_dc_nsg"
 
   resource_group_name   = azurerm_resource_group.training.name
   location              = azurerm_resource_group.training.location
@@ -41,7 +41,7 @@ resource "azurerm_network_security_group" "vm_controller" {
         destination_address_prefix = "*"
     }
   security_rule {
-      name                   = "guac_in_controller_sven"
+      name                   = "guac_in_dc_sven"
       priority               = 666
       direction              = "Inbound"
       access                 = "Allow"
@@ -52,7 +52,7 @@ resource "azurerm_network_security_group" "vm_controller" {
       destination_address_prefix = "*"
     }
       security_rule {
-      name                   = "guac_in_controller_sepago"
+      name                   = "guac_in_dc_sepago"
       priority               = 667
       direction              = "Inbound"
       access                 = "Allow"
@@ -86,9 +86,9 @@ resource "azurerm_network_security_group" "vm_controller" {
     }
 }
 
-resource "azurerm_network_interface_security_group_association" "vm_controller_external" {
+resource "azurerm_network_interface_security_group_association" "vm_dc_external" {
 
-  network_interface_id      = azurerm_network_interface.vm_controller.id
-  network_security_group_id = azurerm_network_security_group.vm_controller.id
+  network_interface_id      = azurerm_network_interface.vm_dc.id
+  network_security_group_id = azurerm_network_security_group.vm_dc.id
   
 }

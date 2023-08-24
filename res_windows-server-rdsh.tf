@@ -10,7 +10,7 @@ resource "azurerm_virtual_machine" "vm_rdsh" {
   name                  = "${var.azure-environment.prefix}_${count.index}_vm_rdsh"
   location              = "${element(azurerm_resource_group.training.*.location, count.index)}"
   resource_group_name   = "${element(azurerm_resource_group.training.*.name, count.index)}"
-  network_interface_ids = ["${element(azurerm_network_interface.vm_rdsh_member.*.id, count.index)}"]
+  network_interface_ids = ["${element(azurerm_network_interface.vm_rdsh.*.id, count.index)}"]
   vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 
   delete_os_disk_on_termination = true

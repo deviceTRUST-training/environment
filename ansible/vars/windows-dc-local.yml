@@ -75,8 +75,8 @@ dc_groups_dynamic:
 dc_user_standard_dynamic: [training##]
 dc_user_service: [svc_domainjoin,svc_ldap]
 
-dc_groupmember:
-  - name: training
+dc_groupmember_dynamic:
+  - name: training##
     group: g_g_sec_citrix_users
 
 dc_domain_count: 2

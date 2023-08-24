@@ -27,8 +27,8 @@ resource "azurerm_subnet" "member" {
   address_prefixes     = ["10.2.0.0/16"]
 }
 
-resource "azurerm_subnet" "guac" {
-  name                 = "guac"
+resource "azurerm_subnet" "infra" {
+  name                 = "infra"
   resource_group_name  = azurerm_resource_group.training.name
   virtual_network_name = azurerm_virtual_network.training.name
   address_prefixes     = ["10.254.0.0/16"]

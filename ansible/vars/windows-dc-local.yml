@@ -20,6 +20,7 @@ dc_password_safemode: ThisIsASecurePassword!2022
 dc_user_admin: administrator@dt.training
 
 # OUs
+dc_ou_user_standard: '{{ domain_ou_user }}'
 dc_ou_user_admin: '{{ domain_ou_administrative }}'
 dc_ou_user_service: '{{ domain_ou_administrative }}'
 

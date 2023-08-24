@@ -20,15 +20,15 @@ dc_password_safemode: ThisIsASecurePassword!2022
 dc_user_admin: administrator@dt.training
 
 # OUs
-dc_ou_user_standard: OU=User,OU=Accounts,'{{ domain_ou_objects }}'
-dc_ou_user_admin: OU=Admins,OU=Accounts,'{{ domain_ou_objects }}'
-dc_ou_user_service: OU=Services,OU=Accounts,'{{ domain_ou_objects }}'
+dc_ou_user_standard: '{{ domain_ou_user }}'
+dc_ou_user_admin: '{{ domain_ou_administrative }}'
+dc_ou_user_service: '{{ domain_ou_administrative }}'
 
 domain_ou_base: DC=dt,DC=training
 domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
 domain_ou_administrative: 'OU=Administrative,{{ domain_ou_objects }}'
 domain_ou_training: 'OU=Training##,{{ domain_ou_objects }}'
-domain_ou_user: 'OU=USer,OU=Training##,{{ domain_ou_objects }}'
+domain_ou_user: 'OU=User,OU=Accounts,OU=Training##,{{ domain_ou_objects }}'
 
 dc_ous_static:
   - name: Objects
@@ -69,14 +69,14 @@ dc_groups_dynamic:
     path: 'OU=Groups,{{ domain_ou_training }}'
   - name: g_g_sec_guac_admins
     scope: global
-    path: 'OU=Administrative,{{ domain_ou_training }}'
+    path: '{{ domain_ou_administrative }}'
 
 # Users
 dc_user_standard_dynamic: [training##]
 dc_user_service: [svc_domainjoin,svc_ldap]
 
-dc_groupmember:
-  - name: training
-    group: g_g_sec_citrix_users
+dc_groupmember_dynamic:
+  - name: training##
+    group: g_g_sec_citrix_users##
 
 dc_domain_count: 2

@@ -15,9 +15,9 @@ resource "azurerm_network_interface" "vm_controller" {
 
   ip_configuration {
     name                          = "${var.azure-environment.prefix}_configuration"
-    subnet_id                     = azurerm_subnet.external.id
+    subnet_id                     = azurerm_subnet.infra.id
     private_ip_address_allocation = "Static"
-    private_ip_address            = "10.10.1.${var.vm.ip_controller}"
+    private_ip_address            = "10.254.0.${var.vm.ip_controller}"
     public_ip_address_id          = azurerm_public_ip.vm_controller.id
   }
 }
@@ -75,7 +75,7 @@ resource "azurerm_network_security_group" "vm_controller" {
     }
 }
 
-resource "azurerm_network_interface_security_group_association" "vm_controller_external" {
+resource "azurerm_network_interface_security_group_association" "vm_controller_infra" {
 
   network_interface_id      = azurerm_network_interface.vm_controller.id
   network_security_group_id = azurerm_network_security_group.vm_controller.id

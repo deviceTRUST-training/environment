@@ -13,15 +13,15 @@ resource "azurerm_virtual_network" "training" {
   # dns_servers         = [ "10.${count.index}.${var.vm.ip_dc}" ]
 }
 
-resource "azurerm_subnet" "external" {
-  name                 = "external"
+resource "azurerm_subnet" "dc" {
+  name                 = "dc"
   resource_group_name  = azurerm_resource_group.training.name
   virtual_network_name = azurerm_virtual_network.training.name
   address_prefixes     = ["10.1.0.0/16"]
 }
 
-resource "azurerm_subnet" "internal" {
-  name                 = "internal"
+resource "azurerm_subnet" "member" {
+  name                 = "member"
   resource_group_name  = azurerm_resource_group.training.name
   virtual_network_name = azurerm_virtual_network.training.name
   address_prefixes     = ["10.2.0.0/16"]

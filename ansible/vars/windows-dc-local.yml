@@ -73,7 +73,7 @@ dc_groups_dynamic:
 
 # Users
 dc_user_standard_dynamic: [training##]
-dc_user_service_static: [svc_domainjoin,svc_ldap]
+dc_user_service: [svc_domainjoin,svc_ldap]
 
 dc_groupmember:
   - name: training

@@ -9,7 +9,7 @@ resource "azurerm_virtual_machine" "vm_dc" {
   name                  = "${var.azure-environment.prefix}_vm_dc"
   location              = azurerm_resource_group.training.location
   resource_group_name   = azurerm_resource_group.training.name
-  network_interface_ids = [azurerm_network_interface.vm_dc_internal.id]
+  network_interface_ids = [azurerm_network_interface.vm_dc.id]
   vm_size               = "Standard_B1ms"  # 1x CPU, 2GB RAM
 
   delete_os_disk_on_termination = true

@@ -28,7 +28,7 @@ domain_ou_base: DC=dt,DC=training
 domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
 domain_ou_administrative: 'OU=Administrative,{{ domain_ou_objects }}'
 domain_ou_training: 'OU=Training##,{{ domain_ou_objects }}'
-domain_ou_user: 'OU=User,OU=Training##,{{ domain_ou_objects }}'
+domain_ou_user: 'OU=User,OU=Accounts,OU=Training##,{{ domain_ou_objects }}'
 
 dc_ous_static:
   - name: Objects

@@ -69,7 +69,7 @@ dc_groups_dynamic:
     path: 'OU=Groups,{{ domain_ou_training }}'
   - name: g_g_sec_guac_admins
     scope: global
-    path: 'OU=Administrative,{{ domain_ou_training }}'
+    path: '{{ domain_ou_administrative }}'
 
 # Users
 dc_user_standard_dynamic: [training##]

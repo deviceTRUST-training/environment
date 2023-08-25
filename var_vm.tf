@@ -6,11 +6,11 @@ variable vm {
     password              = "S00perSecurePassword!"
     domain_dns_name       = "dt.training"
     domain_netbios_name   = "dt"
-    ip_dc                 = "1"
-    ip_controller         = "1"
-    ip_guacamole          = "2"
-    ip_rdsh               = "1"
-    ip_byod               = "3"
-    ip_client             = "2"
+    ip_dc                 = "11"
+    ip_controller         = "11"
+    ip_guacamole          = "12"
+    ip_rdsh               = "11"
+    ip_client             = "12"
+    ip_byod               = "13"
   }
 }

@@ -5,7 +5,7 @@ terraformapply(){
          retval=10
     else
          echo >&2 "Apply failed!"
-         retval=0
+         ((retval=retval+1))
     fi
 }
 
@@ -14,6 +14,5 @@ retval=0
 while [ "$retval" -lt 10 ]
 do
   terraformapply
-  ((retval=retval+1))
   echo >&2 "$retval"
 done

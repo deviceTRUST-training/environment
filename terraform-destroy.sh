@@ -5,7 +5,7 @@ terraformdestroy(){
          retval=10
     else
          echo >&2 "Destroy failed!"
-         retval=0
+         ((retval=retval+1))
     fi
     return "$retval"     
 }
@@ -14,7 +14,6 @@ retval=0
 
 while [ "$retval" -lt 10 ]
 do
-  terraformdestroy
-  ((retval=retval+1))
+  terraformdestroy  
   echo >&2 "$retval"
 done

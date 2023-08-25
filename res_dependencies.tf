@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "training" {
 
 resource "azurerm_virtual_network" "training" {
   name                = "vnet_training"
-  address_space       = ["10.0.0.0/8"]
+  address_space       = ["10.10.0.0/16"]
   location            = azurerm_resource_group.training.location
   resource_group_name = azurerm_resource_group.training.name
   tags                = "${var.tags}"
@@ -17,19 +17,19 @@ resource "azurerm_subnet" "dc" {
   name                 = "dc"
   resource_group_name  = azurerm_resource_group.training.name
   virtual_network_name = azurerm_virtual_network.training.name
-  address_prefixes     = ["10.1.0.0/16"]
+  address_prefixes     = ["10.10.1.0/24"]
 }
 
 resource "azurerm_subnet" "member" {
   name                 = "member"
   resource_group_name  = azurerm_resource_group.training.name
   virtual_network_name = azurerm_virtual_network.training.name
-  address_prefixes     = ["10.2.0.0/16"]
+  address_prefixes     = ["10.10.10.0/24"]
 }
 
 resource "azurerm_subnet" "infra" {
   name                 = "infra"
   resource_group_name  = azurerm_resource_group.training.name
   virtual_network_name = azurerm_virtual_network.training.name
-  address_prefixes     = ["10.254.0.0/16"]
+  address_prefixes     = ["10.10.254.0/16"]
 }

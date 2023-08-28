@@ -50,7 +50,13 @@ resource "azurerm_virtual_machine" "vm_controller" {
       "sleep 5s",
       "sudo apt -y update",
       "sleep 5s",
-      "sudo apt -y install docker docker-compose git unzip ansible sshpass"
+      "sudo apt -y install docker docker-compose git unzip ansible sshpass pip"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "pip install mysqlclient"
     ]
   }
 

@@ -1,16 +1,14 @@
 ---
-# used in treafik revers proxy and the automatic ssl certificate generation
-# using letsencrypt
 public_hosting_domain: democloud.devicetrust.com
 # docker_container_guac_volume_dir: guac_home
 
 # infra_dh
-docker_compose_version: 1.29.2
-docker_users: localadmin
-docker_daemon_options:
-  bip: "172.29.0.1/16"
-  default-address-pools:
-    - { base: "172.73.0.0/16", size: 24 }
+#docker_compose_version: 1.29.2
+#docker_users: localadmin
+#docker_daemon_options:
+#  bip: "172.29.0.1/16"
+#  default-address-pools:
+#    - { base: "172.73.0.0/16", size: 24 }
 
 # Docker
 docker_host_subnet_base: 172.73.0.0/16
@@ -19,16 +17,18 @@ docker_host_bridge_ip: 172.29.0.1/16
 docker_container_volume_base_dir: /srv/docker_data
 docker_container_guac_volume_dir: "{{ docker_container_volume_base_dir }}/{{ docker_container_guac_name }}"
 
-# Docker container
+# Docker container guac
 docker_container_guac_version: 1.4.0
 docker_container_guac_name: guac
-docker_container_guac_image: "guacamole/guacamole"
+docker_container_guac_image: guacamole/guacamole
 
+# Docker container guacd
 docker_container_guac_d_name: guacd
-docker_container_guac_d_image: "guacamole/guacd"
+docker_container_guac_d_image: guacamole/guacd
 
+# Docker container guac-db / mysql
 docker_container_guac_db_name: guac-db
-docker_container_guac_db_image: "mysql"
+docker_container_guac_db_image: mysql
 
 # Guacamole 
 guac_mfa_enabled: false
@@ -38,9 +38,9 @@ guac_db_user: guacadmin
 guac_db_password: S00perSecurePassw0rd2023
 guac_db_root_password: S00perSecurePassw0rd2023
 
-guac_ldap_admin_user: 'svc_ldap'
-guac_ldap_admin_group: 'g_g_sec_guac_admins'
-guac_root_connection_group: 'Training'
+guac_ldap_admin_user: svc_ldap
+guac_ldap_admin_group: g_g_sec_guac_admins
+guac_root_connection_group: Training
 
 ansible_hostname: controller
 

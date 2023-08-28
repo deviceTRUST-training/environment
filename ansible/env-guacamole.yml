@@ -7,5 +7,5 @@
 
   roles:
     #- { role: ansible-role-linux-software-installation }
-    - { role: ansible-role-linux-docker-container-guacamole }
+    # - { role: ansible-role-linux-docker-container-guacamole }
     - { role: ansible-role-linux-docker-container-guacamole-connections }

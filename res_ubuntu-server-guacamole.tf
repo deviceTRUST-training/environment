@@ -50,20 +50,26 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
       "sleep 5s",
       "sudo apt -y update",
       "sleep 5s",
-      "sudo apt -y install docker docker-compose git"
+      "sudo apt -y install docker docker-compose git pip pkg-config python3-dev default-libmysqlclient-dev build-essential"
     ]
   }
 
   provisioner "remote-exec" {
     inline = [
-      "cd /home/localadmin",
-      "sudo mkdir git",
-      "cd /home/localadmin/git",
-      "sudo git clone https://github.com/jansvensen/guacamole.git",
-      "cd /home/localadmin/git/guacamole",
-      "sudo docker-compose up -d"
+      "pip install mysqlclient"
     ]
   }
+
+  #provisioner "remote-exec" {
+  #  inline = [
+  #    "cd /home/localadmin",
+  #    "sudo mkdir git",
+  #    "cd /home/localadmin/git",
+  #    "sudo git clone https://github.com/jansvensen/guacamole.git",
+  #    "cd /home/localadmin/git/guacamole",
+  #    "sudo docker-compose up -d"
+  #  ]
+  #}
 
   tags = "${var.tags}"
 }

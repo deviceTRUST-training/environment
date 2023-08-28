@@ -63,7 +63,8 @@ resource "azurerm_virtual_machine" "vm_controller" {
     inline = [
       "ansible-galaxy collection install microsoft.ad",
       "ansible-galaxy collection install ansible.windows",  # up to be deprecated
-      "ansible-galaxy collection install community.windows" # up to be deprecated
+      "ansible-galaxy collection install community.windows", # up to be deprecated
+      "ansible-galaxy collection install community.mysql"
     ]
   }
 

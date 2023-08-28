@@ -33,8 +33,8 @@ docker_container_guac_volume_dir: "{{ docker_container_volume_base_dir }}/{{ doc
 
 guac_mfa_enabled: false
 
-guac_db_name: 'guacamole'
-guac_db_user: 'guacadmin'
+guac_db_name: guacamole
+guac_db_user: guacadmin
 guac_db_password: S00perSecurePassw0rd2023
 guac_db_root_password: S00perSecurePassw0rd2023
 

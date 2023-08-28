@@ -1,3 +1,10 @@
+INSERT INTO guacamole_connection_group (connection_group_name, parent_id, type)
+SELECT
+    '{{ guac_root_connection_group }}' AS connection_group_name,
+    NULL 				                       AS parent_id,
+    'organizational' 	                 AS type
+;
+
 {% for guac_connection_name in guac_connection_names %}
 -- Create Connection
 INSERT INTO guacamole_connection (connection_name, parent_id, protocol)

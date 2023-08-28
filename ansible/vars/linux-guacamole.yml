@@ -3,12 +3,12 @@ public_hosting_domain: democloud.devicetrust.com
 # docker_container_guac_volume_dir: guac_home
 
 # infra_dh
-#docker_compose_version: 1.29.2
-#docker_users: localadmin
-#docker_daemon_options:
-#  bip: "172.29.0.1/16"
-#  default-address-pools:
-#    - { base: "172.73.0.0/16", size: 24 }
+docker_compose_version: 1.29.2
+docker_users: localadmin
+docker_daemon_options:
+  bip: "172.29.0.1/16"
+  default-address-pools:
+    - { base: "172.73.0.0/16", size: 24 }
 
 # Docker
 docker_host_subnet_base: 172.73.0.0/16

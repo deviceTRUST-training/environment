@@ -1,7 +1,7 @@
 ---
 # used in treafik revers proxy and the automatic ssl certificate generation
 # using letsencrypt
-public_hosting_domain: 'democloud.devicetrust.com'
+public_hosting_domain: democloud.devicetrust.com
 # docker_container_guac_volume_dir: guac_home
 
 # infra_dh
@@ -57,4 +57,3 @@ guac_connection_names: ["irgendwas","dasauch"]
 dns_domain_name: dt.training
 win_user_language: en-us
 docker_container_names: ["guac","guacd","guacd-db"]
-dc: 10.10.1.11

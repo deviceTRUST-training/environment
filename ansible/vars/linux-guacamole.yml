@@ -35,8 +35,8 @@ guac_mfa_enabled: false
 
 guac_db_name: 'guacamole'
 guac_db_user: 'guacadmin'
-guac_db_password: 'S00perSecurePassw0rd2023'
-guac_db_root_password: 'S00perSecurePassw0rd2023'
+guac_db_password: S00perSecurePassw0rd2023
+guac_db_root_password: S00perSecurePassw0rd2023
 
 guac_ldap_admin_user: 'svc_ldap'
 guac_ldap_admin_group: 'g_g_sec_guac_admins'
@@ -50,7 +50,7 @@ ansible_hostname: controller
 
 linux_software_apt: ["docker","docker-compose"]
 
-domain_admin_password: 'ThisIsASecurePassword!2022'
+domain_admin_password: S00perSecurePassw0rd2023
 
 guac_connection_sql_file_prefix: irgendwas
 guac_connection_names: ["irgendwas","dasauch"]

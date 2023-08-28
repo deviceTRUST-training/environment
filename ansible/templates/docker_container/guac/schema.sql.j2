@@ -55,7 +55,7 @@ CREATE TABLE `guacamole_connection` (
   `connection_name`     varchar(128) NOT NULL,
   `parent_id`           int(11),
   `protocol`            varchar(32)  NOT NULL,
-
+  
   -- Guacamole proxy (guacd) overrides
   `proxy_port`              integer,
   `proxy_hostname`          varchar(512),
@@ -64,7 +64,7 @@ CREATE TABLE `guacamole_connection` (
   -- Concurrency limits
   `max_connections`          int(11),
   `max_connections_per_user` int(11),
-
+  
   -- Load-balancing behavior
   `connection_weight`        int(11),
   `failover_only`            boolean NOT NULL DEFAULT 0,
@@ -630,15 +630,15 @@ CREATE TABLE guacamole_user_password_history (
 -- under the License.
 --
 
-SET @salt = UNHEX(SHA2(UUID(), 256));
+									 
 
 -- Create default user "guacadmin" with password "guacadmin"
 INSERT INTO guacamole_entity (name, type) VALUES ('guacadmin', 'USER');
 INSERT INTO guacamole_user (entity_id, password_hash, password_salt, password_date)
 SELECT
     entity_id,
-    UNHEX(SHA2(CONCAT('{{ domain_admin_password }}', HEX(@salt)), 256)),  -- ''
-    @salt,
+    x'CA458A7D494E3BE824F5E1E175A1556C0F8EEF2C2D7DF3633BEC4A29C4411960',  -- 'guacadmin'
+    x'FE24ADC5E11E2B25288D1704ABE67A79E342ECC26064CE69C5B3177795A82264',
     NOW()
 FROM guacamole_entity WHERE name = 'guacadmin';
 
@@ -667,104 +667,3 @@ FROM (
 JOIN guacamole_entity          ON permissions.username = guacamole_entity.name AND guacamole_entity.type = 'USER'
 JOIN guacamole_entity affected ON permissions.affected_username = affected.name AND guacamole_entity.type = 'USER'
 JOIN guacamole_user            ON guacamole_user.entity_id = affected.entity_id;
-
-
--- LDAP User and Groups
-
--- Create default user ldap user with password "guacadmin"
-INSERT INTO guacamole_entity (name, type) VALUES ('{{ guac_ldap_admin_user }}', 'USER');
-
-INSERT INTO guacamole_user (entity_id, password_hash, password_salt, password_date)
-SELECT
-    entity_id,
-    UNHEX(SHA2(CONCAT('{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=16') }}', HEX(@salt)), 256)),
-    @salt,
-    NOW()
-FROM guacamole_entity WHERE name = '{{ guac_ldap_admin_user }}';
-
--- Grant this user all system permissions
-INSERT INTO guacamole_system_permission (entity_id, permission)
-SELECT entity_id, permission
-FROM (
-          SELECT '{{ guac_ldap_admin_user }}'  AS username, 'CREATE_CONNECTION'       AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}'  AS username, 'CREATE_CONNECTION_GROUP' AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}'  AS username, 'CREATE_SHARING_PROFILE'  AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}'  AS username, 'CREATE_USER'             AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}'  AS username, 'CREATE_USER_GROUP'       AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}'  AS username, 'ADMINISTER'              AS permission
-) permissions
-JOIN guacamole_entity ON permissions.username = guacamole_entity.name AND guacamole_entity.type = 'USER';
-
--- Create user group
-INSERT INTO guacamole_entity (name, type) VALUES ('{{ guac_ldap_admin_group }}', 'USER_GROUP');
-
-INSERT INTO guacamole_user_group (entity_id)
-SELECT
-    entity_id
-FROM guacamole_entity WHERE name = '{{ guac_ldap_admin_group }}';
-
--- Grant this group all system permissions
-INSERT INTO guacamole_system_permission (entity_id, permission)
-SELECT entity_id, permission
-FROM (
-          SELECT '{{ guac_ldap_admin_group }}'  AS groupname, 'CREATE_CONNECTION'       AS permission
-    UNION SELECT '{{ guac_ldap_admin_group }}'  AS groupname, 'CREATE_CONNECTION_GROUP' AS permission
-    UNION SELECT '{{ guac_ldap_admin_group }}'  AS groupname, 'CREATE_SHARING_PROFILE'  AS permission
-    UNION SELECT '{{ guac_ldap_admin_group }}'  AS groupname, 'CREATE_USER'             AS permission
-    UNION SELECT '{{ guac_ldap_admin_group }}'  AS groupname, 'CREATE_USER_GROUP'       AS permission
-    UNION SELECT '{{ guac_ldap_admin_group }}'  AS groupname, 'ADMINISTER'              AS permission
-) permissions
-JOIN guacamole_entity ON permissions.groupname = guacamole_entity.name AND guacamole_entity.type = 'USER_GROUP';
-
--- Grant admin permission to read/update/administer self
-INSERT INTO guacamole_user_permission (entity_id, affected_user_id, permission)
-SELECT guacamole_entity.entity_id, guacamole_user.user_id, permission
-FROM (
-          SELECT 'guacadmin' AS username, '{{ guac_ldap_admin_user }}' AS affected_username, 'READ'       AS permission
-    UNION SELECT 'guacadmin' AS username, '{{ guac_ldap_admin_user }}' AS affected_username, 'UPDATE'     AS permission
-    UNION SELECT 'guacadmin' AS username, '{{ guac_ldap_admin_user }}' AS affected_username, 'ADMINISTER' AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_ldap_admin_user }}' AS affected_username, 'READ'     AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_ldap_admin_user }}' AS affected_username, 'UPDATE' AS permission
-) permissions
-JOIN guacamole_entity          ON permissions.username = guacamole_entity.name AND guacamole_entity.type = 'USER'
-JOIN guacamole_entity affected ON permissions.affected_username = affected.name AND guacamole_entity.type = 'USER'
-JOIN guacamole_user            ON guacamole_user.entity_id = affected.entity_id;
-
--- Grant admin permission to read/update/administer self
-INSERT INTO guacamole_user_group_permission (entity_id, affected_user_group_id, permission)
-SELECT guacamole_entity.entity_id, guacamole_user_group.user_group_id, permission
-FROM (
-          SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_ldap_admin_group }}' AS affected_groupname, 'READ'       AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_ldap_admin_group }}' AS affected_groupname, 'UPDATE'     AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_ldap_admin_group }}' AS affected_groupname, 'DELETE'     AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_ldap_admin_group }}' AS affected_groupname, 'ADMINISTER' AS permission
-) permissions
-JOIN guacamole_entity          ON permissions.username = guacamole_entity.name AND guacamole_entity.type = 'USER'
-JOIN guacamole_entity affected ON permissions.affected_groupname = affected.name AND guacamole_entity.type = 'USER_GROUP'
-JOIN guacamole_user_group      ON guacamole_user_group.entity_id = affected.entity_id;
-
--- Create Connection Group
-INSERT INTO guacamole_connection_group (connection_group_name, type) VALUES ('{{ guac_root_connection_group }}','ORGANIZATIONAL');
-
--- Create Connection Group Permission for user
-INSERT INTO guacamole_connection_group_permission (entity_id, connection_group_id, permission)
-SELECT guacamole_entity.entity_id, guacamole_connection_group.connection_group_id, permission
-FROM (
-          SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_root_connection_group }}' AS affected_connection_group_name, 'READ'        AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_root_connection_group }}' AS affected_connection_group_name, 'UPDATE'      AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_root_connection_group }}' AS affected_connection_group_name, 'DELETE'      AS permission
-    UNION SELECT '{{ guac_ldap_admin_user }}' AS username, '{{ guac_root_connection_group }}' AS affected_connection_group_name, 'ADMINISTER'  AS permission
-
-) permissions
-JOIN guacamole_entity           ON permissions.username = guacamole_entity.name AND guacamole_entity.type = 'USER'
-JOIN guacamole_connection_group ON permissions.affected_connection_group_name = guacamole_connection_group.connection_group_name AND guacamole_connection_group.parent_id is NULL;
-
--- Create Connection Group Permission for group
-INSERT INTO guacamole_connection_group_permission (entity_id, connection_group_id, permission)
-SELECT guacamole_entity.entity_id, guacamole_connection_group.connection_group_id, permission
-FROM (
-          SELECT '{{ guac_ldap_admin_group }}' AS groupname, '{{ guac_root_connection_group }}' AS affected_connection_group_name, 'READ' AS permission
-
-) permissions
-JOIN guacamole_entity           ON permissions.groupname = guacamole_entity.name AND guacamole_entity.type = 'USER_GROUP'
-JOIN guacamole_connection_group ON permissions.affected_connection_group_name = guacamole_connection_group.connection_group_name AND guacamole_connection_group.parent_id is NULL;

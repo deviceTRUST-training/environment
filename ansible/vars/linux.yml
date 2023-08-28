@@ -1,7 +1,3 @@
 ---
 ansible_user: localadmin
-ansible_password: S00perSecurePassword!
-#ansible_port: 22
-# ansible_ssh_common_args: '{{ vault_global_ansible_ssh_common_args }}'
-#ansible_ssh_retries: 3
-#ansible_become_user: root
+ansible_password: S00perSecurePassw0rd2023

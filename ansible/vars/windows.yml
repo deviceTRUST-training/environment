@@ -1,6 +1,6 @@
 ---
 ansible_user: localadmin
-ansible_password: ThisIsASecurePassword!2022
+ansible_password: S00perSecurePassw0rd2023
 ansible_port: 5985
 ansible_connection: winrm
 ansible_winrm_scheme: http
@@ -17,7 +17,7 @@ domain_dnsname: dt.training
 
 # Domainjoin variables
 domainjoin_domain_name: dt.training
-domainjoin_user_pw: ThisIsASecurePassword!2022
+domainjoin_user_pw: S00perSecurePassw0rd2023
 domainjoin_user_name: svc_domainjoin@dt.training
 domainjoin_ou: 'OU=Computer,OU=Objects,DC=dt,DC=training'
 

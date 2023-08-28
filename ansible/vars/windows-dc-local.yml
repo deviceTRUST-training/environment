@@ -1,7 +1,7 @@
 ---
 # Ansible variables
 ansible_user: vagrant
-ansible_password: ThisIsASecurePassword!2022
+ansible_password: S00perSecurePassw0rd2023
 
 # DNS Configuration
 dc_dns_upstream: 10.10.11.1
@@ -11,10 +11,10 @@ dc_dns_zone_name: dt.training
 dc_ntp_servers: 0.us.pool.ntp.org,1.us.pool.ntp.org
 
 # Passwords
-dc_password_admin: ThisIsASecurePassword!2022
-dc_password_user: deviceTRUST!2022
-dc_password_service: ThisIsASecurePassword!2022
-dc_password_safemode: ThisIsASecurePassword!2022
+dc_password_admin: S00perSecurePassw0rd2023
+dc_password_user: S00perSecurePassw0rd2023
+dc_password_service: S00perSecurePassw0rd2023
+dc_password_safemode: S00perSecurePassw0rd2023
 
 # Users
 dc_user_admin: administrator@dt.training

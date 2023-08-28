@@ -50,7 +50,13 @@ resource "azurerm_virtual_machine" "vm_guacamole" {
       "sleep 5s",
       "sudo apt -y update",
       "sleep 5s",
-      "sudo apt -y install docker docker-compose git"
+      "sudo apt -y install docker docker-compose git pip pkg-config python3-dev default-libmysqlclient-dev build-essential"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "pip install mysqlclient"
     ]
   }
 

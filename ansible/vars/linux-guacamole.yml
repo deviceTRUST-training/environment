@@ -31,7 +31,7 @@ docker_container_guac_db_image: "mysql"
 
 docker_container_guac_volume_dir: "{{ docker_container_volume_base_dir }}/{{ docker_container_guac_name }}"
 
-guac_mfa_enabled: 'false'
+guac_mfa_enabled: false
 
 guac_db_name: 'guacamole'
 guac_db_user: 'guacadmin'

@@ -3,7 +3,7 @@ variable vm {
   description             = ""
   default = {
     username              = "localadmin"
-    password              = "S00perSecurePassword!"
+    password              = "S00perSecurePassw0rd2023"
     domain_dns_name       = "dt.training"
     domain_netbios_name   = "dt"
     ip_dc                 = "11"

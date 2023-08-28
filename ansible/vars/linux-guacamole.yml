@@ -50,7 +50,7 @@ domain_admin_password: S00perSecurePassw0rd2023
 
 guac_connection_sql_file_prefix: '{{ guac_root_connection_group }}'
 guac_connection_names: ["irgendwas","dasauch"]
-
 dns_domain_name: dt.training
 win_user_language: en-us
-docker_container_names: ["guac","guacd","guacd-db"]
+
+docker_container_names: ["{{ docker_container_guac_name }}","{{ docker_container_guac_d_name }}","{{ docker_container_guac_db_name }}"]

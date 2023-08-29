@@ -4,6 +4,7 @@ ansible_password: S00perSecurePassw0rd2023
 ansible_port: 5985
 ansible_connection: winrm
 ansible_winrm_scheme: http
+ansible_winrm_transport: ntlm
 
 # The following is necessary for Python 2.7.9+ when using default WinRM self-signed certificates:
 ansible_winrm_server_cert_validation: ignore

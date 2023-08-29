@@ -1,6 +1,6 @@
 ---
 # Ansible variables
-ansible_user: vagrant
+ansible_user: localadmin
 ansible_password: S00perSecurePassw0rd2023
 lala: ThisIsASecurePassword!2022
 

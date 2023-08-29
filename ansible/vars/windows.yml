@@ -1,7 +1,7 @@
 ---
 ansible_user: localadmin
 ansible_password: S00perSecurePassw0rd2023
-ansible_port: 5985
+ansible_port: 5986
 ansible_connection: winrm
 ansible_winrm_scheme: http
 

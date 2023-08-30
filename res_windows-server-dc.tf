@@ -59,8 +59,10 @@ resource "azurerm_virtual_machine" "vm_dc" {
   }
 
   provisioner "remote-exec" {
-    command = "Set-NetconnectionProfile -InterfaceAlias 'Ethernet' -NetworkCategory Private"
-    interpreter = ["PowerShell", "-Command"]
+    command = ""
+        inline = [
+            "powershell.exe 'Set-NetconnectionProfile -InterfaceAlias 'Ethernet' -NetworkCategory Private'"
+        ]
   }
 
   tags = "${var.tags}"

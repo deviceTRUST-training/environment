@@ -29,4 +29,9 @@
         <Description>WinRM: Allow unencrypted communication</Description>
         <Order>16</Order>
     </SynchronousCommand>
+    <SynchronousCommand>
+        <CommandLine>powershell.exe Set-NetconnectionProfile -InterfaceAlias Ethernet -NetworkCategory Private</CommandLine>
+        <Description>Set Ethernet Interface to NetworkCategory private. Allows WinRm on 5985.</Description>
+        <Order>16</Order>
+    </SynchronousCommand>
 </FirstLogonCommands>

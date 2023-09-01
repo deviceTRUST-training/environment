@@ -11,6 +11,6 @@
      #- { role: ansible-role-win-dc-ad-inst }
      #- { role: ansible-role-win-dc-ad-conf }
      #- { role: ansible-role-win-dc-ous-conf }
-     - { role: ansible-role-win-dc-groups-conf }
+     #- { role: ansible-role-win-dc-groups-conf }
      - { role: ansible-role-win-dc-users-create }
      - { role: ansible-role-win-dc-users-conf }

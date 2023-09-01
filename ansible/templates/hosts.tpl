@@ -28,18 +28,15 @@ ${ip}
 ${ip}
 %{ endfor ~}
 
-
 [windows-rdsh]
 %{ for ip in rdsh ~}
 ${ip}
 %{ endfor ~}
 
-
 [windows-client]
 %{ for ip in client ~}
 ${ip}
 %{ endfor ~}
-
 
 [windows-byod]
 %{ for ip in byod ~}

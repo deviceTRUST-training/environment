@@ -20,6 +20,13 @@ ${yamlencode({
           "ip": "${ip}",
           "name": "client${i+1}"
         }
+    },
+    "byod": {
+      for i, ip in byod:
+        "byod${i+1}" => {
+          "ip": "${ip}",
+          "name": "byod${i+1}"
+        }
     }
   }
 })}

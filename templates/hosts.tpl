@@ -7,21 +7,21 @@ ${yamlencode({
           "name": dc${i+1}
         }
     },
-        "rdsh": {
+     "rdsh": {
       for i, ip in rdsh:
         "rdsh${i+1}" => {
           "ip": "${ip}",
           "name": rdsh${i+1}
         }
     },
-        "byod": {
+    "byod": {
       for i, ip in byod:
         "byod${i+1}" => {
           "ip": "${ip}",
           "name": byod${i+1}
         }
     },
-        "client": {
+    "client": {
       for i, ip in client:
         "client${i+1}" => {
           "ip": "${ip}",

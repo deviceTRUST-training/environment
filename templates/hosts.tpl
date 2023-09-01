@@ -13,6 +13,13 @@ ${yamlencode({
           "ip": "${ip}",
           "name": "rdsh${i+1}"
         }
+    },
+    "client": {
+      for i, ip in client:
+        "client${i+1}" => {
+          "ip": "${ip}",
+          "name": "client${i+1}"
+        }
     }
   }
 })}

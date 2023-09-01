@@ -1,15 +1,15 @@
 [windows]
 %{ for ip in dc ~}
-${ip} hostname=dc${[index]}
+${ip} hostname=dc
 %{ endfor ~}
 %{ for ip in rdsh ~}
-${ip} hostname=rdsh${[index]}
+${ip} hostname=rdsh
 %{ endfor ~}
 %{ for ip in client ~}
-${ip} hostname=client${[index]}
+${ip} hostname=client
 %{ endfor ~}
 %{ for ip in byod ~}
-${ip} hostname=byod${[index]}
+${ip} hostname=byod
 %{ endfor ~}
 
 [windows-dc]

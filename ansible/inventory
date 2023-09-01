@@ -3,9 +3,3 @@
 
 [windows-dc]
 10.10.1.11
-
-[linux]
-10.10.250.12
-
-[linux-guacamole]
-10.10.250.12

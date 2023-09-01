@@ -1,6 +1,6 @@
 # generate inventory file for Ansible
 resource "local_file" "hosts_cfg" {
-  content           = templatefile("${path.module}/ansible/templates/hosts.tpl",
+  content           = templatefile("${path.module}/templates/hosts.tpl",
     {
       dc            = "${azurerm_network_interface.vm_dc.*.private_ip_address}"
       rdsh          = "${azurerm_network_interface.vm_rdsh.*.private_ip_address}"

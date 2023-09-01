@@ -1,26 +1,26 @@
 "all":
   "byod":
     "byod1":
-      "ip": "10.10.10.13"
-      "name": "byod1"
+      "ansible_host": "10.10.10.13"
+      "hostname": "byod1"
     "byod2":
-      "ip": "10.10.10.23"
-      "name": "byod2"
+      "ansible_host": "10.10.10.23"
+      "hostname": "byod2"
   "client":
     "client1":
-      "ip": "10.10.10.12"
-      "name": "client1"
+      "ansible_host": "10.10.10.12"
+      "hostname": "client1"
     "client2":
-      "ip": "10.10.10.22"
-      "name": "client2"
+      "ansible_host": "10.10.10.22"
+      "hostname": "client2"
   "dc":
     "dc1":
-      "ip": "10.10.1.11"
-      "name": "dc1"
+      "ansible_host": "10.10.1.11"
+      "hostname": "dc1"
   "rdsh":
     "rdsh1":
-      "ip": "10.10.10.11"
-      "name": "rdsh1"
+      "ansible_host": "10.10.10.11"
+      "hostname": "rdsh1"
     "rdsh2":
-      "ip": "10.10.10.21"
-      "name": "rdsh2"
+      "ansible_host": "10.10.10.21"
+      "hostname": "rdsh2"

@@ -13,4 +13,4 @@
      - { role: ansible-role-win-dc-ous-conf }
      - { role: ansible-role-win-dc-groups-conf }
      - { role: ansible-role-win-dc-users-create }
-     - { role: ansible-role-win-dc-users-conf }
+     - { role: ansible-role-win-dc-users-conf } # ToDo wegen User already exists

@@ -5,7 +5,7 @@ resource "local_file" "hosts_cfg" {
       dc            = "${azurerm_network_interface.vm_dc.*.private_ip_address} hostname = dc"
       rdsh          = "${azurerm_network_interface.vm_rdsh.*.private_ip_address} hostname = rdsh"
       client        = "${azurerm_network_interface.vm_client.*.private_ip_address} hostname = client"
-      byod          = "${azurerm_network_interface.vm_byod.*.private_ip_address} hostname = byod${azurerm_virtual_machine.vm_byod.*.name}"
+      byod          = "${azurerm_network_interface.vm_byod.*.private_ip_address} hostname = byod${azurerm_virtual_machine.vm_byod.name}"
     }
   )
   filename          = "${path.module}/ansible/inventory"

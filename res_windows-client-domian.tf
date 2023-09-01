@@ -7,8 +7,8 @@ locals {
 resource "azurerm_virtual_machine" "vm_client" {
   count                 = "${var.azure-environment.instance_count}"
   name                  = "${var.azure-environment.prefix}_${count.index}_vm_client"
-  location              = "${element(azurerm_resource_group.training.*.location, count.index)}"
-  resource_group_name   = azurerm_resource_group.training.*.name
+  location            = azurerm_resource_group.training.location
+  resource_group_name = azurerm_resource_group.training.name
   network_interface_ids = ["${element(azurerm_network_interface.vm_client.*.id, count.index)}"]
   vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 

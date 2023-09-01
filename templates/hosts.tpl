@@ -1,6 +1,6 @@
 ${yamlencode({
   "all": {
-    "dc": {
+    "hosts": {
       for i, ip in dc:
         "dc${i+1}" => {
           "ansible_host": "${ip}",

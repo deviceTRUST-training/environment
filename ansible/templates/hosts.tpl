@@ -1,5 +1,5 @@
 [windows]
-%{ for ip in windows-dc ~}
+%{ for ip in dc ~}
 ${ip} hostname=dc
 %{ endfor ~}
 %{ for ip in rdsh ~}
@@ -12,12 +12,12 @@ ${ip} hostname=client
 ${ip} hostname=byod
 %{ endfor ~}
 
-[windows-dc]
+[dc]
 %{ for ip in dc ~}
 ${ip}
 %{ endfor ~}
 
-[windows-domain-members]
+[domain-members]
 %{ for ip in rdsh ~}
 ${ip}
 %{ endfor ~}
@@ -28,17 +28,17 @@ ${ip}
 ${ip}
 %{ endfor ~}
 
-[windows-rdsh]
+[rdsh]
 %{ for ip in rdsh ~}
 ${ip}
 %{ endfor ~}
 
-[windows-client]
+[client]
 %{ for ip in client ~}
 ${ip}
 %{ endfor ~}
 
-[windows-byod]
+[byod]
 %{ for ip in byod ~}
 ${ip}
 %{ endfor ~}

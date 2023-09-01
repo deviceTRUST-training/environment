@@ -4,7 +4,7 @@ ${yamlencode({
       for i, ip in dc:
         "dc${i+1}" => {
           "ip": "${ip}",
-          "name": 5986
+          "name": "dc${i+1}"
         }
     }
   }

@@ -15,7 +15,7 @@ resource "local_file" "hosts_cfg" {
         "${azurerm_network_interface.vm_client.*.private_ip_address}",
         "${azurerm_network_interface.vm_rdsh.*.private_ip_address}",
         "${azurerm_network_interface.vm_byod.*.private_ip_address}",
-        "${azurerm_network_interface.dc.*.private_ip_address}"
+        "${azurerm_network_interface.vm_dc.*.private_ip_address}"
       ]
     }
   )

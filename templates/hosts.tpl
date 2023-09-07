@@ -2,11 +2,16 @@ ${yamlencode({
   "all": {
     "windows-dc": {
       "hosts": {
-        {for i, ip in dc:
+        for i, ip in dc:
           "dc${i+1}" => {
             "ansible_host": "${ip}",
             "hostname": "dc${i+1}"
-          }}
+          }
+        for i, ip in dc:
+          "dc${i+1}" => {
+            "ansible_host": "${ip}",
+            "hostname": "dc${i+1}"
+          }
       }
     },
     "windows-client": {

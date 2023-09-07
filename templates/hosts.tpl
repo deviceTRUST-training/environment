@@ -7,13 +7,13 @@ ${yamlencode({
             "ansible_host": "${ip}",
             "hostname": "dc${i+1}"
           }
-        endfor
+      },
+      "hosts": {
         for i, ip in dc:
           "dc${i+1}" => {
             "ansible_host": "${ip}",
             "hostname": "dc${i+1}"
           }
-        endfor
       }
     },
     "windows-client": {

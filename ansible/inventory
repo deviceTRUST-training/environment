@@ -1,30 +1,31 @@
-"all":
-  "byod":
-    "hosts":
-      "byod1":
-        "ansible_host": "10.10.10.13"
-        "hostname": "byod1"
-      "byod2":
-        "ansible_host": "10.10.10.23"
-        "hostname": "byod2"
-  "client":
-    "hosts":
-      "client1":
-        "ansible_host": "10.10.10.12"
-        "hostname": "client1"
-      "client2":
-        "ansible_host": "10.10.10.22"
-        "hostname": "client2"
-  "dc":
-    "hosts":
-      "dc1":
-        "ansible_host": "10.10.1.11"
-        "hostname": "dc1"
-  "rdsh":
-    "hosts":
-      "rdsh1":
-        "ansible_host": "10.10.10.11"
-        "hostname": "rdsh1"
-      "rdsh2":
-        "ansible_host": "10.10.10.21"
-        "hostname": "rdsh2"
+[windows]
+10.10.1.11
+10.10.10.11
+10.10.10.21
+10.10.10.12
+10.10.10.22
+10.10.10.13
+10.10.10.23
+
+[windows-dc]
+10.10.1.11
+
+[windows-domain-members]
+10.10.10.11
+10.10.10.21
+10.10.10.12
+10.10.10.22
+10.10.10.13
+10.10.10.23
+
+[windows-rdsh]
+10.10.10.11
+10.10.10.21
+
+[windows-client]
+10.10.10.12
+10.10.10.22
+
+[windows-byod]
+10.10.10.13
+10.10.10.23

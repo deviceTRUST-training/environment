@@ -1,13 +1,22 @@
 ${yamlencode({
   "all": {
-    "windows-dc": {
+    "windows-domain-member": {
       "hosts": {
-        for i, ip in dc:
-          "dc${i+1}" => {
+        for i, ip in rdsh:
+          "rdsh${i+1}" => {
             "ansible_host": "${ip}",
-            "hostname": "dc${i+1}"
+            "hostname": "rdsh${i+1}"
           }
       },
+      "hosts": {
+        for i, ip in client:
+          "client${i+1}" => {
+            "ansible_host": "${ip}",
+            "hostname": "client${i+1}"
+          }
+      }
+    },
+    "windows-dc": {
       "hosts": {
         for i, ip in dc:
           "dc${i+1}" => {

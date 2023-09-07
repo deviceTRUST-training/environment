@@ -29,7 +29,7 @@ resource "azurerm_virtual_machine" "vm_dc" {
   }
 
   os_profile {
-    computer_name  = "dc${count.index}"
+    computer_name  = "dc"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
     custom_data    = "${local.custom_data_content_dc}"

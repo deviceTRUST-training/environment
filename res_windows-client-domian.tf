@@ -1,7 +1,7 @@
 locals {
-  computer_name_client = "client-01"
-  custom_data_content_client = "${file("./files/ConfigureRemotingForAnsible.bat")}"
-    
+
+  custom_data_content_client = "${file("./files/ConfigureRemotingForAnsible.bat")}"    
+
 }
 
 resource "azurerm_virtual_machine" "vm_client" {
@@ -32,7 +32,7 @@ resource "azurerm_virtual_machine" "vm_client" {
   }
 
   os_profile {
-    computer_name  = "${local.computer_name_client}"
+    computer_name  = "client${count.index}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
     custom_data    = "${local.custom_data_content_client}"

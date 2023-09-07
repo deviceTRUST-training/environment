@@ -1,6 +1,5 @@
 locals {
 
-  computer_name_rdsh = "rdsh-01"
   custom_data_content_rdsh = "${file("./files/ConfigureRemotingForAnsible.bat")}"
     
 }
@@ -31,7 +30,7 @@ resource "azurerm_virtual_machine" "vm_rdsh" {
   }
 
   os_profile {
-    computer_name  = "${local.computer_name_rdsh}"
+    computer_name  = "rdsh${count.index}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
     custom_data    = "${local.custom_data_content_rdsh}"

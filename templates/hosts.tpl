@@ -9,6 +9,15 @@ ${yamlencode({
           }
       }
     },
+    "windows": {
+      "hosts": {
+        for i, ip in windows:
+          "windows${i+1}" => {
+            "ansible_host": "${ip}",
+            "hostname": "windows${i+1}"
+          }
+      }
+    },
     "windows-dc": {
       "hosts": {
         for i, ip in dc:

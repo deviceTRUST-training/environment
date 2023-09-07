@@ -1,5 +1,5 @@
 locals {
-  computer_name_byod = "byod-01"
+
   custom_data_content_byod = "${file("./files/ConfigureRemotingForAnsible.bat")}"
     
 }
@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "vm_byod" {
   }
 
   os_profile {
-    computer_name  = "${local.computer_name_byod}"
+    computer_name  = "byod${count.index}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
     custom_data    = "${local.custom_data_content_byod}"

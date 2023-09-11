@@ -28,3 +28,12 @@
       "rdsh2":
         "ansible_host": "10.10.10.21"
         "hostname": "rdsh2"
+  "guac":
+    "hosts":
+      "rdsh1":
+        "ansible_host": "10.10.10.11"
+        "hostname": "rdsh1"
+      "rdsh2":
+        "ansible_host": "10.10.10.21"
+        "hostname": "rdsh2"
+  

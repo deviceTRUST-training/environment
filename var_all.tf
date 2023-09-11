@@ -8,7 +8,7 @@ variable azure-environment {
     client_secret     = "Bth8Q~qCXjCfGENn5NoSY5Mb8wpgcXNSmI4u5cbh" #
     prefix            = "training"
     location          = "West Europe"
-    instance_count    = "2"
+    instance_count    = "10"
   }
 }
 

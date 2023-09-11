@@ -32,7 +32,7 @@ resource "azurerm_virtual_machine" "vm_client" {
   }
 
   os_profile {
-    computer_name  = "client${format("%04d", count.index + 1)}"
+    computer_name  = "client${format("%02d", count.index + 1)}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
     custom_data    = "${local.custom_data_content_client}"

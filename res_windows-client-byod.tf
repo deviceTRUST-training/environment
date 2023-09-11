@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "vm_byod" {
   }
 
   os_profile {
-    computer_name  = "byod${format("%04d", count.index + 1)}"
+    computer_name  = "byod${format("%02d", count.index + 1)}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
     custom_data    = "${local.custom_data_content_byod}"

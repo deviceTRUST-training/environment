@@ -5,8 +5,8 @@ locals {
 }
 
 resource "azurerm_virtual_machine" "vm_byod" {
-  count                = "${var.azure-environment.instance_count}"
-  name                  = "${var.azure-environment.prefix}_${count.index}_vm_byod"
+  count               = "${var.azure-environment.instance_count}"
+  name                = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_byod"
   location            = azurerm_resource_group.training.location
   resource_group_name = azurerm_resource_group.training.name
   network_interface_ids = ["${element(azurerm_network_interface.vm_byod.*.id, count.index)}"]
@@ -24,7 +24,7 @@ resource "azurerm_virtual_machine" "vm_byod" {
   # az vm image list --location "west europe" --all --publisher "MicrosoftWindowsDesktop" --sku "win10-22h2" --all
   
   storage_os_disk {
-    name              = "${var.azure-environment.prefix}_${count.index}_vm_byod_osdisk"
+    name              = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_byod_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "StandardSSD_LRS"

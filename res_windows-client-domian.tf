@@ -6,9 +6,9 @@ locals {
 
 resource "azurerm_virtual_machine" "vm_client" {
   count                 = "${var.azure-environment.instance_count}"
-  name                  = "${var.azure-environment.prefix}_${count.index}_vm_client"
-  location            = azurerm_resource_group.training.location
-  resource_group_name = azurerm_resource_group.training.name
+  name                  = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_client"
+  location              = azurerm_resource_group.training.location
+  resource_group_name   = azurerm_resource_group.training.name
   network_interface_ids = ["${element(azurerm_network_interface.vm_client.*.id, count.index)}"]
   vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 
@@ -25,7 +25,7 @@ resource "azurerm_virtual_machine" "vm_client" {
   # az vm image list --location "west europe" --all --publisher "MicrosoftWindowsDesktop" --sku "win10-22h2" --all
 
   storage_os_disk {
-    name              = "${var.azure-environment.prefix}_${count.index}_vm_client_osdisk"
+    name              = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_client_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "StandardSSD_LRS"

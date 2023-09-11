@@ -6,7 +6,7 @@ locals {
 
 resource "azurerm_virtual_machine" "vm_rdsh" {
   count                = "${var.azure-environment.instance_count}"
-  name                  = "${var.azure-environment.prefix}_${count.index}_vm_rdsh"
+  name                  = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_rdsh"
   location            = azurerm_resource_group.training.location
   resource_group_name = azurerm_resource_group.training.name
   network_interface_ids = ["${element(azurerm_network_interface.vm_rdsh.*.id, count.index)}"]
@@ -23,7 +23,7 @@ resource "azurerm_virtual_machine" "vm_rdsh" {
   }
 
   storage_os_disk {
-    name              = "${var.azure-environment.prefix}_${count.index}_vm_rdsh_osdisk"
+    name              = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_rdsh_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "StandardSSD_LRS"

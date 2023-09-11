@@ -1,7 +1,8 @@
 ---
 # Ansible variables
-ansible_user: vagrant
-ansible_password: ThisIsASecurePassword!2022
+ansible_user: localadmin
+ansible_password: S00perSecurePassw0rd2023
+lala: ThisIsASecurePassword!2022
 
 # DNS Configuration
 dc_dns_upstream: 10.10.11.1
@@ -10,57 +11,73 @@ dc_dns_zone_name: dt.training
 # NTP Configuration
 dc_ntp_servers: 0.us.pool.ntp.org,1.us.pool.ntp.org
 
-# OUs
-dc_ou_user_standard: OU=User,OU=Accounts,OU=Objects,DC=dt,DC=training
-dc_ou_user_admin: OU=Admins,OU=Accounts,OU=Objects,DC=dt,DC=training
-dc_ou_user_service: OU=Services,OU=Accounts,OU=Objects,DC=dt,DC=training
-
 # Passwords
-dc_password_admin: ThisIsASecurePassword!2022
-dc_password_user: deviceTRUST!2022
-dc_password_service: ThisIsASecurePassword!2022
-dc_password_safemode: ThisIsASecurePassword!2022
+dc_password_admin: S00perSecurePassw0rd2023
+dc_password_user: S00perSecurePassw0rd2023
+dc_password_service: S00perSecurePassw0rd2023
+dc_password_safemode: S00perSecurePassw0rd2023
 
 # Users
 dc_user_admin: administrator@dt.training
 
 # OUs
-dc_ou:
+dc_ou_user_standard: '{{ domain_ou_user }}'
+dc_ou_user_admin: '{{ domain_ou_administrative }}'
+dc_ou_user_service: '{{ domain_ou_administrative }}'
+
+domain_ou_base: DC=dt,DC=training
+domain_ou_objects: 'OU=Objects,{{ domain_ou_base }}'
+domain_ou_administrative: 'OU=Administrative,{{ domain_ou_objects }}'
+domain_ou_training: 'OU=Training##,{{ domain_ou_objects }}'
+domain_ou_user: 'OU=User,OU=Accounts,OU=Training##,{{ domain_ou_objects }}'
+
+dc_ous_static:
   - name: Objects
-    path: DC=dt,DC=training
+    path: '{{ domain_ou_base }}'
+  - name: Administrative
+    path: '{{ domain_ou_objects }}'
+
+dc_ous_dynamic:
+  - name: Training##
+    path: '{{ domain_ou_objects }}'
   - name: Accounts
-    path: OU=Objects,DC=dt,DC=training
+    path: '{{ domain_ou_training }}'
   - name: Computer
-    path: OU=Objects,DC=dt,DC=training
+    path: '{{ domain_ou_training }}'
   - name: Groups
-    path: OU=Objects,DC=dt,DC=training
+    path: '{{ domain_ou_training }}'
   - name: 02_Administration
-    path: OU=Computer,OU=Objects,DC=dt,DC=training
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 03_Environment
-    path: OU=Computer,OU=Objects,DC=dt,DC=training
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: 04_Endpoints 
-    path: OU=Computer,OU=Objects,DC=dt,DC=training
+    path: 'OU=Computer,{{ domain_ou_training }}'
   - name: FatClient
-    path: OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training
+    path: 'OU=03_Environment,OU=Computer,{{ domain_ou_training }}'
   - name: RDSH
-    path: OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training
+    path: 'OU=03_Environment,OU=Computer,{{ domain_ou_training }}'
   - name: User
-    path: OU=Accounts,OU=Objects,DC=dt,DC=training
+    path: 'OU=Accounts,{{ domain_ou_training }}'
   - name: Services
-    path: OU=Accounts,OU=Objects,DC=dt,DC=training
+    path: 'OU=Accounts,{{ domain_ou_training }}'
   - name: Admins
-    path: OU=Accounts,OU=Objects,DC=dt,DC=training
+    path: 'OU=Accounts,{{ domain_ou_training }}'
 
 # Groups
-dc_groups:
-  - name: g_g_sec_citrix_users
+dc_groups_dynamic:
+  - name: g_g_sec_citrix_users##
     scope: global
-    path: 'OU=Groups,OU=Objects,DC=dt,DC=training'
+    path: 'OU=Groups,{{ domain_ou_training }}'
+  - name: g_g_sec_guac_admins
+    scope: global
+    path: '{{ domain_ou_administrative }}'
 
 # Users
-dc_user_standard: [training]
+dc_user_standard_dynamic: [training##]
 dc_user_service: [svc_domainjoin,svc_ldap]
 
-dc_groupmember:
-  - name: training
-    group: g_g_sec_citrix_users
+dc_groupmember_dynamic:
+  - name: training##
+    group: g_g_sec_citrix_users##
+
+dc_domain_count: 2

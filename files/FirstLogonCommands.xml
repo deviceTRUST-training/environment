@@ -14,4 +14,24 @@
         <Description>Execute the WinRM enabling script</Description>
         <Order>13</Order>
     </SynchronousCommand>
+        <SynchronousCommand>
+        <CommandLine>winrm set winrm/config/client/auth @{Basic="true"}</CommandLine>
+        <Description>WinRM: Allow basic auth</Description>
+        <Order>14</Order>
+    </SynchronousCommand>
+        <SynchronousCommand>
+        <CommandLine>winrm set winrm/config/service/auth @{Basic="true"}</CommandLine>
+        <Description>WinRM: Allow basic auth</Description>
+        <Order>15</Order>
+    </SynchronousCommand>
+        <SynchronousCommand>
+        <CommandLine>winrm set winrm/config/service @{AllowUnencrypted="true"}</CommandLine>
+        <Description>WinRM: Allow unencrypted communication</Description>
+        <Order>16</Order>
+    </SynchronousCommand>
+    <SynchronousCommand>
+        <CommandLine>powershell.exe Set-NetconnectionProfile -InterfaceAlias Ethernet -NetworkCategory Private</CommandLine>
+        <Description>Set Ethernet Interface to NetworkCategory private. Allows WinRm on 5985.</Description>
+        <Order>17</Order>
+    </SynchronousCommand>
 </FirstLogonCommands>

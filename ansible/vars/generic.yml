@@ -12,3 +12,5 @@ domain_admin_user: administrator@dt.training
 domain_admin_password: vagrant
 domain_dns_name: dt.training
 domain_safe_mode_password: vagrant
+
+public_hosting_domain: democloud.devicetrust.com

@@ -24,3 +24,6 @@ ansible.log
 
 # Ignore bin files (e.g. IGEL UMS)
 *.bin
+
+# Ignore ansivble roles folder
+./ansible/roles

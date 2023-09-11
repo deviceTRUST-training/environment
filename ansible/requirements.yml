@@ -1,4 +1,5 @@
 ---
+roles:
 - src: https://github.com/jansvensen/ansible-role-win-all-base
 - src: https://github.com/jansvensen/ansible-role-win-all-language
 - src: https://github.com/jansvensen/ansible-role-win-dc-base
@@ -11,8 +12,6 @@
 - src: https://github.com/jansvensen/ansible-role-win-dc-users-conf
 - src: https://github.com/jansvensen/ansible-role-win-dc-gpo-import
 - src: https://github.com/jansvensen/ansible-role-win-dc-gpo-bind
-- src: https://github.com/jansvensen/ansible-role-win-dc-ca-inst
-- src: https://github.com/jansvensen/ansible-role-win-dc-ca-conf
 - src: https://github.com/jansvensen/ansible-role-win-domainjoin
 - src: https://github.com/jansvensen/ansible-role-win-dc-computerobjects-conf
 - src: https://github.com/jansvensen/ansible-role-win-sw-chocolatey
@@ -22,3 +21,6 @@
 - src: https://github.com/jansvensen/ansible-role-win-all-updates
 - src: https://github.com/jansvensen/ansible-role-win-all-cleanup
 - src: https://github.com/jansvensen/ansible-role-win-domainjoin
+- src: https://github.com/jansvensen/ansible-role-linux-docker-container-guacamole
+- src: https://github.com/jansvensen/ansible-role-linux-docker-container-guacamole-connections
+- src: https://github.com/jansvensen/ansible-role-linux-software-installation

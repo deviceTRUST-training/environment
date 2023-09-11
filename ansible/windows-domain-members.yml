@@ -1,11 +1,10 @@
 ---
 - hosts: windows-domain-members
-  ignore_unreachable: true
 
   vars_files:
     - vars/generic.yml
     - vars/windows.yml
 
   roles:
-    # - { role: ansible-role-win-member-dns }
-    # - { role: ansible-role-win-domainjoin }
+    # - { role: ansible-role-win-member-dns } # Still required?
+    - { role: ansible-role-win-domainjoin }

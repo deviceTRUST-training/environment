@@ -1,5 +1,5 @@
 locals {
-  computer_name_byod = "byod-01"
+
   custom_data_content_byod = "${file("./files/ConfigureRemotingForAnsible.bat")}"
     
 }
@@ -7,9 +7,9 @@ locals {
 resource "azurerm_virtual_machine" "vm_byod" {
   count                = "${var.azure-environment.instance_count}"
   name                  = "${var.azure-environment.prefix}_${count.index}_vm_byod"
-  location              = "${element(azurerm_resource_group.main.*.location, count.index)}"
-  resource_group_name   = "${element(azurerm_resource_group.main.*.name, count.index)}"
-  network_interface_ids = ["${element(azurerm_network_interface.vm_byod_internal.*.id, count.index)}"]
+  location            = azurerm_resource_group.training.location
+  resource_group_name = azurerm_resource_group.training.name
+  network_interface_ids = ["${element(azurerm_network_interface.vm_byod.*.id, count.index)}"]
   vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 
   delete_os_disk_on_termination = true
@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "vm_byod" {
   }
 
   os_profile {
-    computer_name  = "${local.computer_name_byod}"
+    computer_name  = "byod${format("%02d", count.index + 1)}"
     admin_username = "${var.vm.username}"
     admin_password = "${var.vm.password}"
     custom_data    = "${local.custom_data_content_byod}"

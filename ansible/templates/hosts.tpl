@@ -24,9 +24,6 @@ ${ip}
 %{ for ip in client ~}
 ${ip}
 %{ endfor ~}
-%{ for ip in byod ~}
-${ip}
-%{ endfor ~}
 
 [windows-rdsh]
 %{ for ip in rdsh ~}

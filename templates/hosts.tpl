@@ -42,3 +42,8 @@ ${ip}
 %{ for ip in byod ~}
 ${ip}
 %{ endfor ~}
+
+[linux-guacamole]
+%{ for ip in guac ~}
+${ip}
+%{ endfor ~}

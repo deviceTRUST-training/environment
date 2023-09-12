@@ -34,9 +34,9 @@ resource "azurerm_linux_virtual_machine" "vm_controller" {
     storage_account_type = "Standard_LRS"
   }
 
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
+ # os_profile_linux_config {
+ #   disable_password_authentication = false
+ # }
 
   connection {
       host = azurerm_public_ip.vm_controller.ip_address

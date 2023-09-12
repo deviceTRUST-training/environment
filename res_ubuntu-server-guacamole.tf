@@ -33,9 +33,9 @@ resource "azurerm_linux_virtual_machine" "vm_guacamole" {
     storage_account_type = "Standard_LRS"
   }
 
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
+ # os_profile_linux_config {
+ #   disable_password_authentication = false
+ # }
 
   connection {
       host = azurerm_public_ip.vm_guacamole.ip_address

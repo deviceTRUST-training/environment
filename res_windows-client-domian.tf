@@ -46,7 +46,7 @@ resource "azurerm_windows_virtual_machine" "vm_client" {
   enable_automatic_upgrades = true
 
   # Auto-Login's required to configure WinRM
-  additional_unattend_config {
+  additional_unattend_content {
     pass         = "oobeSystem"
     component    = "Microsoft-Windows-Shell-Setup"
     setting_name = "AutoLogon"
@@ -54,7 +54,7 @@ resource "azurerm_windows_virtual_machine" "vm_client" {
   }
 
   # Unattend config is to enable basic auth in WinRM, required for the provisioner stage.
-  additional_unattend_config {
+  additional_unattend_content {
     pass         = "oobeSystem"
     component    = "Microsoft-Windows-Shell-Setup"
     setting_name = "FirstLogonCommands"

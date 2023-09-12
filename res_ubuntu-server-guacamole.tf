@@ -13,6 +13,8 @@ resource "azurerm_linux_virtual_machine" "vm_guacamole" {
   admin_username      = var.vm.username
   admin_password      = var.vm.password
 
+  disable_password_authentication = false
+
   # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.
   # delete_os_disk_on_termination = true
   # delete_data_disks_on_termination = true

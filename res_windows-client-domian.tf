@@ -21,7 +21,7 @@ resource "azurerm_windows_virtual_machine" "vm_client" {
   # delete_data_disks_on_termination = true
 
   winrm_listener {
-    protocol = "http"
+    protocol = "Http"
   }
   
   source_image_reference {

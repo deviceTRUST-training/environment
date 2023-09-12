@@ -37,25 +37,23 @@ resource "azurerm_windows_virtual_machine" "vm_rdsh" {
     custom_data    = "${local.custom_data_content_rdsh}"
   }
   
-  os_profile_windows_config {
-    provision_vm_agent        = true
-    enable_automatic_upgrades = true
+  provision_vm_agent        = true
+  enable_automatic_upgrades = true
 
-    # Auto-Login's required to configure WinRM
-    additional_unattend_config {
-      pass         = "oobeSystem"
-      component    = "Microsoft-Windows-Shell-Setup"
-      setting_name = "AutoLogon"
-      content      = "<AutoLogon><Password><Value>${var.vm.password}</Value></Password><Enabled>true</Enabled><LogonCount>1</LogonCount><Username>${var.vm.username}</Username></AutoLogon>"
-    }
+  # Auto-Login's required to configure WinRM
+  additional_unattend_config {
+    pass         = "oobeSystem"
+    component    = "Microsoft-Windows-Shell-Setup"
+    setting_name = "AutoLogon"
+    content      = "<AutoLogon><Password><Value>${var.vm.password}</Value></Password><Enabled>true</Enabled><LogonCount>1</LogonCount><Username>${var.vm.username}</Username></AutoLogon>"
+  }
 
-    # Unattend config is to enable basic auth in WinRM, required for the provisioner stage.
-    additional_unattend_config {
-      pass         = "oobeSystem"
-      component    = "Microsoft-Windows-Shell-Setup"
-      setting_name = "FirstLogonCommands"
-      content      = "${file("./files/FirstLogonCommands.xml")}"
-    }
+  # Unattend config is to enable basic auth in WinRM, required for the provisioner stage.
+  additional_unattend_config {
+    pass         = "oobeSystem"
+    component    = "Microsoft-Windows-Shell-Setup"
+    setting_name = "FirstLogonCommands"
+    content      = "${file("./files/FirstLogonCommands.xml")}"
   }
 
    tags = "${var.tags}"

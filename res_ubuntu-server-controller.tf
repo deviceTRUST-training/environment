@@ -30,8 +30,8 @@ resource "azurerm_linux_virtual_machine" "vm_controller" {
   os_disk {
     name              = "${var.azure-environment.prefix}_vm_controller_osdisk"
     caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
+    # create_option     = "FromImage"
+    storage_account_type = "Standard_LRS"
   }
 
   os_profile_linux_config {

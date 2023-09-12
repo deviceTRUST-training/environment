@@ -30,8 +30,8 @@ resource "azurerm_windows_virtual_machine" "vm_rdsh" {
   os_disk {
     name              = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_rdsh_osdisk"
     caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "StandardSSD_LRS"
+    # create_option     = "FromImage"
+    storage_account_type = "StandardSSD_LRS"
   }
 
 #  os_profile {

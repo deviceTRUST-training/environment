@@ -29,8 +29,8 @@ resource "azurerm_windows_virtual_machine" "vm_dc" {
   os_disk {
     name              = "${var.azure-environment.prefix}_vm_dc_osdisk"
     caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "StandardSSD_LRS"
+    # create_option     = "FromImage"
+    storage_account_type = "StandardSSD_LRS"
   }
 
 #  os_profile {

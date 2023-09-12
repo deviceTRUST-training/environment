@@ -20,23 +20,28 @@
         <Order>14</Order>
     </SynchronousCommand>
         <SynchronousCommand>
-        <CommandLine>winrm set winrm/config/client/auth @{Basic="true"}</CommandLine>
-        <Description>WinRM: Allow basic auth</Description>
+        <CommandLine>Enable-PSRemoting -force </CommandLine>
+        <Description>Enable PSRemoting</Description>
         <Order>15</Order>
     </SynchronousCommand>
         <SynchronousCommand>
-        <CommandLine>winrm set winrm/config/service/auth @{Basic="true"}</CommandLine>
+        <CommandLine>winrm set winrm/config/client/auth @{Basic="true"}</CommandLine>
         <Description>WinRM: Allow basic auth</Description>
         <Order>16</Order>
     </SynchronousCommand>
         <SynchronousCommand>
-        <CommandLine>winrm set winrm/config/service @{AllowUnencrypted="true"}</CommandLine>
-        <Description>WinRM: Allow unencrypted communication</Description>
+        <CommandLine>winrm set winrm/config/service/auth @{Basic="true"}</CommandLine>
+        <Description>WinRM: Allow basic auth</Description>
         <Order>17</Order>
+    </SynchronousCommand>
+        <SynchronousCommand>
+        <CommandLine>cmd.exe winrm set winrm/config/service @{AllowUnencrypted="true"}</CommandLine>
+        <Description>WinRM: Allow unencrypted communication</Description>
+        <Order>18</Order>
     </SynchronousCommand>
     <SynchronousCommand>
         <CommandLine>powershell.exe Set-NetconnectionProfile -InterfaceAlias Ethernet -NetworkCategory Private</CommandLine>
         <Description>Set Ethernet Interface to NetworkCategory private. Allows WinRm on 5985.</Description>
-        <Order>18</Order>
+        <Order>19</Order>
     </SynchronousCommand>
 </FirstLogonCommands>

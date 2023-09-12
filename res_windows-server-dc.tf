@@ -9,7 +9,7 @@ resource "azurerm_windows_virtual_machine" "vm_dc" {
   location              = azurerm_resource_group.training.location
   resource_group_name   = azurerm_resource_group.training.name
   network_interface_ids = [azurerm_network_interface.vm_dc.id]
-  vm_size               = "Standard_B1ms"  # 1x CPU, 2GB RAM
+  size               = "Standard_B1ms"  # 1x CPU, 2GB RAM
 
   computer_name       = "dc"
   admin_username      = var.vm.username

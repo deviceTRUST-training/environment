@@ -10,7 +10,7 @@ resource "azurerm_windows_virtual_machine" "vm_rdsh" {
   location            = azurerm_resource_group.training.location
   resource_group_name = azurerm_resource_group.training.name
   network_interface_ids = ["${element(azurerm_network_interface.vm_rdsh.*.id, count.index)}"]
-  vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
+  size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 
   computer_name       = "rdsh${format("%02d", count.index + 1)}"
   admin_username      = var.vm.username

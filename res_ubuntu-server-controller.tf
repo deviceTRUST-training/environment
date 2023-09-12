@@ -7,7 +7,12 @@ resource "azurerm_linux_virtual_machine" "vm_controller" {
   location                            = azurerm_resource_group.training.location
   resource_group_name                 = azurerm_resource_group.training.name
   network_interface_ids               = [azurerm_network_interface.vm_controller.id]
-  vm_size                             = "Standard_B1ms"
+  size                             = "Standard_B1ms"
+
+  computer_name       = "controller"
+  admin_username      = var.vm.username
+  admin_password      = var.vm.password
+
 
   # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.
   # delete_os_disk_on_termination = true
@@ -27,12 +32,6 @@ resource "azurerm_linux_virtual_machine" "vm_controller" {
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
-  }
-
-  os_profile {
-    computer_name  = "${local.computer_name_guac}"
-    admin_username = "${var.vm.username}"
-    admin_password = "${var.vm.password}"
   }
 
   os_profile_linux_config {

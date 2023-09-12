@@ -35,7 +35,7 @@
         <Order>17</Order>
     </SynchronousCommand>
         <SynchronousCommand>
-        <CommandLine>cmd.exe winrm set winrm/config/service @{AllowUnencrypted="true"}</CommandLine>
+        <CommandLine>winrm set winrm/config/service @{AllowUnencrypted="true"}</CommandLine>
         <Description>WinRM: Allow unencrypted communication</Description>
         <Order>18</Order>
     </SynchronousCommand>

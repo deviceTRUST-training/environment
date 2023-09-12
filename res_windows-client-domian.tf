@@ -47,20 +47,5 @@ resource "azurerm_windows_virtual_machine" "vm_client" {
     content                     = "${file("./files/FirstLogonCommands.xml")}"
   }
 
-  provisioner "remote-exec"{
-    connection {
-      type                      = "winrm"
-      timeout                   = "1m"
-      insecure                  = "true"
-      agent                     = "false"
-      user                      = "${var.vm.username}"
-      password                  = "${var.vm.password}"
-    }
-
-    inline = [
-      "choco install --y firefox"
-    ]
-  }
-
   tags                          = "${var.tags}"  
 }

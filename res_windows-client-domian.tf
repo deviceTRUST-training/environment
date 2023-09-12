@@ -15,6 +15,10 @@ resource "azurerm_windows_virtual_machine" "vm_client" {
   # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.
   delete_os_disk_on_termination = true
   delete_data_disks_on_termination = true
+
+  winrm_listener {
+    protocol = http
+  }
   
   storage_image_reference {
     offer = "Windows-10"

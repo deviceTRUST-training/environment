@@ -39,7 +39,6 @@ resource "azurerm_windows_virtual_machine" "vm_rdsh" {
 #  }
   
   provision_vm_agent        = true
-  enable_automatic_upgrades = true
 
   # Auto-Login's required to configure WinRM
   additional_unattend_content {

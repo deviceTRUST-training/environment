@@ -11,17 +11,18 @@ resource "azurerm_windows_virtual_machine" "vm_dc" {
   network_interface_ids = [azurerm_network_interface.vm_dc.id]
   vm_size               = "Standard_B1ms"  # 1x CPU, 2GB RAM
 
-  delete_os_disk_on_termination = true
-  delete_data_disks_on_termination = true
+  # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.
+  # delete_os_disk_on_termination = true
+  # delete_data_disks_on_termination = true
 
-  storage_image_reference {
+  source_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
     sku       = "2022-Datacenter"
     version   = "latest"
   }
 
-  storage_os_disk {
+  os_disk {
     name              = "${var.azure-environment.prefix}_vm_dc_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"

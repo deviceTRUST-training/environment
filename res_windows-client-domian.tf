@@ -13,14 +13,14 @@ resource "azurerm_windows_virtual_machine" "vm_client" {
   vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 
   # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.
-  delete_os_disk_on_termination = true
-  delete_data_disks_on_termination = true
+  # delete_os_disk_on_termination = true
+  # delete_data_disks_on_termination = true
 
   winrm_listener {
     protocol = http
   }
   
-  storage_image_reference {
+  source_image_reference {
     offer = "Windows-10"
     publisher = "MicrosoftWindowsDesktop"
     sku = "win10-22h2-entn"
@@ -28,7 +28,7 @@ resource "azurerm_windows_virtual_machine" "vm_client" {
   }
   # az vm image list --location "west europe" --all --publisher "MicrosoftWindowsDesktop" --sku "win10-22h2" --all
 
-  storage_os_disk {
+  os_disk {
     name              = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_client_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"

@@ -9,10 +9,11 @@ resource "azurerm_linux_virtual_machine" "vm_controller" {
   network_interface_ids               = [azurerm_network_interface.vm_controller.id]
   vm_size                             = "Standard_B1ms"
 
-  delete_os_disk_on_termination       = true
-  delete_data_disks_on_termination    = true
+  # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.
+  # delete_os_disk_on_termination = true
+  # delete_data_disks_on_termination = true
 
-  storage_image_reference {
+  source_image_reference {
     offer = "0001-com-ubuntu-server-jammy"
     publisher = "Canonical"
     sku = "22_04-lts"
@@ -21,7 +22,7 @@ resource "azurerm_linux_virtual_machine" "vm_controller" {
 
   # az vm image list --offer "Ubuntu" --sku "23_10" --publisher "canonical" --all
 
-  storage_os_disk {
+  os_disk {
     name              = "${var.azure-environment.prefix}_vm_controller_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"

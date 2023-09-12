@@ -12,14 +12,15 @@ resource "azurerm_windows_virtual_machine" "vm_byod" {
   network_interface_ids = ["${element(azurerm_network_interface.vm_byod.*.id, count.index)}"]
   vm_size               = "Standard_B2s"  # 2x CPU, 4GB RAM
 
-  delete_os_disk_on_termination = true
-  delete_data_disks_on_termination = true
+  # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.
+  # delete_os_disk_on_termination = true
+  # delete_data_disks_on_termination = true
 
   winrm_listener {
     protocol = http
   }
 
-  storage_image_reference {
+  source_image_reference {
     offer= "Windows-10"
     publisher= "MicrosoftWindowsDesktop"
     sku= "win10-22h2-pro"
@@ -27,7 +28,7 @@ resource "azurerm_windows_virtual_machine" "vm_byod" {
   }
   # az vm image list --location "west europe" --all --publisher "MicrosoftWindowsDesktop" --sku "win10-22h2" --all
   
-  storage_os_disk {
+  os_disk {
     name              = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_byod_osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"

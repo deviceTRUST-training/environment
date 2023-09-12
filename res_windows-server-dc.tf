@@ -11,6 +11,10 @@ resource "azurerm_windows_virtual_machine" "vm_dc" {
   network_interface_ids = [azurerm_network_interface.vm_dc.id]
   vm_size               = "Standard_B1ms"  # 1x CPU, 2GB RAM
 
+  computer_name       = "dc"
+  admin_username      = var.vm.username
+  admin_password      = var.vm.password
+
   # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine. This may not be optimal in all cases.
   # delete_os_disk_on_termination = true
   # delete_data_disks_on_termination = true
@@ -29,12 +33,9 @@ resource "azurerm_windows_virtual_machine" "vm_dc" {
     managed_disk_type = "StandardSSD_LRS"
   }
 
-  os_profile {
-    computer_name  = "dc"
-    admin_username = "${var.vm.username}"
-    admin_password = "${var.vm.password}"
-    custom_data    = "${local.custom_data_content_dc}"
-  }
+#  os_profile {
+#    custom_data    = "${local.custom_data_content_rdsh}"
+#  }
 
   provision_vm_agent        = true
   enable_automatic_upgrades = true

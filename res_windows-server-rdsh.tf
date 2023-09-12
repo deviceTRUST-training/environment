@@ -4,7 +4,7 @@ locals {
     
 }
 
-resource "azurerm_virtual_machine" "vm_rdsh" {
+resource "azurerm_windows_virtual_machine" "vm_rdsh" {
   count                = "${var.azure-environment.instance_count}"
   name                  = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_rdsh"
   location            = azurerm_resource_group.training.location

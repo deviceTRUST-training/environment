@@ -4,7 +4,7 @@ locals {
     
 }
 
-resource "azurerm_virtual_machine" "vm_byod" {
+resource "azurerm_windows_virtual_machine" "vm_byod" {
   count               = "${var.azure-environment.instance_count}"
   name                = "${var.azure-environment.prefix}_${format("%02d", count.index + 1)}_vm_byod"
   location            = azurerm_resource_group.training.location

@@ -2,7 +2,7 @@ locals {
   computer_name_guac = "guac"  
 }
 
-resource "azurerm_virtual_machine" "vm_guacamole" {
+resource "azurerm_linux_virtual_machine" "vm_guacamole" {
   name                                = "${var.azure-environment.prefix}_vm_guacamole"
   location                            = azurerm_resource_group.training.location
   resource_group_name                 = azurerm_resource_group.training.name

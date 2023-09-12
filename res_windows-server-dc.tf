@@ -4,7 +4,7 @@ locals {
     
 }
 
-resource "azurerm_virtual_machine" "vm_dc" {
+resource "azurerm_windows_virtual_machine" "vm_dc" {
   name                  = "${var.azure-environment.prefix}_vm_dc"
   location              = azurerm_resource_group.training.location
   resource_group_name   = azurerm_resource_group.training.name

@@ -2,7 +2,7 @@ locals {
   computer_name_ctrl = "ctrl"  
 }
 
-resource "azurerm_virtual_machine" "vm_controller" {
+resource "azurerm_linux_virtual_machine" "vm_controller" {
   name                                = "${var.azure-environment.prefix}_vm_controller"
   location                            = azurerm_resource_group.training.location
   resource_group_name                 = azurerm_resource_group.training.name
@@ -77,8 +77,8 @@ resource "azurerm_virtual_machine" "vm_controller" {
 #    ]
 #  }
 
-  # depends_on = [azurerm_virtual_machine.vm_dc, azurerm_virtual_machine.vm_rdsh, azurerm_virtual_machine.vm_client, azurerm_virtual_machine.vm_byod]
-  depends_on = [azurerm_virtual_machine.vm_dc]
+  # depends_on = [azurerm_windows_virtual_machine.vm_dc, azurerm_windows_virtual_machine.vm_rdsh, azurerm_windows_virtual_machine.vm_client, azurerm_windows_virtual_machine.vm_byod]
+  depends_on = [azurerm_windows_virtual_machine.vm_dc]
 
   tags = "${var.tags}"
 }

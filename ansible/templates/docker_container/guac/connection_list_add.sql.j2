@@ -1,3 +1,5 @@
+{% for guac_root_connection_group in guac_root_connection_groups %}
+# Create Connection Group
 INSERT INTO guacamole_connection_group (connection_group_name, parent_id, type)
 SELECT
     '{{ guac_root_connection_group }}' AS connection_group_name,
@@ -67,4 +69,5 @@ JOIN guacamole_entity     ON permissions.groupname = guacamole_entity.name AND g
 JOIN guacamole_connection ON permissions.affected_connection_name = guacamole_connection.connection_name AND guacamole_connection.parent_id = (
   SELECT connection_group_id FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group }}' AND parent_id is NULL
 );
+{% endfor %}
 {% endfor %}

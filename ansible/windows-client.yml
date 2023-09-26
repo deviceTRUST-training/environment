@@ -7,5 +7,5 @@
     # - vars/windows-client.yml
 
   roles:
-    - { role: ansible-role-win-sw-dt-agent }
-    - { role: ansible-role-win-sw-dt-clientextension }
+    #- { role: ansible-role-win-sw-dt-agent }
+    #- { role: ansible-role-win-sw-dt-clientextension }

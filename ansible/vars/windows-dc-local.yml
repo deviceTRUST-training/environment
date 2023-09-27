@@ -79,5 +79,8 @@ dc_user_service: [svc_domainjoin,svc_ldap]
 dc_groupmember_dynamic:
   - name: training##
     group: g_g_sec_citrix_users##
+  - name: training##
+    group: 'Remote Desktop Users'
+
 
 dc_domain_count: 2

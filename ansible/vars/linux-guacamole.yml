@@ -61,11 +61,11 @@ docker_container_names: ['{{ docker_container_guac_name }}','{{ docker_container
 LDAP_HOSTNAME: 10.10.1.11
 LDAP_PORT: '389'
 LDAP_ENCRYPTION_METHOD: none
-LDAP_USER_BASE_DN: 'OU=Accounts,OU=Objects,DC=dt,DC=training'
+LDAP_USER_BASE_DN: 'OU=Objects,DC=dt,DC=training'
 LDAP_GROUP_BASE_DN: 'DC=dt,DC=training'
 LDAP_SEARCH_BIND_DN: svc_ldap@dt.training
 LDAP_SEARCH_BIND_PASSWORD: S00perSecurePassw0rd2023
-LDAP_USERNAME_ATTRIBUTE: userPrincipalName
+LDAP_USERNAME_ATTRIBUTE: sAMAccountName
 LDAP_GROUP_NAME_ATTRIBUTE: cn
 LDAP_MEMBER_ATTRIBUTE: member
-LDAP_USER_SEARCH_FILTER: '(&(objectCategory=person)(objectclass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))'
+LDAP_USER_SEARCH_FILTER: '(objectClass=user)(!(objectCategory=computer))'

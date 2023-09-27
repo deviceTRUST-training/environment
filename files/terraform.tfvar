@@ -1,11 +1,11 @@
 # Global deployments settings for deployment logic
 terraform_settings = ({
   # Deploy NetScaler to vSphere
-  deploy_vsphere = false
+  deploy_vsphere = true
   # Deploy NetScaler configuration
   deploy_settings = false
   # Deploy Lets Encrypt on NetScaler
-  deploy_letsencrypt = true
+  deploy_letsencrypt = false
 })
 
 # Login Information for the NetScaler to authenticate API calls
@@ -18,27 +18,27 @@ logon_information = ({
 ##################################################### Vsphere deployment only###############################################
 # Variables for the NetScaler VM deployment in vSphere
 vsphere = ({
-  server       = "192.168.176.104"
+  server       = "10.10.1.4"
   user         = "administrator@vsphere.local"
-  password     = "Ih8munday5!"
-  datacenter   = "Datacenter"
-  host         = "192.168.176.105"
-  datastore    = "datastore1"
-  network      = "VM Network"
-  timezone     = "GMT+02:00-CEST-Europe/Berlin"
-  resourcepool = "ResourcePool1"
+  password     = "deviceTRUST!2022"
+  datacenter   = "democloud"
+  host         = "10.10.1.3"
+  datastore    = "VM"
+  network      = "vSwitch_Internal_INT"
+  timezone     = 020
+  resourcepool = "Democloud-tf"
 })
 
 
 # NetScaler VM Details
 vm = ({
-  ovf     = "./Resources/OVF/NSVPX-ESX-14.1-4.42_nc_64.ovf"
-  network = "VM Network"
+  ovf     = "/home/localadmin/GIT/deviceTRUST-democloud/environment/terraform/citrix-adc/sources/Image/NSVPX-ESX-13.0-91.13_nc_64.ovf"
+  network = "vSwitch_Internal_INT"
   mac     = "00:00:00:aa:bb:cc"
-  ip      = "192.168.176.110"
-  gateway = "192.168.176.1"
+  ip      = "10.10.1.15"
+  gateway = "10.10.1.1"
   netmask = "255.255.255.0"
-  name    = "adc1"
+  name    = "inf-adc-01"
 })
 
 

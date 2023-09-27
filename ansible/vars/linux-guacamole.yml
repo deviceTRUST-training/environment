@@ -17,6 +17,7 @@ docker_host_bridge_ip: 172.29.0.1/16
 docker_container_volume_base_dir: /srv/docker_data
 docker_container_guac_volume_dir: "{{ docker_container_volume_base_dir }}/{{ docker_container_guac_name }}"
 docker_container_guac_db_volume_dir: "{{ docker_container_volume_base_dir }}/{{ docker_container_guac_db_name }}"
+docker_container_guac_extensions_volume_dir: "{{ docker_container_guac_volume_dir }}/guac_home/extensions"
 
 # Docker container guac
 docker_container_guac_version: 1.4.0

@@ -33,6 +33,7 @@ docker_container_guac_db_image: mysql
 
 # Guacamole 
 guac_mfa_enabled: false
+guac_ldap_enabled: true
 
 guac_db_name: guacamole
 guac_db_user: guacadmin

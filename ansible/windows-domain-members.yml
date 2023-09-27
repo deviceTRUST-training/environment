@@ -6,5 +6,4 @@
     - vars/windows.yml
 
   roles:
-    # - { role: ansible-role-win-member-dns } # Still required?
     - { role: ansible-role-win-domainjoin }

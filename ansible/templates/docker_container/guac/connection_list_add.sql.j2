@@ -1,4 +1,11 @@
 {% set count = my_super_count_value|int %}
-SHOW TABLES;
+
 SELECT * FROM guacamole_entity;
-SELECT * FROM guacamole_user;
+
+{% for n in range(count) %}
+  INSERT INTO guacamole_entity (name, type) 
+  SELECT
+    '{{ guac_root_connection_group_prefix }}{{ n + 1 }}' AS name,
+    'USER'				                                       AS type
+  ;
+{% endfor %}

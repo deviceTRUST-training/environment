@@ -71,3 +71,6 @@ LDAP_USERNAME_ATTRIBUTE: sAMAccountName
 LDAP_GROUP_NAME_ATTRIBUTE: cn
 LDAP_MEMBER_ATTRIBUTE: member
 LDAP_USER_SEARCH_FILTER: '(objectClass=user)(!(objectCategory=computer))'
+
+
+my_super_count_value: 20

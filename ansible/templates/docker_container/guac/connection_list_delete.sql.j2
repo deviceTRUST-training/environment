@@ -1,3 +1,9 @@
 # Delete Connection Groups
-DELETE FROM guacamole_connection_group 
-;
+DELETE FROM guacamole_connection_group;
+
+{% set count = my_super_count_value|int %}
+SELECT * FROM guacamole_entity;
+
+{% for n in range(count) %}
+    DELETE FROM guacamole_entity WHERE name = '{{ guac_root_connection_group_prefix }}{{ n + 1 }}'
+{% endfor %}

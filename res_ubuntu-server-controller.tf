@@ -74,7 +74,7 @@ resource "azurerm_linux_virtual_machine" "vm_controller" {
     inline = [
       "mkdir /tmp/git",
       "cd /tmp/git",
-      "git clone https://github.com/deviceTRUST-training/environment.git"    "ansible-playbook -i inventory site.yml --extra-vars 'ansible_user=${var.vm.username} ansible_password=${var.vm.password} dotraining_admin_user=${var.vm.username}@${var.vm.dotraining_dns_name} dotraining_admin_password=${var.vm.password} safe_mode_password=${var.vm.password}'",
+      "git clone https://github.com/deviceTRUST-training/environment.git"
     ]
   }
 

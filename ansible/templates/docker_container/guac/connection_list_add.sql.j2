@@ -26,16 +26,14 @@
           UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'username'               AS parameter_name, '{{ guac_connection_username | default("${GUAC_USERNAME}") }}'  AS parameter_value
           UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'password'               AS parameter_name, '{{ guac_connection_password | default("${GUAC_PASSWORD}") }}'  AS parameter_value
           {% if (not guac_connection_protocol is defined) or (guac_connection_protocol == 'rdp') %}
-          UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'disable-audio'          AS parameter_name, 'true'                       AS parameter_value
-          UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'enable-font-smoothing'  AS parameter_name, 'true'                       AS parameter_value
-          UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'ignore-cert'            AS parameter_name, 'true'                       AS parameter_value
-          UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'resize-method'          AS parameter_name, 'display-update'             AS parameter_value
-          UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'security'               AS parameter_name, 'any'                        AS parameter_value
-          {% if (win_user_language | lower) == 'de-de' %}UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'server-layout'           AS parameter_name, 'de-de-qwertz'               AS parameter_value
+            UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'disable-audio'          AS parameter_name, 'true'                       AS parameter_value
+            UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'enable-font-smoothing'  AS parameter_name, 'true'                       AS parameter_value
+            UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'ignore-cert'            AS parameter_name, 'true'                       AS parameter_value
+            UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'resize-method'          AS parameter_name, 'display-update'             AS parameter_value
+            UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'security'               AS parameter_name, 'any'                        AS parameter_value
+            {% if (win_user_language | lower) == 'de-de' %}UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'server-layout'           AS parameter_name, 'de-de-qwertz'               AS parameter_value
+            {% endif %}
           {% endif %}
-          {% endif %}
-          -- UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'server-layout'          AS parameter_name, 'de-de-qwertz'               AS parameter_value
-          -- UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})' AS connection_name, 'timezone'               AS parameter_name, 'Europe/Berlin'              AS parameter_value
   ) params
   JOIN guacamole_connection ON params.connection_name = guacamole_connection.connection_name AND guacamole_connection.parent_id = (
     SELECT connection_group_id FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group_prefix }}{{ "%02d" | format(n + 1) }}' AND parent_id is NULL

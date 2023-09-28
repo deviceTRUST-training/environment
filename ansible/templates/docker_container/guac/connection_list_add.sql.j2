@@ -1,2 +1,11 @@
 {% set count = my_super_count_value|int %}
-SELECT * FROM guacamole_user
+
+SET @salt = UNHEX(SHA2(UUID(), 256));
+INSERT INTO guacamole_user (user_id, password_salt, password_hash, password_date) 
+--VALUES ('{{ guac_root_connection_group_prefix }}{{ n + 1) }}', @salt, UNHEX(SHA2(CONCAT('testpass', HEX(@salt)), 256)), NOW())
+SELECT
+  'test' AS user_id,
+  @salt 				                                       AS password_salt,
+  UNHEX(SHA2(CONCAT('testpass', HEX(@salt)), 256)) 	   AS password_hash,
+  NOW()                                                 AS password_date
+;

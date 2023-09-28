@@ -1,6 +1,6 @@
 {% set count = my_super_count_value|int %}
 {% for n in range(count) %}
   # Delete Connection Group
-  DELETE FROM guacamole_connection WHERE connection_group_name = '{{ guac_root_connection_group_prefix }}{{ "%02d" | format(n + 1) }}'
+  DELETE FROM guacamole_connection 
   ;
 {% endfor %}

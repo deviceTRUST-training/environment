@@ -4,7 +4,7 @@
   # Create Connection Group
   INSERT INTO guacamole_connection_group (connection_group_name, parent_id, type)
   SELECT
-      '{{ guac_root_connection_group_prefix }}{{ n }}'' AS connection_group_name,
+      '{{ guac_root_connection_group_prefix }}{{ n }}'  AS connection_group_name,
       NULL 				                                      AS parent_id,
       'organizational' 	                                AS type
   ;

@@ -1,9 +1,5 @@
 
-{% for n in range(5) %}
-  {{ n + 1}}
-{% endfor %}
-
-{% for _ in range(1, 20) %}
-  {{ loop.index }}
-  {% if loop.index > stop_at %}{% break %}{% endif %} 
+{% set count = my_super_count_value|int + 1 %}
+{% for n in range(count) %}
+  {{ n }}
 {% endfor %}

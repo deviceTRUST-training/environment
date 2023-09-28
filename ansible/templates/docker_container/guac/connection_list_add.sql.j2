@@ -12,7 +12,7 @@
   -- Create Connection
   INSERT INTO guacamole_connection (connection_name, parent_id, protocol)
   SELECT
-      '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }})'                                         AS connection_name,
+      '{{ guac_connection_name }}{{ "%02d" | format(n + 1) }}'                                       AS connection_name,
       guacamole_connection_group.connection_group_id    AS parent_id,
       '{{ guac_connection_protocol | default("rdp") }}' AS protocol
   FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group_prefix }}{{ "%02d" | format(n + 1) }}' AND parent_id is NULL;

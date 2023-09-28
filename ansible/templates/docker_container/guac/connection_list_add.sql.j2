@@ -1,13 +1,11 @@
 {% set count = my_super_count_value|int %}
 {% for n in range(count) %}
 
-  SET @salt = UNHEX(SHA2(UUID(), 256));
-  INSERT INTO guacamole_user (username, password_salt, password_hash, password_date) 
-  SELECT
-    '{{ guac_root_connection_group_prefix }}{{ n + 1 }}' AS username,
-    @salt 				                                       AS password_salt,
-    UNHEX(SHA2(CONCAT('testpass', HEX(@salt)), 256)) 	   AS password_hash,
-    NOW()                                                AS password_date
-  ;
+-- Generate salt
+SET @salt = UNHEX(SHA2(UUID(), 256));
+
+-- Create user and hash password with salt
+INSERT INTO guacamole_user (username, password_salt, password_hash)
+     VALUES ('{{ guac_root_connection_group_prefix }}{{ n + 1 }}', @salt, UNHEX(SHA2(CONCAT('mypassword', HEX(@salt)), 256)));
 
 {% endfor %}

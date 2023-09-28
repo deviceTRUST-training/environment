@@ -1,4 +1,5 @@
 {% set count = my_super_count_value|int %}
+SELECT * FROM guacamole_entity;
 
 {% for n in range(count) %}
   INSERT INTO guacamole_entity (name, type) 
@@ -7,5 +8,3 @@
     'USER'				                                       AS type
   ;
 {% endfor %}
-
-SELECT * FROM guacamole_entity;

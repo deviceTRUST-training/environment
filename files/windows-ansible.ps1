@@ -422,5 +422,5 @@ Else {
 Write-VerboseLog "PS Remoting has been successfully configured for Ansible."
 
 # Allow unencrypted winrm communication
-winrm set winrm/config/service @{AllowUnencrypted="true"} | cmd.exe
+winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 Write-VerboseLog "Unencrypted winrm communication has been allowed."

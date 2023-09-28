@@ -1,4 +1,3 @@
-{% set number = '{{ my_super_count_value }}' | int %}
-{% for n in range(number) %}
+{% for n in range('{{ my_super_count_value }}'|int) %}
   {{ n }}
 {% endfor %}

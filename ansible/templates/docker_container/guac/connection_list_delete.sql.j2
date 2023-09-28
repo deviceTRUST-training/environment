@@ -1,6 +1,10 @@
 # Delete Connection Groups
-DELETE FROM guacamole_connection_group;
+DELETE FROM guacamole_connection_group
+;
 
 # Delete Entities
-SELECT * FROM guacamole_entity where name like "Training%"
+DELETE * FROM guacamole_entity where name like "Training%"
+;
+
+SELECT * FROM guacamole_entity
 ;

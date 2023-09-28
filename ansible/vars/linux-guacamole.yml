@@ -43,7 +43,7 @@ guac_db_root_password: S00perSecurePassw0rd2023
 
 guac_ldap_admin_user: svc_ldap
 guac_ldap_admin_group: g_g_sec_guac_admins
-guac_root_connection_groups: ['Training01','Training02']
+guac_root_connection_group_prefix: Training
 
 ansible_hostname: controller
 
@@ -52,7 +52,8 @@ linux_software_apt: ['docker','docker-compose']
 domain_admin_password: S00perSecurePassw0rd2023
 
 guac_connection_sql_file_prefix: '{{ guac_root_connection_group }}'
-guac_connection_names: ['irgendwas','dasauch']
+guac_connection_names: ['rdsh','client','byod']
+
 dns_domain_name: dt.training
 win_user_language: en-us
 

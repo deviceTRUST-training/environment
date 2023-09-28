@@ -1,10 +1,13 @@
-{% for guac_root_connection_group in guac_root_connection_groups %}
+{% set count = namespace(value=5) %}
+{% for i in p %}
+  {{ count.value }}
+  
 # Create Connection Group
 INSERT INTO guacamole_connection_group (connection_group_name, parent_id, type)
 SELECT
-    '{{ guac_root_connection_group }}' AS connection_group_name,
+    '{{ guac_root_connection_group_prefix }}{{ count.value }}' AS connection_group_name,
     NULL 				                       AS parent_id,
-    'organizational' 	                 AS type
+    'organizational' 	                 AS type 
 ;
 
   {% for guac_connection_name in guac_connection_names %}
@@ -14,7 +17,7 @@ SELECT
       '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }}){% if guac_connection_rdp_load_balance_info is defined %} - lbc{% endif %}{% if (guac_connection_rdp_console | default(false)) %} - console{% endif %}'                                         AS connection_name,
       guacamole_connection_group.connection_group_id    AS parent_id,
       '{{ guac_connection_protocol | default("rdp") }}' AS protocol
-  FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group }}' AND parent_id is NULL;
+  FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group_prefix }}' AND parent_id is NULL;
 
   -- Create Connection Parameters
   INSERT INTO guacamole_connection_parameter (connection_id, parameter_name, parameter_value)
@@ -40,7 +43,7 @@ SELECT
           -- UNION SELECT '{{ guac_connection_name }} ({{ guac_connection_protocol | default("rdp") }}){% if guac_connection_rdp_load_balance_info is defined %} - lbc{% endif %}{% if (guac_connection_rdp_console | default(false)) %} - console{% endif %}' AS connection_name, 'timezone'               AS parameter_name, 'Europe/Berlin'              AS parameter_value
   ) params
   JOIN guacamole_connection ON params.connection_name = guacamole_connection.connection_name AND guacamole_connection.parent_id = (
-    SELECT connection_group_id FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group }}' AND parent_id is NULL
+    SELECT connection_group_id FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group_prefix }}' AND parent_id is NULL
   );
 
   -- Create Connection Permission for user
@@ -55,7 +58,7 @@ SELECT
   ) permissions
   JOIN guacamole_entity     ON permissions.username = guacamole_entity.name AND guacamole_entity.type = 'USER'
   JOIN guacamole_connection ON permissions.affected_connection_name = guacamole_connection.connection_name AND guacamole_connection.parent_id = (
-    SELECT connection_group_id FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group }}' AND parent_id is NULL
+    SELECT connection_group_id FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group_prefix }}' AND parent_id is NULL
   );
 
   -- Create Connection Permission for group
@@ -67,7 +70,9 @@ SELECT
   ) permissions
   JOIN guacamole_entity     ON permissions.groupname = guacamole_entity.name AND guacamole_entity.type = 'USER_GROUP'
   JOIN guacamole_connection ON permissions.affected_connection_name = guacamole_connection.connection_name AND guacamole_connection.parent_id = (
-    SELECT connection_group_id FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group }}' AND parent_id is NULL
+    SELECT connection_group_id FROM guacamole_connection_group WHERE connection_group_name = '{{ guac_root_connection_group_prefix }}' AND parent_id is NULL
   );
   {% endfor %}
+
+  {% set count.value = count.value + 1 %}
 {% endfor %}

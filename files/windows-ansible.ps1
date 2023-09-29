@@ -420,7 +420,3 @@ Else {
     Throw "Unable to establish an HTTP or HTTPS remoting session."
 }
 Write-VerboseLog "PS Remoting has been successfully configured for Ansible."
-
-# Allow unencrypted winrm communication
-winrm set winrm/config/service '@{AllowUnencrypted="true"}'
-Write-VerboseLog "Unencrypted winrm communication has been allowed."
